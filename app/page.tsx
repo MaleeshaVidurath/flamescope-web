@@ -23,8 +23,13 @@ export default function Home() {
 
   useEffect(() => {
     fetch("/data/tests_slim.json").then((r) => r.json()).then(setTests).catch(() => setLoadError(true));
-    const h = window.location.hash.replace("#", "") as TabKey;
-    if (TABS.some((t) => t.key === h)) setTab(h);
+    const fromHash = () => {
+      const h = window.location.hash.replace("#", "") as TabKey;
+      if (TABS.some((t) => t.key === h)) setTab(h);
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
   }, []);
   // At-a-glance numbers, computed from the records themselves (Moon-base air per the challenge brief: >=30% cabin O2, <=10.2 psi).
   const glance = useMemo(() => {
