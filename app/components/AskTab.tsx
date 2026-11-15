@@ -2,11 +2,13 @@
 import { useState } from "react";
 import StatusBadge from "./StatusBadge";
 import { pretty } from "@/lib/pretty";
+import { recordsHref } from "@/lib/hash";
 
 const SUGGESTED = [
   "Can cabin fabrics burn in a Moon base atmosphere at 34% oxygen?",
   "How well does CO2 put out droplet fires?",
-  "What does SAFFIRE show about silicone?",
+  "Do flames go out when the airflow is turned down?",
+  "What smoke data exists for Moon-base air?",
 ];
 
 interface AskResult {
@@ -14,6 +16,7 @@ interface AskResult {
   mode: "live" | "prepared";
   evidence: { status: "direct" | "related" | "none"; headline: string; reasons: string[] } | null;
   sources: { id: string; name?: string; doi?: string; url: string }[];
+  findings?: { id: string; title: string; kind: string; metric: string | null; records: number }[];
   error?: string;
 }
 
@@ -56,8 +59,16 @@ export default function AskTab() {
       <section className="panel p-5" aria-labelledby="ask-h">
         <h2 id="ask-h" className="cond text-[22px] font-semibold">Ask the NASA data</h2>
         <p className="text-[13.5px] text-[color:var(--ink-2)] mb-4 max-w-[64ch]">
-          Answers come only from the 1,018 NASA records in FlameScope, with the test IDs they rely on. If the data does not cover a question, the answer says so.
+          Answers come only from FlameScope&apos;s reviewed findings and the 1,018 NASA records behind them. Each answer links to the findings it used and their records. If the data does not cover a question, the answer says so.
         </p>
+        <div className="mb-4 rounded-[var(--radius-sm)] p-3 text-[13.5px]" style={{ background: "var(--soot-soft)", border: "1px solid var(--soot)" }} role="note">
+          <p className="font-semibold mb-0.5" style={{ color: "var(--soot)" }}>Live AI is switched off on this public site</p>
+          <p className="text-[color:var(--ink)]">
+            To keep costs and claims under control, no AI runs when you ask. Each answer is assembled from FlameScope&apos;s reviewed
+            findings, which our agents wrote and checked before the site was published. Questions outside those findings get a plain
+            &ldquo;not covered&rdquo; reply.
+          </p>
+        </div>
         <form onSubmit={(e) => { e.preventDefault(); ask(q); }} className="flex gap-2">
           <label htmlFor="q" className="sr-only">Your question</label>
           <input id="q" className="field flex-1 text-[15px] py-2.5" value={q} onChange={(e) => setQ(e.target.value)}
@@ -81,6 +92,22 @@ export default function AskTab() {
             <p className="text-[13px] text-[color:var(--muted)] mb-2">“{asked}”</p>
             {res.evidence && <div className="mb-3"><StatusBadge status={res.evidence.status} /></div>}
             <Md text={pretty(res.answer)} />
+            {(res.findings ?? []).length > 0 && (
+              <div className="mt-4 pt-3 border-t border-[color:var(--rule-soft)] text-[13px]">
+                <div className="text-[color:var(--ink-2)] mb-1.5">Reviewed findings this answer uses</div>
+                <ul className="space-y-1.5">
+                  {res.findings!.map((f) => (
+                    <li key={f.id} className="flex flex-wrap items-baseline gap-x-3">
+                      <span className="num text-[color:var(--muted)] min-w-[4.5rem]">{f.id}{f.kind === "gap" ? " · gap" : ""}</span>
+                      <a className="link flex-1 min-w-[12rem]" href={`#findings?card=${f.id}`}>{pretty(f.title)}</a>
+                      {f.metric && f.records > 0 && (
+                        <a className="link whitespace-nowrap" href={recordsHref(f.id, f.metric)}>See {f.records} NASA records</a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {res.sources.length > 0 && (
               <div className="mt-4 pt-3 border-t border-[color:var(--rule-soft)] text-[13px]">
                 <div className="text-[color:var(--ink-2)] mb-1">NASA sources used</div>
@@ -90,7 +117,7 @@ export default function AskTab() {
               </div>
             )}
             <p className="mt-3 text-[12px] text-[color:var(--muted)]">
-              {res.mode === "live" ? "Answer written by Claude (Anthropic) from the records above." : "Prepared answer, assembled from verified findings and the evidence-gap check. Live Claude answers run only where an API key is configured."}
+              {res.mode === "live" ? "Answer written by Claude (Anthropic) from the records above." : "Prepared answer: no AI ran for this question. It is assembled from reviewed findings and the evidence-gap check."}
             </p>
           </div>
         )}
