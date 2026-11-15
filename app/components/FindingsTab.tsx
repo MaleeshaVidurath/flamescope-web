@@ -6,10 +6,20 @@ import { pretty } from "@/lib/pretty";
 
 const CARDS = (insights as unknown as { cards: InsightCard[] }).cards;
 const COLS = [
-  { key: "prevention", title: "Prevention", sub: "Will it ignite and keep burning?" },
   { key: "detection", title: "Detection", sub: "What will the smoke look like?" },
   { key: "suppression", title: "Suppression", sub: "What puts it out?" },
 ] as const;
+
+// NASA's four prevention questions; each is answered by its own prevention sub-agent.
+const QUESTIONS = [
+  { key: "Q1", title: "Will the material burn, and how far will the flame spread?" },
+  { key: "Q2", title: "How does oxygen-rich air change the risk?" },
+  { key: "Q3", title: "What happens at lower pressure and partial gravity?" },
+  { key: "Q4", title: "Where are the gaps?" },
+] as const;
+// The three original prevention cards, placed under the question they answer.
+const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4" };
+const questionOf = (c: InsightCard) => c.question ?? BASE_Q[c.id] ?? "Q4";
 
 function Card({ c }: { c: InsightCard }) {
   const gap = c.kind === "gap";
@@ -20,11 +30,13 @@ function Card({ c }: { c: InsightCard }) {
         <div className="flex flex-wrap gap-x-3 text-[12.5px] mb-1">
           {gap && <span className="font-semibold" style={{ color: "var(--soot)" }}>Evidence gap</span>}
           {c.source?.startsWith("agent:") && (
-            <span className="text-[color:var(--ink-2)]">Found by the {c.source.slice(6)} agent · verified by script</span>
+            <span className="text-[color:var(--ink-2)]">
+              Found by the {c.source.slice(6)} {c.question ? `${c.question} sub-agent` : "agent"} · verified by script
+            </span>
           )}
         </div>
       )}
-      <h3 className="font-semibold leading-snug mb-2">{pretty(c.title)}</h3>
+      <h4 className="font-semibold leading-snug mb-2">{pretty(c.title)}</h4>
       <p className="text-[14px] mb-2">{pretty(c.text)}</p>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-2"><span className="font-medium text-[color:var(--ink)]">Why it matters: </span>{pretty(c.so_what)}</p>
       <p className="text-[12.5px] text-[color:var(--muted)] mb-3">Limits: {pretty(c.caveat)}</p>
@@ -42,14 +54,41 @@ function Card({ c }: { c: InsightCard }) {
 }
 
 export default function FindingsTab() {
+  const prevention = CARDS.filter((c) => c.pillar === "prevention");
   return (
     <div>
-      <p className="text-[14px] text-[color:var(--ink-2)] mb-4 max-w-[72ch]">
-        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. A specialist agent searches each
+      <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">
+        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Specialist agents search each
         task&apos;s NASA studies for findings; a script then recomputes every number from the records and rejects anything that does not
         match. Hover the check mark to see the numbers behind a finding.
       </p>
-      <div className="grid gap-5 lg:grid-cols-3">
+
+      <section aria-labelledby="col-prevention" className="mb-8">
+        <h2 id="col-prevention" className="cond text-[22px] font-semibold leading-tight">Prevention</h2>
+        <p className="text-[13.5px] text-[color:var(--ink-2)] mb-4 max-w-[72ch]">
+          Will it ignite and keep burning? The prevention agent splits this into NASA&apos;s four questions, with one sub-agent for each.
+        </p>
+        <div className="space-y-6">
+          {QUESTIONS.map((q, i) => {
+            const cards = prevention.filter((c) => questionOf(c) === q.key);
+            return (
+              <div key={q.key} className="grid gap-3 lg:grid-cols-[220px_1fr] lg:gap-6">
+                <h3 className="text-[15px] font-semibold leading-snug">
+                  <span className="block text-[12.5px] font-normal text-[color:var(--muted)]">Question {i + 1}</span>
+                  {q.title}
+                </h3>
+                {cards.length ? (
+                  <div className="grid gap-4 md:grid-cols-2 items-start">{cards.map((c) => <Card key={c.id} c={c} />)}</div>
+                ) : (
+                  <p className="text-[13.5px] text-[color:var(--muted)]">No verified finding yet for this question.</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className="grid gap-5 lg:grid-cols-2">
         {COLS.map((col) => (
           <section key={col.key} aria-labelledby={`col-${col.key}`}>
             <h2 id={`col-${col.key}`} className="cond text-[22px] font-semibold leading-tight">{col.title}</h2>

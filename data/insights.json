@@ -790,6 +790,357 @@
       "verified": true
     },
     {
+      "id": "P-Q1-1",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Fabric and acrylic kept burning in thinned microgravity air",
+      "text": "In BASS-II microgravity tests, 27 of 27 cotton-fiberglass (SIBAL) strips logged no extinction or blowoff at 16.4-20.8% O2, 14 of them below 18% O2. Below 16% O2, 8 of 16 acrylic (PMMA) rod runs logged no extinction, down to 14.2% O2; the only failed ignition was at 13.6% O2.",
+      "so_what": "In microgravity a fabric or plastic fire can keep going in air well below the cabin's ~21% O2, so modestly lowering cabin oxygen should not be counted on to stop a solid-material fire.",
+      "caveat": "BASS-II (ISS glovebox, cabin pressure not reported). 'No extinction logged' (outcome burned_or_not_stated) means the test log notes no flame-out; it does not confirm a full burn. Airflow varied run to run and is given only as raw fan/air settings; 27 fabric strips, 16 low-O2 rod runs of three diameters (the rest went out, blew off or did not ignite).",
+      "related": [],
+      "values": {
+        "sib_n": 27,
+        "sib_ok": 27,
+        "sib_min": 16.4,
+        "sib_max": 20.8,
+        "sib_low": 14,
+        "rod_low_n": 16,
+        "rod_low_ok": 8,
+        "rod_min": 14.2,
+        "noign": 13.6
+      },
+      "evidence": [
+        {
+          "name": "sib_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "fuel",
+              "startswith",
+              "SIBAL"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "sib_ok",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "fuel",
+              "startswith",
+              "SIBAL"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned_or_not_stated"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "sib_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "fuel",
+              "startswith",
+              "SIBAL"
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct"
+        },
+        {
+          "name": "sib_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "fuel",
+              "startswith",
+              "SIBAL"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct"
+        },
+        {
+          "name": "sib_low",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "fuel",
+              "startswith",
+              "SIBAL"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned_or_not_stated"
+            ],
+            [
+              "o2_pct",
+              "lt",
+              18
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "rod_low_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "geometry",
+              "eq",
+              "rod"
+            ],
+            [
+              "o2_pct",
+              "lt",
+              16
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "rod_low_ok",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "geometry",
+              "eq",
+              "rod"
+            ],
+            [
+              "o2_pct",
+              "lt",
+              16
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned_or_not_stated"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "rod_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "geometry",
+              "eq",
+              "rod"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned_or_not_stated"
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct"
+        },
+        {
+          "name": "noign",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "no_ignition"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct"
+        }
+      ],
+      "cite": [
+        "PSI-25"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q1",
+      "question_text": "Will the material burn, and how far will the flame spread?"
+    },
+    {
+      "id": "P-Q1-2",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Where samples burned in orbit, 1g spread sped up",
+      "text": "Of the 5 SAFFIRE-II samples that kept burning in microgravity, 4 burned completely in the matching normal-gravity test, 4 with flame spread that kept speeding up. In microgravity, only 2 reached the end of the sample, each with a single measured spread rate; the other 3 burned only part-way.",
+      "so_what": "For materials that do burn in orbit, a 1g test can show more aggressive, accelerating spread than microgravity at the same airflow; with card P1 (the reverse for silicone), this means 1g results need a microgravity check before being used to judge how far a fire could spread.",
+      "caveat": "9 SAFFIRE-II sheets at about 22% O2 and 20 cm/s flow, mostly concurrent; 5 burned in microgravity. Two of them (2-6, 2-9) have no fuel named in the table; 2-7 was PMMA paired with Nomex and 2-8 thick PMMA. The part-way burn lengths carry table notes not in this dataset (possibly test-time limits). Burn lengths and 1g results are table text, not numeric fields.",
+      "related": [],
+      "values": {
+        "n_burn": 5,
+        "n_1g_full": 4,
+        "n_accel": 4,
+        "n_ug_full": 2,
+        "n_part": 3
+      },
+      "evidence": [
+        {
+          "name": "n_burn",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_1g_full",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned"
+            ],
+            [
+              "measures.1g_burn_length",
+              "eq",
+              "Complete"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_accel",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned"
+            ],
+            [
+              "measures.1g_spread_rate",
+              "eq",
+              "Acceleratory"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_ug_full",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned"
+            ],
+            [
+              "measures.ug_burn_length",
+              "eq",
+              "29 cm"
+            ],
+            [
+              "measures.ug_spread_rate",
+              "contains",
+              "mm/s"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_part",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "burned"
+            ],
+            [
+              "measures.ug_burn_length",
+              "ne",
+              "29 cm"
+            ],
+            [
+              "measures.ug_burn_length",
+              "ne",
+              "~ 0"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-99"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q1",
+      "question_text": "Will the material burn, and how far will the flame spread?"
+    },
+    {
       "id": "P-A1",
       "pillar": "prevention",
       "kind": "finding",
@@ -1127,7 +1478,9 @@
       ],
       "tests": null,
       "verified": true,
-      "source": "agent:prevention"
+      "source": "agent:prevention",
+      "question": "Q2",
+      "question_text": "How does oxygen-rich air change the risk?"
     },
     {
       "id": "P-A2",
@@ -1417,7 +1770,1099 @@
       ],
       "tests": null,
       "verified": true,
-      "source": "agent:prevention"
+      "source": "agent:prevention",
+      "question": "Q2",
+      "question_text": "How does oxygen-rich air change the risk?"
+    },
+    {
+      "id": "P-A4",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "High-oxygen gas flames are calculated to burn hotter",
+      "text": "For ACME CFI-G normal flames that lit at 20.7-21.7% cabin O2, the data table's calculated adiabatic flame temperature reached at most 2276 K. At 33-40% O2, 86 of 91 lit flames were calculated hotter than that, up to 2730 K.",
+      "so_what": "A hotter flame radiates and conducts more heat to nearby surfaces, so in Moon-base air a small fire could heat and ignite neighbouring materials faster than ISS experience suggests; spacing and thermal-protection margins should allow for it.",
+      "caveat": "Tad is a calculated value from the gas mixture, not a measured flame temperature. Gaseous fuels (ethane, propane, butane, pure and diluted) on a spherical porous burner in microgravity; pressures (about 7.35-44 psi) and fuel dilution varied and were not paired by design, though the gap shows at each pressure tested in both bands except a few low-Tad 30% butane tests at 14.7 psi.",
+      "related": [],
+      "values": {
+        "o21_min": 20.7,
+        "o21_max": 21.7,
+        "tad21_max": 2276.0,
+        "hi_min": 33.0,
+        "hi_max": 40.0,
+        "hi_lit": 91,
+        "hi_hotter": 86,
+        "tadhi_max": 2730.0
+      },
+      "evidence": [
+        {
+          "name": "o21_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "o21_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "tad21_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.Tad_K",
+          "round": 0
+        },
+        {
+          "name": "hi_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "hi_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "hi_lit",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hi_hotter",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "measures.Tad_K",
+              "gt",
+              2275.7
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "tadhi_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.Tad_K",
+          "round": 0
+        }
+      ],
+      "cite": [
+        "PSI-159"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q2",
+      "question_text": "How does oxygen-rich air change the risk?"
+    },
+    {
+      "id": "P-Q3-1",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Near 21% O2, low pressure did not stop gas flames",
+      "text": "In ACME CFI-G normal-flame tests at 20.7-21.7% O2, 3 of 5 flames at 7.35 psi lit hot and each burned 14-20 s before going out. At 29.39-44.09 psi, 15 of 24 lit, but none lasted beyond 7 s. At 33-40% O2 the gap closed: the longest self-extinguishing flames burned 258 s at 7.35 psi and 251 s at 29.39 psi.",
+      "so_what": "Lowering cabin pressure did not stop gas flames from lighting in cabin-like air, and the low-pressure flames lasted longer, so a reduced-pressure habitat should not count on thin air to shorten a fire.",
+      "caveat": "Gaseous fuels on a spherical burner, not cabin materials. Near 21% O2 the 7.35 psi tests used only 50% butane (5 tests, two noted the igniter lingered in the flame) and the 29-44 psi tests only 30% propane (24 tests); fuel flow rate varied and is not matched, so fuel and pressure are confounded.",
+      "related": [],
+      "values": {
+        "o2a": 20.7,
+        "o2b": 21.7,
+        "lp_n": 5,
+        "lp_hot": 3,
+        "lp_psi": 7.35,
+        "lp_bmin": 14.0,
+        "lp_bmax": 20.0,
+        "hp_a": 29.39,
+        "hp_b": 44.09,
+        "hp_n": 24,
+        "hp_hot": 15,
+        "hp_bmax": 7.0,
+        "ho2a": 33.0,
+        "ho2b": 40.0,
+        "lph_bmax": 258.0,
+        "hph_bmax": 251.0
+      },
+      "evidence": [
+        {
+          "name": "o2a",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "o2b",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "lp_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lp_hot",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated",
+                "ignited"
+              ]
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lp_psi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi"
+        },
+        {
+          "name": "lp_bmin",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "lp_bmax",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "hp_a",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              29
+            ]
+          ],
+          "agg": "min",
+          "field": "pressure_psi"
+        },
+        {
+          "name": "hp_b",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              29
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi"
+        },
+        {
+          "name": "hp_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              29
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hp_hot",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              29
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated",
+                "ignited"
+              ]
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hp_bmax",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20.5
+            ],
+            [
+              "o2_pct",
+              "le",
+              22.5
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              29
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "ho2a",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              33
+            ],
+            [
+              "o2_pct",
+              "le",
+              40.5
+            ],
+            [
+              "pressure_psi",
+              "in",
+              [
+                7.35,
+                29.39
+              ]
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "ho2b",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              33
+            ],
+            [
+              "o2_pct",
+              "le",
+              40.5
+            ],
+            [
+              "pressure_psi",
+              "in",
+              [
+                7.35,
+                29.39
+              ]
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "lph_bmax",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              33
+            ],
+            [
+              "o2_pct",
+              "le",
+              40.5
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "hph_bmax",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              33
+            ],
+            [
+              "o2_pct",
+              "le",
+              40.5
+            ],
+            [
+              "pressure_psi",
+              "eq",
+              29.39
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        }
+      ],
+      "cite": [
+        "PSI-159"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q3",
+      "question_text": "What happens at lower pressure and partial gravity?"
+    },
+    {
+      "id": "P-Q3-2",
+      "pillar": "prevention",
+      "kind": "gap",
+      "title": "No partial-gravity tests; low-pressure data are gas only",
+      "text": "None of the 1018 records in the 7 datasets was run at Moon (1/6 g) or Mars (3/8 g) gravity; the only non-microgravity results are 9 SAFFIRE-II Earth-gravity comparisons. At 10.2 psi or less there are 65 prevention records, all ACME CFI-G gas flames (25 normal, 40 inverse). Of 259 solid-material records, 0 report any pressure.",
+      "so_what": "Partial gravity brings back weak buoyant flow that neither microgravity nor Earth tests reproduce, and low-pressure evidence covers only burner gas flames, so Moon and Mars habitat materials have no direct test basis here.",
+      "caveat": "Absence within these 7 PSI datasets only; inverse-flame (I-) records give burner-stream O2, not cabin air. Solid tests (BASS, BASS-II, SAFFIRE-II) report no pressure; BASS-II assumes about 1 atm cabin.",
+      "related": [],
+      "values": {
+        "n_rec": 1018,
+        "n_ds": 7,
+        "g1_n": 9,
+        "lo_n": 65,
+        "lo_norm": 25,
+        "lo_inv": 40,
+        "sol_n": 259,
+        "sol_p": 0
+      },
+      "evidence": [
+        {
+          "name": "n_rec",
+          "filter": [
+            [
+              "investigation_id",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_ds",
+          "filter": [
+            [
+              "investigation_id",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "distinct",
+          "field": "investigation_id"
+        },
+        {
+          "name": "g1_n",
+          "filter": [
+            [
+              "investigation_id",
+              "eq",
+              "PSI-99"
+            ],
+            [
+              "measures.1g_burn_length",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lo_n",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-26",
+                "PSI-99",
+                "PSI-20",
+                "PSI-159"
+              ]
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lo_norm",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-26",
+                "PSI-99",
+                "PSI-20",
+                "PSI-159"
+              ]
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lo_inv",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-26",
+                "PSI-99",
+                "PSI-20",
+                "PSI-159"
+              ]
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "test_id",
+              "startswith",
+              "I-"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "sol_n",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-26",
+                "PSI-99",
+                "PSI-20",
+                "PSI-159"
+              ]
+            ],
+            [
+              "fuel_phase",
+              "eq",
+              "solid"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "sol_p",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-26",
+                "PSI-99",
+                "PSI-20",
+                "PSI-159"
+              ]
+            ],
+            [
+              "fuel_phase",
+              "eq",
+              "solid"
+            ],
+            [
+              "pressure_psi",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-159",
+        "PSI-99",
+        "PSI-25",
+        "PSI-26"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q3",
+      "question_text": "What happens at lower pressure and partial gravity?"
     },
     {
       "id": "P-A3",
@@ -1524,7 +2969,152 @@
       ],
       "tests": null,
       "verified": true,
-      "source": "agent:prevention"
+      "source": "agent:prevention",
+      "question": "Q4",
+      "question_text": "Where are the gaps?"
+    },
+    {
+      "id": "P-Q4-2",
+      "pillar": "prevention",
+      "kind": "gap",
+      "title": "Burning-solid tests give no pressure and one airflow",
+      "text": "Of 138 BASS-II and SAFFIRE-II solid-material records, 0 report a chamber pressure, so no burning plastic or fabric is tied to a reduced habitat pressure. All 9 SAFFIRE-II sheets ran at a single airflow (20 cm/s), only 1 with the flame spreading against the air; BASS-II gives airflow speed in cm/s for 0 of 129 records.",
+      "so_what": "Moon-base cabins are planned at 10.2 psi or less and with weak, varied ventilation, yet the real-material data cannot show how pressure or airflow speed changes flame spread; a solid-material series across pressure and at least two flow speeds in each direction would fill this.",
+      "caveat": "BASS-II (mostly PMMA and SIBAL fabric) and SAFFIRE-II (9 sheets incl. silicone, SIBAL, PMMA/Nomex). Pressure may be recorded in the investigators' papers; only the PSI experimental table was examined. BASS-II airflow is given as raw controller settings, not converted to cm/s.",
+      "related": [],
+      "values": {
+        "n_solid": 138,
+        "n_p": 0,
+        "n_saf": 9,
+        "flow": 20.0,
+        "n_flowvals": 1,
+        "n_opp": 1,
+        "n_bflow": 0,
+        "n_b": 129
+      },
+      "evidence": [
+        {
+          "name": "n_solid",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-99"
+              ]
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_p",
+          "filter": [
+            [
+              "investigation_id",
+              "in",
+              [
+                "PSI-25",
+                "PSI-99"
+              ]
+            ],
+            [
+              "pressure_psi",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_saf",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s",
+          "round": 1
+        },
+        {
+          "name": "n_flowvals",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "flow_cm_s"
+        },
+        {
+          "name": "n_opp",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "measures.flow_direction",
+              "eq",
+              "Opposed"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_bflow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "flow_cm_s",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_b",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-25",
+        "PSI-99"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention",
+      "question": "Q4",
+      "question_text": "Where are the gaps?"
     },
     {
       "id": "D-A1",
@@ -3515,7 +5105,13 @@
       "detection",
       "suppression"
     ],
-    "approved": 10,
+    "prevention_questions": {
+      "Q1": "Will the material burn, and how far will the flame spread?",
+      "Q2": "How does oxygen-rich air change the risk?",
+      "Q3": "What happens at lower pressure and partial gravity?",
+      "Q4": "Where are the gaps?"
+    },
+    "approved": 16,
     "rule": "every number computed from tests.json filters and re-checked; hand-typed numbers, safety absolutes and duplicates rejected"
   }
 }

@@ -60,6 +60,8 @@ export interface InsightCard {
   values: Record<string, number>;
   related?: { label: string; url: string }[];
   source?: string;
+  question?: string;
+  question_text?: string;
 }
 
 export const HABITATS: { key: HabitatKey; label: string; short: string }[] = [
