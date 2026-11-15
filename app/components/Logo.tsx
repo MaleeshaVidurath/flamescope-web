@@ -1,3 +1,4 @@
+// SI note: logo drafted with Claude (Anthropic); reviewed by team SL-Pyronix.
 /** FlameScope mark: a microgravity flame (round blue core, orange edge) inside a target ring. */
 export default function Logo({ size = 40, title }: { size?: number; title?: string }) {
   return (

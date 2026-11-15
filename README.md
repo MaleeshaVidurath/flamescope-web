@@ -76,7 +76,7 @@ SI tools were used, and every SI-assisted part is marked:
 - **Insight agents** (run offline with Claude, never on the public site): 12 question sub-agents (prevention, detection and suppression × NASA's four questions each), 3 pillar organizers, 1 merge agent for Moon and Mars, and 3 independent reviewer agents. Every number is computed by code from the NASA records; the reviewers check that comparisons are fair. See *Insight pipeline* below.
 - **Ask FlameScope** can call Claude to write answers from retrieved NASA records when an API key is configured; such answers are labelled as AI-written. The public deployment runs without a key and shows prepared answers, labelled as such.
 - Every number shown in the findings is computed from the NASA records and re-checked by a script. The team checked samples against the PSI pages.
-- No SI-generated images are used. No NASA logos or insignia are used.
+- The FlameScope logo and site icons (`app/icon.svg`, `app/apple-icon.png`, `app/favicon.ico`, `app/components/Logo.tsx`) were made with help from Claude; `icon.svg` carries Anthropic Content Credentials (C2PA). No other SI-generated images are used. No NASA logos or insignia are used.
 
 ## Limits
 
