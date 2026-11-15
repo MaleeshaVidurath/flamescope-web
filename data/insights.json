@@ -788,6 +788,2734 @@
       ],
       "tests": null,
       "verified": true
+    },
+    {
+      "id": "P-A1",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Oxygen-rich air keeps gas flames burning far longer",
+      "text": "In ACME CFI-G normal-flame tests at 20.7-21.7% cabin O2, 37 of 37 hot flames went out on their own, the longest after 20 s. At 33-40% O2, 58 of 61 self-extinguishing flames outlasted that (up to 304 s), and 30 more were still burning when the fuel flow was cut.",
+      "so_what": "In an oxygen-enriched habitat, a small fire may not burn itself out as quickly as it tends to in ISS-like air, so detection and response windows sized from normal-air experience may be too short.",
+      "caveat": "Gaseous fuels (ethane, propane, butane, pure and diluted) on a spherical porous burner in quiescent microgravity, not cabin materials. Fuel flow rates and pressures (about 7.35-44 psi) varied; the gap also appears at each pressure tested in both bands and among tests with matching fuel flow, but these were not controlled pairings. Flames ended by cutting the fuel flow (some at the burner temperature limit) have burn times that are lower bounds.",
+      "related": [],
+      "values": {
+        "o21_min": 20.7,
+        "o21_max": 21.7,
+        "n21_hot": 37,
+        "n21_se": 37,
+        "max21": 20.0,
+        "hi_min": 33.0,
+        "hi_max": 40.0,
+        "hi_se": 61,
+        "hi_long": 58,
+        "hi_burn_max": 304.0,
+        "hi_ft": 30
+      },
+      "evidence": [
+        {
+          "name": "o21_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "o21_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "n21_hot",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated"
+              ]
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n21_se",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "max21",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "hi_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "hi_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "hi_se",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hi_long",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ],
+            [
+              "measures.burn_time_s",
+              "gt",
+              20
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hi_burn_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s"
+        },
+        {
+          "name": "hi_ft",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "flow_terminated"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-159"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention"
+    },
+    {
+      "id": "P-A2",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "In cabin-oxygen tests, cool flames came only at high O2",
+      "text": "In ACME CFI-G normal-flame tests, 7 butane-mixture flames showed cool flames alongside hot burning at 29.4 psi and 38.9-39.9% O2. At 7.35 psi and about 35% O2, 2 more lit only as a cool flame. Of 11 butane-mixture tests near 21% O2, 0% reported a cool flame.",
+      "so_what": "Cool flames burn at low temperature with little visible light, so in an oxygen-rich, low-pressure habitat a fuel leak could react without the bright flame that crews and optical sensors expect; detector and ignition-control design for Moon-base air should consider them.",
+      "caveat": "Butane diluted to 30% or 50% in inert gas on a spherical porous burner; 9 tests in total, from a few test days. Cool flames were flagged by the investigators in the table; their absence near 21% O2 covers only 11 butane tests and does not show they cannot occur there. Propane and ethane tests reported none in normal-flame mode.",
+      "related": [],
+      "values": {
+        "n_cool_hot": 7,
+        "cool_psi": 29.4,
+        "cool_o2_min": 38.9,
+        "cool_o2_max": 39.9,
+        "n_cool_only": 2,
+        "coolonly_psi": 7.35,
+        "coolonly_o2": 35.0,
+        "n21_butane": 11,
+        "share21_cool": 0
+      },
+      "evidence": [
+        {
+          "name": "n_cool_hot",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "measures.cool_flame",
+              "eq",
+              true
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "cool_psi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "measures.cool_flame",
+              "eq",
+              true
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi",
+          "round": 1
+        },
+        {
+          "name": "cool_o2_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "measures.cool_flame",
+              "eq",
+              true
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "cool_o2_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "measures.cool_flame",
+              "eq",
+              true
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "n_cool_only",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "outcome",
+              "eq",
+              "cool_flame_only"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "coolonly_psi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "outcome",
+              "eq",
+              "cool_flame_only"
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi",
+          "round": 2
+        },
+        {
+          "name": "coolonly_o2",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "outcome",
+              "eq",
+              "cool_flame_only"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "n21_butane",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "share21_cool",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "fuel",
+              "contains",
+              "butane"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ],
+            [
+              "o2_pct",
+              "le",
+              22
+            ]
+          ],
+          "agg": "share",
+          "of": [
+            [
+              "measures.cool_flame",
+              "eq",
+              true
+            ]
+          ]
+        }
+      ],
+      "cite": [
+        "PSI-159"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention"
+    },
+    {
+      "id": "P-A3",
+      "pillar": "prevention",
+      "kind": "gap",
+      "title": "Solid-fuel emulator data cannot separate oxygen effects",
+      "text": "ACME BRE, a gas burner that emulates burning solids, logged 43 day-level records over 18 test days at 21-40% O2, 23 of them at 30% O2 or more. Ignitions are given only as one total per day across several O2 levels, and 43 of 43 records give no pressure.",
+      "so_what": "BRE is the PSI dataset closest to a burning solid at Moon-base oxygen levels, but the published table cannot show how ignition changes from 21% to 40% O2 or with pressure; per-test results would be needed to use it for habitat material limits.",
+      "caveat": "Ethylene (pure or 50% in nitrogen) and methane on 25 mm and 50 mm porous burners. O2 values are approximate levels for the tests that ignited that day. Only the PSI experimental table was examined, not the investigators' papers.",
+      "related": [],
+      "values": {
+        "n_rows": 43,
+        "n_days": 18,
+        "o2_min": 21.0,
+        "o2_max": 40.0,
+        "n_hi": 23,
+        "n_nop": 43
+      },
+      "evidence": [
+        {
+          "name": "n_rows",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_days",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "date"
+        },
+        {
+          "name": "o2_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "o2_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "n_hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_nop",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME BRE"
+            ],
+            [
+              "pressure_psi",
+              "isnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-20"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:prevention"
+    },
+    {
+      "id": "D-A1",
+      "pillar": "detection",
+      "kind": "gap",
+      "title": "Low-airflow smoke tests are thinly sampled",
+      "text": "Only 11 of 109 SAME-R records were made at 1-2 cm/s airflow, against 76 at 8 cm/s or more. Lampwick and Teflon have 0 records at 1 cm/s, and the 5 records at 2 cm/s include 0 aged-smoke measurements.",
+      "so_what": "Habitat air often moves slowly, yet most of the SAME-R matrix sits at the fastest flow; detector responses to slow-drifting smoke rest on few samples, and some material and flow combinations are missing.",
+      "caveat": "Five heated cabin materials on ISS; counts are test conditions from the PSI table, not smoke measurements. Flow is SAME-R inlet velocity.",
+      "related": [],
+      "values": {
+        "n_all": 109,
+        "n_low": 11,
+        "low_min": 1.0,
+        "low_max": 2.0,
+        "n_fast": 76,
+        "fast_min": 8.0,
+        "lt_one": 0,
+        "n_two": 5,
+        "n_two_aged": 0
+      },
+      "evidence": [
+        {
+          "name": "n_all",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_low",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "gt",
+              0
+            ],
+            [
+              "flow_cm_s",
+              "lt",
+              8
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "low_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "gt",
+              0
+            ],
+            [
+              "flow_cm_s",
+              "lt",
+              8
+            ]
+          ],
+          "agg": "min",
+          "field": "flow_cm_s",
+          "round": 0
+        },
+        {
+          "name": "low_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "gt",
+              0
+            ],
+            [
+              "flow_cm_s",
+              "lt",
+              8
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s",
+          "round": 0
+        },
+        {
+          "name": "n_fast",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "ge",
+              8
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "fast_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "ge",
+              8
+            ]
+          ],
+          "agg": "min",
+          "field": "flow_cm_s",
+          "round": 0
+        },
+        {
+          "name": "lt_one",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "in",
+              [
+                "Lampwick",
+                "Teflon"
+              ]
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              1.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_two",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              2.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_two_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              2.0
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection"
+    },
+    {
+      "id": "D-A2",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Heater settings differ from material to material",
+      "text": "SAME-R did not use one shared heater setting (resistance ratio) across materials. Pyrell ran at 1.22-1.23, silicone at 1.304-1.36 and Kapton at 1.38-1.48, so these three ranges do not overlap.",
+      "so_what": "Differences in smoke between these materials are tied up with differences in heater setting, so the matrix alone cannot separate the effect of material from the effect of heating level.",
+      "caveat": "Heater setting is the ratio Rt/R0 as tabulated; its link to sample temperature is not given in the table. Lampwick and Teflon not shown; Teflon includes one low-setting outlier.",
+      "related": [],
+      "values": {
+        "py_min": 1.22,
+        "py_max": 1.23,
+        "si_min": 1.304,
+        "si_max": 1.36,
+        "ka_min": 1.38,
+        "ka_max": 1.48
+      },
+      "evidence": [
+        {
+          "name": "py_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Pyrell"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "py_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Pyrell"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "ka_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "ka_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection"
+    },
+    {
+      "id": "D-A3",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Long-aged smoke sampled in still air for every material",
+      "text": "44 SAME-R records aged smoke for 557 s or more before measurement. 10 of them were in still air, covering 5 of 5 materials, and 3 were at 1 cm/s.",
+      "so_what": "Smoke that lingers for many minutes in a poorly ventilated module can change before it reaches a detector; SAME-R has such aged samples in still air for each material, which detector designers can draw on via the SAME-R reports.",
+      "caveat": "Aging times are test conditions; how the smoke changed with aging is in the SAME-R reports, not this table. Five materials; few long-aged records per material.",
+      "related": [],
+      "values": {
+        "n_long": 44,
+        "long_min": 557.0,
+        "n_long_still": 10,
+        "m_long_still": 5,
+        "m_all": 5,
+        "n_long_one": 3,
+        "one": 1.0
+      },
+      "evidence": [
+        {
+          "name": "n_long",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "long_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "n_long_still",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_long_still",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "m_all",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "n_long_one",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              1.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "one",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "gt",
+              0
+            ]
+          ],
+          "agg": "min",
+          "field": "flow_cm_s",
+          "round": 0
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection"
+    },
+    {
+      "id": "S-A1",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "Adding CO2 to air: more heptane flames went out",
+      "text": "At 17-21% O2 and about 1 atm, FLEX heptane droplet flames went out before the fuel was used up in 12 of 18 tests with CO2 added, 5 of 11 with helium added, and 7 of 20 with nitrogen only. Methanol flames went out in 17 of 19 CO2 tests and 7 of 7 helium tests.",
+      "so_what": "At the same oxygen level, swapping some nitrogen for CO2 went with more heptane flames going out, which is consistent with CO2 as an extinguishing agent; for methanol nearly every diluted flame went out either way.",
+      "caveat": "Single droplets of heptane and methanol, not cabin solids; small samples (7-20 per group); the added CO2 or helium share (5-20%) was not matched test by test, and no significance test was run.",
+      "related": [],
+      "values": {
+        "o2_lo": 17.0,
+        "o2_hi": 21.0,
+        "co2_n": 18,
+        "co2_e": 12,
+        "he_n": 11,
+        "he_e": 5,
+        "n2_n": 20,
+        "n2_e": 7,
+        "m_co2_n": 19,
+        "m_co2_e": 17,
+        "m_he_n": 7,
+        "m_he_e": 7
+      },
+      "evidence": [
+        {
+          "name": "o2_lo",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "o2_hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "co2_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "CO2"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "co2_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "CO2"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "he_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "He"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "he_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "He"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n2_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n2_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_co2_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "CO2"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_co2_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "CO2"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_he_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "He"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_he_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "He"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-69"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:suppression"
+    },
+    {
+      "id": "S-A2",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "Diluted heptane flames went out more at lower pressure",
+      "text": "With CO2 or helium added at 17-21% O2, FLEX heptane droplet flames went out before burnout in 15 of 16 tests at about 10.4 psi, versus 17 of 29 at about 1 atm. Methanol showed no such gap: 24 of 26 versus 24 of 26.",
+      "so_what": "Lower cabin pressure at the same oxygen percentage went with more heptane flames going out, but habitats that lower pressure usually raise the oxygen percentage, which pushes the other way (see S2).",
+      "caveat": "Same O2 mole fraction means less oxygen per volume at the lower pressure, so pressure and oxygen partial pressure are not separated. Single fuel droplets, not cabin solids; 16 vs 29 heptane tests; diluent share (5-20%) not matched.",
+      "related": [],
+      "values": {
+        "o2_lo": 17.0,
+        "o2_hi": 21.0,
+        "lo_psi": 10.4,
+        "lo_n": 16,
+        "lo_e": 15,
+        "hi_n": 29,
+        "hi_e": 17,
+        "m_lo_n": 26,
+        "m_lo_e": 24,
+        "m_hi_n": 26,
+        "m_hi_e": 24
+      },
+      "evidence": [
+        {
+          "name": "o2_lo",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "o2_hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "lo_psi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi",
+          "round": 1
+        },
+        {
+          "name": "lo_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "lo_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hi_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hi_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_lo_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_lo_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_hi_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_hi_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "in",
+              [
+                "CO2",
+                "He"
+              ]
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-69"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:suppression"
+    },
+    {
+      "id": "S-A3",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "BASS-II: airflow blowoff recorded only in thinned oxygen",
+      "text": "BASS-II recorded 24 acrylic (PMMA) flames that went out in microgravity. 7 were blown off by the airflow, all at 15-17.4% O2. The other 17 went out at 14.8-20.9% O2, including 6 in near-normal air (20% O2 or more).",
+      "so_what": "Acrylic flames sometimes went out on their own even in near-normal air, while blowing a flame off with airflow was only recorded once oxygen was already lowered; the data give no support for relying on airflow alone to put out a cabin fire.",
+      "caveat": "PMMA only; 104 of 129 BASS-II records do not state an outcome, so rates cannot be computed; air-flow settings are raw controller units; high airflow was not tested evenly across O2 levels.",
+      "related": [],
+      "values": {
+        "n_end": 24,
+        "n_blow": 7,
+        "bo_min": 15.0,
+        "bo_max": 17.4,
+        "n_ext": 17,
+        "ex_min": 14.8,
+        "ex_max": 20.9,
+        "ex_hi": 6
+      },
+      "evidence": [
+        {
+          "name": "n_end",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "extinction",
+                "blowoff"
+              ]
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_blow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "blowoff"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "bo_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "blowoff"
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "bo_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "blowoff"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "n_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "ex_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "ex_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 1
+        },
+        {
+          "name": "ex_hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              20
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-25"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:suppression"
+    },
+    {
+      "id": "S-A4",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "Heptane flames went out less often than methanol",
+      "text": "In FLEX nitrogen-only air at 18-21% O2 and about 1 atm, methanol droplet flames went out before the fuel was used up in 13 of 16 tests, but heptane flames did so in only 7 of 20; the rest of the heptane droplets burned out or broke apart.",
+      "so_what": "How readily a fire goes out depends strongly on the fuel: oxygen levels that stopped most methanol flames stopped far fewer heptane flames, so suppression margins should be set by the hardest-to-extinguish fuel aboard.",
+      "caveat": "Single liquid droplets in quiescent microgravity, not cabin solids; 16 methanol and 20 heptane tests; droplet sizes not matched; O2 levels within the band not evenly split between fuels.",
+      "related": [],
+      "values": {
+        "o2_lo": 18.0,
+        "o2_hi": 21.0,
+        "m_n": 16,
+        "m_e": 13,
+        "h_n": 20,
+        "h_e": 7
+      },
+      "evidence": [
+        {
+          "name": "o2_lo",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "o2_hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "m_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Methanol"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "h_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "h_e",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Heptane"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              17
+            ],
+            [
+              "o2_pct",
+              "le",
+              21
+            ],
+            [
+              "pressure_psi",
+              "ge",
+              14
+            ],
+            [
+              "pressure_psi",
+              "le",
+              15.5
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-69"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:suppression"
     }
-  ]
+  ],
+  "agents": {
+    "pillars": [
+      "prevention",
+      "detection",
+      "suppression"
+    ],
+    "approved": 10,
+    "rule": "every number computed from tests.json filters and re-checked; hand-typed numbers, safety absolutes and duplicates rejected"
+  }
 }

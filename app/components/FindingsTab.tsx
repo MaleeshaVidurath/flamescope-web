@@ -16,8 +16,15 @@ function Card({ c }: { c: InsightCard }) {
   return (
     <article className="panel p-4"
       style={gap ? { borderStyle: "dashed", borderColor: "var(--soot)", background: "var(--soot-soft)" } : undefined}>
-      {gap && <div className="text-[12.5px] font-semibold mb-1" style={{ color: "var(--soot)" }}>Evidence gap</div>}
-      <h3 className="font-semibold leading-snug mb-2">{c.title}</h3>
+      {(gap || c.source) && (
+        <div className="flex flex-wrap gap-x-3 text-[12.5px] mb-1">
+          {gap && <span className="font-semibold" style={{ color: "var(--soot)" }}>Evidence gap</span>}
+          {c.source?.startsWith("agent:") && (
+            <span className="text-[color:var(--ink-2)]">Found by the {c.source.slice(6)} agent · verified by script</span>
+          )}
+        </div>
+      )}
+      <h3 className="font-semibold leading-snug mb-2">{pretty(c.title)}</h3>
       <p className="text-[14px] mb-2">{pretty(c.text)}</p>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-2"><span className="font-medium text-[color:var(--ink)]">Why it matters: </span>{pretty(c.so_what)}</p>
       <p className="text-[12.5px] text-[color:var(--muted)] mb-3">Limits: {pretty(c.caveat)}</p>
@@ -38,8 +45,9 @@ export default function FindingsTab() {
   return (
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-4 max-w-[72ch]">
-        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Each finding below is computed from the
-        NASA records and re-checked automatically; hover the check mark to see the numbers behind it.
+        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. A specialist agent searches each
+        task&apos;s NASA studies for findings; a script then recomputes every number from the records and rejects anything that does not
+        match. Hover the check mark to see the numbers behind a finding.
       </p>
       <div className="grid gap-5 lg:grid-cols-3">
         {COLS.map((col) => (

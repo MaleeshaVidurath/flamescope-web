@@ -52,6 +52,7 @@ Known source issues (spreadsheet errors, missing pressure, unlabeled units) are 
 SI tools were used, and every SI-assisted part is marked:
 
 - **Claude (Anthropic)** helped write the data-normalization scripts, the ranking method, the wording of the findings, the Q&A prompt and parts of this interface. Each source file carries an `SI note` comment.
+- **Three pillar agents** (Prevention, Detection, Suppression), run with Claude, searched their NASA studies for additional findings. Each proposed finding states its numbers only as computed filters over the records; a checker script recomputes them and rejects hand-typed numbers, safety absolutes and duplicates. Agent findings are labelled in the app. Briefs and checker: `agents/` in the data package.
 - **Ask FlameScope** can call Claude to write answers from retrieved NASA records when an API key is configured; such answers are labelled as AI-written. The public deployment runs without a key and shows prepared answers, labelled as such.
 - Every number shown in the findings is computed from the NASA records and re-checked by a script. The team checked samples against the PSI pages.
 - No SI-generated images are used. No NASA logos or insignia are used.

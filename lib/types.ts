@@ -59,6 +59,7 @@ export interface InsightCard {
   verified: boolean;
   values: Record<string, number>;
   related?: { label: string; url: string }[];
+  source?: string;
 }
 
 export const HABITATS: { key: HabitatKey; label: string; short: string }[] = [
