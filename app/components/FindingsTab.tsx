@@ -21,7 +21,7 @@ const PILLARS = [
   {
     key: "detection", title: "Detection", sub: "What will the smoke look like?",
     questions: [
-      "What does smoke from each material look like?",
+      "Which materials&apos; smoke was sampled, and how?",
       "How do heating level and airflow change the smoke?",
       "How does smoke change as it ages and travels?",
       "Where are the gaps?",
@@ -66,6 +66,12 @@ function Card({ c }: { c: InsightCard }) {
         {c.verified && (
           <span className="ml-auto text-[color:var(--ok)]" title={Object.entries(c.values).map(([k, v]) => `${k} = ${v}`).join("\n")}>
             ✓ Numbers recomputed from the records
+          </span>
+        )}
+        {c.review?.resolved && (
+          <span className="w-full text-right text-[color:var(--ok)]"
+            title={c.review.verdict === "ok" ? "Passed the independent fairness review as written" : "Wording revised after the independent fairness review"}>
+            ✓ Reviewed for a fair comparison
           </span>
         )}
       </div>
@@ -189,8 +195,9 @@ export default function FindingsTab() {
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">
         NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Question sub-agents search each
-        task&apos;s NASA studies for findings and a script recomputes every number from the records; an organizer agent per task sums up
-        its verified findings, and one merge agent joins all three into the mission brief below. Hover a check mark to see the numbers behind a finding.
+        task&apos;s NASA studies for findings, a script recomputes every number from the records, and independent reviewer agents check
+        that each comparison is fair. An organizer agent per task sums up the reviewed findings, and one merge agent joins all three
+        into the mission brief below. Hover a check mark to see the numbers behind a finding.
       </p>
       <OverallBrief />
       {Object.keys(SUMMARIES).length > 0 && (

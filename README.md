@@ -47,12 +47,32 @@ All data comes from NASA Physical Sciences Informatics (PSI), licence CC0-1.0:
 
 Known source issues (spreadsheet errors, missing pressure, unlabeled units) are flagged on each record in `quality_flags`, not silently fixed.
 
+## Insight pipeline (how the findings are made)
+
+AI proposes, code verifies the numbers, an independent AI checks fairness, and only then does a finding reach the site.
+Scripts live in the data package (`flamescope_data.zip`); run them from its root with Python 3.
+
+| Step | Who | Command / output |
+|---|---|---|
+| 1. Normalize the 7 PSI tables | Python | `python3 scripts/normalize_all.py` → `data/processed/tests.json` (1,018 records) |
+| 2. Rank studies per habitat | Python | `python3 scripts/rank_habitats.py` → `rankings.json` |
+| 3. Base findings | Python | `python3 scripts/build_insights.py` → `insights.json` (7 cards) |
+| 4. Find findings | 12 question sub-agents | write `agents/candidates/<pillar>_q<1-4>.json` (briefs: `agents/BRIEFS.md`) |
+| 5. Check numbers and merge | Checker script | `python3 -I agents/check_candidates.py --merge` (recomputes every number; rejects hand-typed numbers, overclaiming words, duplicates) |
+| 6. Fairness review | 3 independent reviewer agents | write `agents/reviews/<pillar>.json` (ok / revise / reject) |
+| 7. Apply review | Checker script | fix revised candidates, then rerun step 5 (rejected cards are dropped) |
+| 8. Summarize | 3 pillar organizers + 1 merge agent | write `agents/summaries/<pillar>.json` and `overall.json` |
+| 9. Check summaries | Summary checker | `python3 -I agents/organize_check.py --merge` (numbers must come from cited verified cards) |
+| 10. Publish | Copy | copy `data/processed/insights.json` and `rankings.json` into this repo's `data/`, then build |
+
+Agents never write to the website directly: they write candidate files, and only what passes steps 5, 6 and 9 is published.
+
 ## Use of Super Intelligence (SI)
 
 SI tools were used, and every SI-assisted part is marked:
 
 - **Claude (Anthropic)** helped write the data-normalization scripts, the ranking method, the wording of the findings, the Q&A prompt and parts of this interface. Each source file carries an `SI note` comment.
-- **Three pillar agents** (Prevention, Detection, Suppression), run with Claude, searched their NASA studies for additional findings. Each proposed finding states its numbers only as computed filters over the records; a checker script recomputes them and rejects hand-typed numbers, safety absolutes and duplicates. Agent findings are labelled in the app. Briefs and checker: `agents/` in the data package.
+- **Insight agents** (run offline with Claude, never on the public site): 12 question sub-agents (prevention, detection and suppression × NASA's four questions each), 3 pillar organizers, 1 merge agent for Moon and Mars, and 3 independent reviewer agents. Every number is computed by code from the NASA records; the reviewers check that comparisons are fair. See *Insight pipeline* below.
 - **Ask FlameScope** can call Claude to write answers from retrieved NASA records when an API key is configured; such answers are labelled as AI-written. The public deployment runs without a key and shows prepared answers, labelled as such.
 - Every number shown in the findings is computed from the NASA records and re-checked by a script. The team checked samples against the PSI pages.
 - No SI-generated images are used. No NASA logos or insignia are used.

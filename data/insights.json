@@ -8,9 +8,9 @@
       "pillar": "prevention",
       "kind": "finding",
       "title": "Earth screening tests and microgravity can disagree",
-      "text": "In SAFFIRE-II, 4 of 4 silicone sheets showed about 0 cm of burning in microgravity at 20 cm/s airflow, yet 2 of them burned completely in the matching normal-gravity tests. The cotton-fiberglass sheet (2-5) burned its full 29 cm in microgravity.",
-      "so_what": "Material screening done on Earth does not map one-to-one onto flammability in a spacecraft; the direction of the difference depends on the material. NASA notes that its materials standard (NASA-STD-6001) relies on a 1-g flame test that some researchers believe is not conservative in low gravity; its SoFIE and FLARE experiments study this question.",
-      "caveat": "9 samples; O2 about 21.5-22.1% (derived by NASA from CO2 production).",
+      "text": "In SAFFIRE-II, 4 of 4 silicone sheets showed about 0 cm of burning in microgravity at 20 cm/s airflow, yet 2 of them burned completely in the table's normal-gravity comparison tests. The cotton-fiberglass sheet (2-5) burned its full 29 cm in microgravity.",
+      "so_what": "Material screening done on Earth does not map one-to-one onto flammability in a spacecraft. In these samples the normal-gravity test was the harsher one; separately, NASA notes that its materials standard (NASA-STD-6001) relies on a 1-g flame test that some researchers believe is not conservative in low gravity, and its SoFIE and FLARE experiments study this question.",
+      "caveat": "9 samples, of which the silicone and cotton-fiberglass sheets are compared here (one silicone sheet ran in opposed rather than concurrent flow); O2 about 21.5-22.1% (derived by NASA from CO2 production). The table gives no airflow for the normal-gravity tests, where buoyancy adds its own flow.",
       "related": [
         {
           "label": "NASA Glenn: SoFIE, FLARE and NASA-STD-6001",
@@ -88,16 +88,21 @@
         "2-4",
         "2-5"
       ],
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P2",
       "pillar": "prevention",
       "kind": "finding",
-      "title": "Gas flames light readily in a Moon-base atmosphere",
-      "text": "ACME CFI-G ran 20 tests at 7.35 psi and 33-39% O2, inside the Moon-base range given in the challenge brief. 17 of 20 lit a hot flame, which burned for up to 274 s; 13 went out on their own.",
-      "so_what": "At these conditions ignition is easy, so controlling ignition sources matters more than in today's cabins.",
-      "caveat": "Gaseous fuels on a spherical burner, not cabin materials; fuel flow rates varied.",
+      "title": "Gas flames lit in most tests in a Moon-base atmosphere",
+      "text": "ACME CFI-G ran 20 tests at 7.35 psi and 33-39% O2, inside the Moon-base range given in the challenge brief. 17 of 20 lit a hot flame from the igniter, which burned for up to 274 s (that one still burning when the fuel was cut); 13 went out on their own.",
+      "so_what": "At these conditions a gas leak met by an ignition source usually lit, so ignition-source control stays essential for a Moon base; this card has no normal-air baseline to say how much easier ignition is than in today's cabins.",
+      "caveat": "Gaseous fuels (butane and ethane diluted in inert gas) on a spherical burner with an igniter, not cabin materials; three test series. Fuel flow rates varied, and the tests that did not light a hot flame were at the lowest flows.",
       "related": [],
       "values": {
         "moon_tests": 20,
@@ -333,16 +338,21 @@
         "PSI-159"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P3",
       "pillar": "prevention",
       "kind": "gap",
-      "title": "No cabin material has been burned at Moon-base conditions",
-      "text": "The solid-material tests stop near normal air: BASS-II reaches 22.2% O2 and SAFFIRE-II 22.1% O2. None of the 7 datasets burned a fabric or plastic at 30% O2 or more and 10.2 psi or less.",
-      "so_what": "Flammability limits for cabin materials in a Moon-base atmosphere are still unmeasured. NASA's FM2 experiment, the first combustion experiment planned on another planetary body, will burn materials at the Moon's 1/6 gravity; the challenge brief also names LUCI.",
-      "caveat": "Covers the 7 PSI datasets used here.",
+      "title": "No cabin material in these datasets was burned at Moon-base conditions",
+      "text": "The solid-material tests that report O2 stop near normal air: BASS-II reaches 22.2% O2 and SAFFIRE-II 22.1% O2, and BASS reports no O2 or pressure. None of the 7 datasets reports a fabric or plastic burned at 30% O2 or more and 10.2 psi or less.",
+      "so_what": "In these PSI datasets, flammability limits for real cabin materials in a Moon-base atmosphere in low gravity are unmeasured. NASA's FM2 experiment, the first combustion experiment planned on another planetary body, will burn materials at the Moon's 1/6 gravity; the challenge brief also names LUCI.",
+      "caveat": "Covers the 7 PSI datasets used here; Earth-gravity materials-acceptance tests outside them are not included. ACME BRE reaches higher O2 but is a gas burner that emulates a solid.",
       "related": [
         {
           "label": "NASA Glenn: Flammability of Materials on the Moon (FM2)",
@@ -386,7 +396,12 @@
         "PSI-99"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D1",
@@ -394,8 +409,8 @@
       "kind": "finding",
       "title": "Smoke tests cover still air and long aging",
       "text": "SAME-R logged 109 smoke records from 5 heated cabin materials (Kapton, Teflon, silicone, lampwick, Pyrell). 22 were made in still air (0 cm/s) and the rest at up to 8.1 cm/s; smoke was aged for up to 1923 s before measurement.",
-      "so_what": "Detector design can draw on smoke that drifts slowly and ages in still air, as it would in a poorly ventilated corner of a habitat.",
-      "caveat": "Test conditions only; particle-size results are in the SAME-R reports.",
+      "so_what": "Detector design can draw on smoke made with no airflow and on smoke aged for many minutes, conditions closer to a poorly ventilated corner of a habitat than the fast-flow runs.",
+      "caveat": "Test conditions only; particle-size results are in the SAME-R reports. Airflow is the inlet velocity where the smoke was made, not air movement while it aged. The longest aging time is a single silicone record made in moving air, and aged records re-measure smoke from earlier runs, so the records are not all separate samples.",
       "related": [],
       "values": {
         "records": 109,
@@ -480,7 +495,12 @@
         "PSI-101"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D2",
@@ -513,16 +533,21 @@
         "PSI-101"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S1",
       "pillar": "suppression",
       "kind": "finding",
-      "title": "Lowering oxygen puts droplet fires out",
+      "title": "Less oxygen, more droplet flames went out",
       "text": "In FLEX, droplet flames in normal air (21% O2, about 1 atm) went out before the fuel was used up in 14 of 29 tests. At 16% O2 or less that rose to 33 of 36.",
-      "so_what": "Lowering the oxygen share extinguishes these flames; FLEX tested the same idea with CO2 and helium as suppressants.",
-      "caveat": "Methanol and heptane droplets, nitrogen dilution only; not cabin solids.",
+      "so_what": "In these tests flames in lower-oxygen nitrogen mixes nearly all went out before burnout, which supports lowering oxygen as a way to suppress fires; FLEX tested the same idea with CO2 and helium as suppressants.",
+      "caveat": "Methanol and heptane droplets, nitrogen dilution only; not cabin solids. The low-oxygen group holds a larger share of methanol, which went out more often, but the rise appears in each fuel on its own. At 21% O2 several droplets broke apart before their flames could go out, which did not happen at 16% or less.",
       "related": [],
       "values": {
         "air21": 29,
@@ -648,16 +673,21 @@
         "PSI-69"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S2",
       "pillar": "suppression",
       "kind": "finding",
-      "title": "High-oxygen fires rarely go out on their own",
-      "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own; 18 ended with the droplet breaking apart. In the 17 tests closest to Moon-base pressure (about 10.3-10.4 psi), 0 went out on their own.",
-      "so_what": "In a 30%+ O2 habitat, suppression systems cannot count on fires dying out; they must act.",
-      "caveat": "Liquid droplets; 'disruption' = the droplet broke up, ending the test.",
+      "title": "High-oxygen droplet flames rarely went out on their own",
+      "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own; 18 ended with the droplet breaking apart. In the 17 tests closest to Moon-base pressure (about 10.3-10.5 psi), 0 went out on their own.",
+      "so_what": "In these tests, oxygen-rich air rarely let a droplet flame die out before it burned out or broke apart, so a 30%+ O2 habitat should not plan on fires going out by themselves.",
+      "caveat": "Methanol and heptane droplets in still air, nitrogen dilution only, not cabin solids. 'Disruption' = the droplet broke up, ending the test, so whether those flames would later have gone out is unknown. The 2 flames that went out were both at about 1 atm. The low-pressure range is the span of the selected tests (filter: 10.6 psi or less).",
       "related": [],
       "values": {
         "hi": 24,
@@ -787,16 +817,21 @@
         "PSI-69"
       ],
       "tests": null,
-      "verified": true
+      "verified": true,
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-Q1-1",
       "pillar": "prevention",
       "kind": "finding",
-      "title": "Fabric and acrylic kept burning in thinned microgravity air",
-      "text": "In BASS-II microgravity tests, 27 of 27 cotton-fiberglass (SIBAL) strips logged no extinction or blowoff at 16.4-20.8% O2, 14 of them below 18% O2. Below 16% O2, 8 of 16 acrylic (PMMA) rod runs logged no extinction, down to 14.2% O2; the only failed ignition was at 13.6% O2.",
-      "so_what": "In microgravity a fabric or plastic fire can keep going in air well below the cabin's ~21% O2, so modestly lowering cabin oxygen should not be counted on to stop a solid-material fire.",
-      "caveat": "BASS-II (ISS glovebox, cabin pressure not reported). 'No extinction logged' (outcome burned_or_not_stated) means the test log notes no flame-out; it does not confirm a full burn. Airflow varied run to run and is given only as raw fan/air settings; 27 fabric strips, 16 low-O2 rod runs of three diameters (the rest went out, blew off or did not ignite).",
+      "title": "Acrylic rods stayed lit in low-oxygen microgravity air",
+      "text": "In BASS-II microgravity tests below 16% O2, 8 of 16 acrylic (PMMA) rod runs logged no extinction, down to 14.2% O2; the only failed ignition was at 13.6% O2. 27 of 27 cotton-fiberglass (SIBAL) runs at 16.4-20.8% O2 (14 of them below 18% O2) also log none, but that log records no flame-out for any test.",
+      "so_what": "In microgravity an acrylic fire can stay lit in air well below the cabin's ~21% O2, so modestly lowering cabin oxygen should not be counted on to stop a solid-material fire.",
+      "caveat": "BASS-II (ISS glovebox, cabin pressure not reported). 'No extinction logged' (outcome burned_or_not_stated) means the test log notes no flame-out; it does not confirm a full burn. Airflow varied run to run, often stepped up and down within a run, and is given only as raw fan/air settings; 27 fabric strip runs (some reusing sample numbers), 16 low-O2 rod runs of three diameters (the rest went out, blew off or did not ignite), some of them back-to-back segments of the same burning sample.",
       "related": [],
       "values": {
         "sib_n": 27,
@@ -1001,16 +1036,21 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q1",
-      "question_text": "Will the material burn, and how far will the flame spread?"
+      "question_text": "Will the material burn, and how far will the flame spread?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-Q1-2",
       "pillar": "prevention",
       "kind": "finding",
       "title": "Where samples burned in orbit, 1g spread sped up",
-      "text": "Of the 5 SAFFIRE-II samples that kept burning in microgravity, 4 burned completely in the matching normal-gravity test, 4 with flame spread that kept speeding up. In microgravity, only 2 reached the end of the sample, each with a single measured spread rate; the other 3 burned only part-way.",
-      "so_what": "For materials that do burn in orbit, a 1g test can show more aggressive, accelerating spread than microgravity at the same airflow; with card P1 (the reverse for silicone), this means 1g results need a microgravity check before being used to judge how far a fire could spread.",
-      "caveat": "9 SAFFIRE-II sheets at about 22% O2 and 20 cm/s flow, mostly concurrent; 5 burned in microgravity. Two of them (2-6, 2-9) have no fuel named in the table; 2-7 was PMMA paired with Nomex and 2-8 thick PMMA. The part-way burn lengths carry table notes not in this dataset (possibly test-time limits). Burn lengths and 1g results are table text, not numeric fields.",
+      "text": "Of the 5 SAFFIRE-II samples that kept burning in microgravity, 4 burned completely in the table's normal-gravity test, 4 with flame spread that kept speeding up. In microgravity, only 2 reached the end of the sample, each with a single measured spread rate; the other 3 burned only part-way.",
+      "so_what": "For materials that do burn in orbit, the 1g test in this small set showed more aggressive, accelerating spread than microgravity; with card P1, where silicone burned in 1g but not in orbit, 1g was the harsher test in these samples, so 1g results need a microgravity check before being used to judge how far a fire could spread.",
+      "caveat": "9 SAFFIRE-II sheets at about 22% O2 and 20 cm/s flow, mostly concurrent; 5 burned in microgravity. Two of them (2-6, 2-9) have no fuel named in the table; 2-7 was PMMA paired with Nomex and 2-8 thick PMMA. The part-way burn lengths carry table notes not in this dataset (possibly test-time limits). Burn lengths and 1g results are table text, not numeric fields. The table gives no airflow for the normal-gravity tests, where buoyancy adds its own flow.",
       "related": [],
       "values": {
         "n_burn": 5,
@@ -1138,7 +1178,12 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q1",
-      "question_text": "Will the material burn, and how far will the flame spread?"
+      "question_text": "Will the material burn, and how far will the flame spread?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-A1",
@@ -1480,16 +1525,21 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q2",
-      "question_text": "How does oxygen-rich air change the risk?"
+      "question_text": "How does oxygen-rich air change the risk?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-A2",
       "pillar": "prevention",
       "kind": "finding",
-      "title": "In cabin-oxygen tests, cool flames came only at high O2",
-      "text": "In ACME CFI-G normal-flame tests, 7 butane-mixture flames showed cool flames alongside hot burning at 29.4 psi and 38.9-39.9% O2. At 7.35 psi and about 35% O2, 2 more lit only as a cool flame. Of 11 butane-mixture tests near 21% O2, 0% reported a cool flame.",
-      "so_what": "Cool flames burn at low temperature with little visible light, so in an oxygen-rich, low-pressure habitat a fuel leak could react without the bright flame that crews and optical sensors expect; detector and ignition-control design for Moon-base air should consider them.",
-      "caveat": "Butane diluted to 30% or 50% in inert gas on a spherical porous burner; 9 tests in total, from a few test days. Cool flames were flagged by the investigators in the table; their absence near 21% O2 covers only 11 butane tests and does not show they cannot occur there. Propane and ethane tests reported none in normal-flame mode.",
+      "title": "Cool flames appeared only in high-O2 butane tests, mostly at raised pressure",
+      "text": "In ACME CFI-G normal-flame tests, 7 butane-mixture flames showed cool flames alongside hot burning, all at 29.4 psi and 38.9-39.9% O2. At 7.35 psi and about 35% O2, 2 more lit only as a cool flame. Of 11 butane-mixture tests near 21% O2 (none at 29.4 psi), 0% reported a cool flame.",
+      "so_what": "Cool flames burn at low temperature with little visible light, so a fuel leak in oxygen-rich air could react without the bright flame that crews and optical sensors expect. The low-pressure evidence is only 2 tests, so detector and ignition-control design for Moon-base air should treat cool flames as possible, not as measured behaviour.",
+      "caveat": "Butane diluted to 30% or 50% in inert gas on a spherical porous burner; 9 tests in total, from a few test days. Cool flames were flagged by the investigators in the table. Pressure is confounded with O2: high-O2 butane tests at sea-level pressure reported none, and the near-21% group had no raised-pressure tests and mostly weaker fuel mixtures, so the absence there covers only 11 butane tests and does not show cool flames cannot occur. Propane and ethane tests reported none in normal-flame mode.",
       "related": [],
       "values": {
         "n_cool_hot": 7,
@@ -1772,7 +1822,12 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q2",
-      "question_text": "How does oxygen-rich air change the risk?"
+      "question_text": "How does oxygen-rich air change the risk?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-A4",
@@ -1781,7 +1836,7 @@
       "title": "High-oxygen gas flames are calculated to burn hotter",
       "text": "For ACME CFI-G normal flames that lit at 20.7-21.7% cabin O2, the data table's calculated adiabatic flame temperature reached at most 2276 K. At 33-40% O2, 86 of 91 lit flames were calculated hotter than that, up to 2730 K.",
       "so_what": "A hotter flame radiates and conducts more heat to nearby surfaces, so in Moon-base air a small fire could heat and ignite neighbouring materials faster than ISS experience suggests; spacing and thermal-protection margins should allow for it.",
-      "caveat": "Tad is a calculated value from the gas mixture, not a measured flame temperature. Gaseous fuels (ethane, propane, butane, pure and diluted) on a spherical porous burner in microgravity; pressures (about 7.35-44 psi) and fuel dilution varied and were not paired by design, though the gap shows at each pressure tested in both bands except a few low-Tad 30% butane tests at 14.7 psi.",
+      "caveat": "Tad is a calculated value from the gas mixture, not a measured flame temperature. Gaseous fuels (ethane, propane, butane, pure and diluted) on a spherical porous burner in microgravity; pressures (about 7.35-44 psi) and fuel dilution varied and were not paired by design, though the gap shows at each pressure tested in both bands except a few low-Tad, weakly fuelled 30% butane tests and one propane test at 14.7 psi.",
       "related": [],
       "values": {
         "o21_min": 20.7,
@@ -2066,615 +2121,21 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q2",
-      "question_text": "How does oxygen-rich air change the risk?"
-    },
-    {
-      "id": "P-Q3-1",
-      "pillar": "prevention",
-      "kind": "finding",
-      "title": "Near 21% O2, low pressure did not stop gas flames",
-      "text": "In ACME CFI-G normal-flame tests at 20.7-21.7% O2, 3 of 5 flames at 7.35 psi lit hot and each burned 14-20 s before going out. At 29.39-44.09 psi, 15 of 24 lit, but none lasted beyond 7 s. At 33-40% O2 the gap closed: the longest self-extinguishing flames burned 258 s at 7.35 psi and 251 s at 29.39 psi.",
-      "so_what": "Lowering cabin pressure did not stop gas flames from lighting in cabin-like air, and the low-pressure flames lasted longer, so a reduced-pressure habitat should not count on thin air to shorten a fire.",
-      "caveat": "Gaseous fuels on a spherical burner, not cabin materials. Near 21% O2 the 7.35 psi tests used only 50% butane (5 tests, two noted the igniter lingered in the flame) and the 29-44 psi tests only 30% propane (24 tests); fuel flow rate varied and is not matched, so fuel and pressure are confounded.",
-      "related": [],
-      "values": {
-        "o2a": 20.7,
-        "o2b": 21.7,
-        "lp_n": 5,
-        "lp_hot": 3,
-        "lp_psi": 7.35,
-        "lp_bmin": 14.0,
-        "lp_bmax": 20.0,
-        "hp_a": 29.39,
-        "hp_b": 44.09,
-        "hp_n": 24,
-        "hp_hot": 15,
-        "hp_bmax": 7.0,
-        "ho2a": 33.0,
-        "ho2b": 40.0,
-        "lph_bmax": 258.0,
-        "hph_bmax": 251.0
-      },
-      "evidence": [
-        {
-          "name": "o2a",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "notnull",
-              null
-            ]
-          ],
-          "agg": "min",
-          "field": "o2_pct",
-          "round": 1
-        },
-        {
-          "name": "o2b",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "notnull",
-              null
-            ]
-          ],
-          "agg": "max",
-          "field": "o2_pct",
-          "round": 1
-        },
-        {
-          "name": "lp_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "lp_hot",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ],
-            [
-              "outcome",
-              "in",
-              [
-                "self_extinguished",
-                "flow_terminated",
-                "ignited"
-              ]
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "lp_psi",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ]
-          ],
-          "agg": "max",
-          "field": "pressure_psi"
-        },
-        {
-          "name": "lp_bmin",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ],
-            [
-              "outcome",
-              "eq",
-              "self_extinguished"
-            ]
-          ],
-          "agg": "min",
-          "field": "measures.burn_time_s"
-        },
-        {
-          "name": "lp_bmax",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ],
-            [
-              "outcome",
-              "eq",
-              "self_extinguished"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.burn_time_s"
-        },
-        {
-          "name": "hp_a",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              29
-            ]
-          ],
-          "agg": "min",
-          "field": "pressure_psi"
-        },
-        {
-          "name": "hp_b",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              29
-            ]
-          ],
-          "agg": "max",
-          "field": "pressure_psi"
-        },
-        {
-          "name": "hp_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              29
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "hp_hot",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              29
-            ],
-            [
-              "outcome",
-              "in",
-              [
-                "self_extinguished",
-                "flow_terminated",
-                "ignited"
-              ]
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "hp_bmax",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              20.5
-            ],
-            [
-              "o2_pct",
-              "le",
-              22.5
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              29
-            ],
-            [
-              "outcome",
-              "eq",
-              "self_extinguished"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.burn_time_s"
-        },
-        {
-          "name": "ho2a",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              33
-            ],
-            [
-              "o2_pct",
-              "le",
-              40.5
-            ],
-            [
-              "pressure_psi",
-              "in",
-              [
-                7.35,
-                29.39
-              ]
-            ]
-          ],
-          "agg": "min",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "ho2b",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              33
-            ],
-            [
-              "o2_pct",
-              "le",
-              40.5
-            ],
-            [
-              "pressure_psi",
-              "in",
-              [
-                7.35,
-                29.39
-              ]
-            ]
-          ],
-          "agg": "max",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "lph_bmax",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              33
-            ],
-            [
-              "o2_pct",
-              "le",
-              40.5
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.2
-            ],
-            [
-              "outcome",
-              "eq",
-              "self_extinguished"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.burn_time_s"
-        },
-        {
-          "name": "hph_bmax",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "ACME CFI-G"
-            ],
-            [
-              "test_id",
-              "startswith",
-              "N-"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              33
-            ],
-            [
-              "o2_pct",
-              "le",
-              40.5
-            ],
-            [
-              "pressure_psi",
-              "eq",
-              29.39
-            ],
-            [
-              "outcome",
-              "eq",
-              "self_extinguished"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.burn_time_s"
-        }
-      ],
-      "cite": [
-        "PSI-159"
-      ],
-      "tests": null,
-      "verified": true,
-      "source": "agent:prevention",
-      "question": "Q3",
-      "question_text": "What happens at lower pressure and partial gravity?"
+      "question_text": "How does oxygen-rich air change the risk?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-Q3-2",
       "pillar": "prevention",
       "kind": "gap",
-      "title": "No partial-gravity tests; low-pressure data are gas only",
+      "title": "No partial-gravity tests; low-pressure prevention data are gas only",
       "text": "None of the 1018 records in the 7 datasets was run at Moon (1/6 g) or Mars (3/8 g) gravity; the only non-microgravity results are 9 SAFFIRE-II Earth-gravity comparisons. At 10.2 psi or less there are 65 prevention records, all ACME CFI-G gas flames (25 normal, 40 inverse). Of 259 solid-material records, 0 report any pressure.",
-      "so_what": "Partial gravity brings back weak buoyant flow that neither microgravity nor Earth tests reproduce, and low-pressure evidence covers only burner gas flames, so Moon and Mars habitat materials have no direct test basis here.",
-      "caveat": "Absence within these 7 PSI datasets only; inverse-flame (I-) records give burner-stream O2, not cabin air. Solid tests (BASS, BASS-II, SAFFIRE-II) report no pressure; BASS-II assumes about 1 atm cabin.",
+      "so_what": "Partial gravity brings back weak buoyant flow that neither microgravity nor Earth tests reproduce, and low-pressure prevention evidence covers only burner gas flames, so Moon and Mars habitat materials have no direct test basis here.",
+      "caveat": "Absence within these 7 PSI datasets only; inverse-flame (I-) records give burner-stream O2, not cabin air. Solid tests (BASS, BASS-II, SAFFIRE-II) report no pressure; this dashboard plots BASS-II at about 1 atm only as an assumption. The FLEX droplet (suppression) data include a few liquid-fuel tests near 10.2 psi.",
       "related": [],
       "values": {
         "n_rec": 1018,
@@ -2862,16 +2323,21 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q3",
-      "question_text": "What happens at lower pressure and partial gravity?"
+      "question_text": "What happens at lower pressure and partial gravity?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-A3",
       "pillar": "prevention",
       "kind": "gap",
       "title": "Solid-fuel emulator data cannot separate oxygen effects",
-      "text": "ACME BRE, a gas burner that emulates burning solids, logged 43 day-level records over 18 test days at 21-40% O2, 23 of them at 30% O2 or more. Ignitions are given only as one total per day across several O2 levels, and 43 of 43 records give no pressure.",
+      "text": "ACME BRE, a gas burner that emulates burning solids, has one table row per test day; split by the O2 levels each row lists, that gives 43 day-level records over 18 test days at 21-40% O2, 23 of them at 30% O2 or more. Ignitions are given only as one total per day across several O2 levels, and 43 of 43 records give no pressure.",
       "so_what": "BRE is the PSI dataset closest to a burning solid at Moon-base oxygen levels, but the published table cannot show how ignition changes from 21% to 40% O2 or with pressure; per-test results would be needed to use it for habitat material limits.",
-      "caveat": "Ethylene (pure or 50% in nitrogen) and methane on 25 mm and 50 mm porous burners. O2 values are approximate levels for the tests that ignited that day. Only the PSI experimental table was examined, not the investigators' papers.",
+      "caveat": "Ethylene (pure or 50% in nitrogen) and methane on 25 mm and 50 mm porous burners. O2 values are approximate levels for the tests that ignited that day; NASA notes that chamber pressures were varied but are not identified in the table. Only the PSI experimental table was examined, not the investigators' papers.",
       "related": [],
       "values": {
         "n_rows": 43,
@@ -2971,14 +2437,19 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "P-Q4-2",
       "pillar": "prevention",
       "kind": "gap",
       "title": "Burning-solid tests give no pressure and one airflow",
-      "text": "Of 138 BASS-II and SAFFIRE-II solid-material records, 0 report a chamber pressure, so no burning plastic or fabric is tied to a reduced habitat pressure. All 9 SAFFIRE-II sheets ran at a single airflow (20 cm/s), only 1 with the flame spreading against the air; BASS-II gives airflow speed in cm/s for 0 of 129 records.",
+      "text": "Of 138 BASS-II and SAFFIRE-II solid-material records, 0 report a chamber pressure, so no burning plastic or fabric is tied to a reduced habitat pressure. All 9 SAFFIRE-II sheets ran at a single airflow (20 cm/s), only 1 of them set up with the air opposing the flame's spread, and that silicone sheet did not sustain burning; BASS-II gives a parsed airflow speed in cm/s for 0 of 129 records.",
       "so_what": "Moon-base cabins are planned at 10.2 psi or less and with weak, varied ventilation, yet the real-material data cannot show how pressure or airflow speed changes flame spread; a solid-material series across pressure and at least two flow speeds in each direction would fill this.",
       "caveat": "BASS-II (mostly PMMA and SIBAL fabric) and SAFFIRE-II (9 sheets incl. silicone, SIBAL, PMMA/Nomex). Pressure may be recorded in the investigators' papers; only the PSI experimental table was examined. BASS-II airflow is given as raw controller settings, not converted to cm/s.",
       "related": [],
@@ -3114,16 +2585,21 @@
       "verified": true,
       "source": "agent:prevention",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-Q1-1",
       "pillar": "detection",
       "kind": "finding",
-      "title": "Every material got the same smoke-generation time",
-      "text": "In SAME-R, 67 of 68 records with a reported smoke-generation time heated the sample for 60 s, across 5 of 5 materials. The exception is 1 Kapton still-air run at 120 s. Another 41 records, 41 of them aged-smoke measurements, leave duration blank.",
-      "so_what": "Because heating time was held fixed, a detector designer can compare smoke samples across the five materials without a duration difference getting in the way; heater setting and airflow are the variables left to watch.",
-      "caveat": "SAME-R (PSI-101) only, 109 records from 5 heated cabin materials in ISS cabin air; this table lists sampling conditions, not particle sizes, so it shows how smoke was produced, not what it looked like. Heater settings were not matched across materials (see D-A2).",
+      "title": "Nearly all smoke runs used the same generation time",
+      "text": "In SAME-R, 67 of 68 records with a reported smoke-generation time list 60 s of heating, across 5 of 5 materials. The exception is 1 Kapton still-air run at 120 s. The other 41 records leave duration blank; all 41 are aged-smoke measurements.",
+      "so_what": "Because heating time was held nearly fixed, a detector designer can compare smoke samples across the five materials without a duration difference getting in the way; heater setting, airflow and aging time are the variables left to watch.",
+      "caveat": "SAME-R (PSI-101) only, 109 records from 5 heated cabin materials in ISS cabin air; this table lists sampling conditions, not particle sizes, so it shows how smoke was produced, not what it looked like. Heater settings were not matched across materials (see D-A2). The records with a duration include one aged re-measurement that repeats its parent run's time and a test number listed under both Teflon and Lampwick, so distinct heating runs are slightly fewer; the pattern is unchanged.",
       "related": [],
       "values": {
         "n_dur": 68,
@@ -3295,16 +2771,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q1",
-      "question_text": "What does smoke from each material look like?"
+      "question_text": "Which materials' smoke was sampled, and how?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-Q1-2",
       "pillar": "detection",
       "kind": "finding",
-      "title": "Kapton has the most smoke samples, Teflon the fewest",
-      "text": "Per material, SAME-R sampled Kapton most: 29 records, 13 of them aged-smoke measurements. Teflon has the fewest: 18 records, 6 aged, at 3 airflow levels (still air, low flow and 8.1 cm/s). Heater settings also vary unevenly: Silicone, Lampwick and Teflon used 5, 5 and 5 settings, Pyrell only 3.",
-      "so_what": "A smoke-detector designer has the most samples for Kapton wiring insulation and the fewest for Teflon, so per-material detector tuning for Teflon or Pyrell smoke rests on fewer or less varied samples.",
-      "caveat": "SAME-R (PSI-101) only, 18-29 records per material in ISS cabin air; one Teflon record (test 57) shares its test number and values with a Lampwick record. Particle-size results are not in the table, so this describes what was sampled, not the smoke itself.",
+      "title": "Kapton has the most smoke records, Teflon the fewest",
+      "text": "SAME-R has the most records for Kapton: 29, 13 of them aged-smoke re-measurements. Teflon has the fewest: 18 records, 6 aged, at 3 airflow levels (still air, low flow and 8.1 cm/s). Distinct heater settings: Silicone, Lampwick and Teflon 5, 5 and 5, Pyrell only 3; Teflon's count includes one record duplicating a Lampwick test.",
+      "so_what": "A smoke-detector designer has the most records for Kapton wiring insulation and the fewest for Teflon; per-material detector tuning for Teflon or Pyrell smoke rests on fewer records and a narrow spread of heater settings.",
+      "caveat": "SAME-R (PSI-101) only, 18-29 records per material in ISS cabin air; aged records re-measure smoke from earlier runs, so records are not all separate samples. One Teflon record (test 57) shares its test number and values with a Lampwick record and is likely a duplicate, so Teflon's record count and setting count may each be one too high. Particle-size results are not in the table, so this describes what was sampled, not the smoke itself.",
       "related": [],
       "values": {
         "k_n": 29,
@@ -3503,16 +2984,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q1",
-      "question_text": "What does smoke from each material look like?"
+      "question_text": "Which materials' smoke was sampled, and how?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-A2",
       "pillar": "detection",
       "kind": "finding",
-      "title": "Heater settings differ from material to material",
+      "title": "Heater settings differ between most materials",
       "text": "SAME-R did not use one shared heater setting (resistance ratio) across materials. Pyrell ran at 1.22-1.23, silicone at 1.304-1.36 and Kapton at 1.38-1.48, so these three ranges do not overlap.",
       "so_what": "Differences in smoke between these materials are tied up with differences in heater setting, so the matrix alone cannot separate the effect of material from the effect of heating level.",
-      "caveat": "Heater setting is the ratio Rt/R0 as tabulated; its link to sample temperature is not given in the table. Lampwick and Teflon not shown; Teflon includes one low-setting outlier.",
+      "caveat": "Heater setting is the ratio Rt/R0 as tabulated; its link to sample temperature is not given in the table. Lampwick (not shown) also sits apart from these three, but Teflon's settings fall inside Kapton's range, so those two were run at similar settings. Teflon's one low-setting record duplicates a Lampwick test (same test number and values).",
       "related": [],
       "values": {
         "py_min": 1.22,
@@ -3633,7 +3119,12 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q2",
-      "question_text": "How do heating level and airflow change the smoke?"
+      "question_text": "How do heating level and airflow change the smoke?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-Q2-2",
@@ -3642,7 +3133,7 @@
       "title": "Heater level was varied mainly in the fastest airflow",
       "text": "Within a material, SAME-R changed the heater setting mostly at 8.1 cm/s. Kapton ran at 4 heater settings there but 1 in still air; silicone 4 versus 1; Teflon 5 versus 1. So heating level can be compared within these materials only in the fastest flow, and airflow mainly at one fixed heater setting.",
       "so_what": "A detector designer can study heating level and airflow separately for these materials, but not together: in still air each was run at a single heater setting, so how heating changes still-air smoke cannot be seen.",
-      "caveat": "SAME-R only (PSI-101), ISS cabin air; Kapton, silicone and Teflon shown (Pyrell and Lampwick ran two settings in still air). Heater setting is the tabulated ratio Rt/R0; record counts per cell are small and smoke particle sizes are not in the table.",
+      "caveat": "SAME-R only (PSI-101), ISS cabin air; Kapton, silicone and Teflon shown (Pyrell and Lampwick ran two settings in still air). Heater setting is the tabulated ratio Rt/R0; record counts per cell are small and smoke particle sizes are not in the table. Teflon's count at the fastest flow includes one record that duplicates a Lampwick test (same test number and values), and its other settings differ only in the third decimal place, so Teflon's heating range is very narrow.",
       "related": [],
       "values": {
         "fast": 8.1,
@@ -3806,16 +3297,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q2",
-      "question_text": "How do heating level and airflow change the smoke?"
+      "question_text": "How do heating level and airflow change the smoke?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-A3",
       "pillar": "detection",
       "kind": "finding",
-      "title": "Long-aged smoke sampled in still air for every material",
-      "text": "44 SAME-R records aged smoke for 557 s or more before measurement. 10 of them were in still air, covering 5 of 5 materials, and 3 were at 1 cm/s.",
-      "so_what": "Smoke that lingers for many minutes in a poorly ventilated module can change before it reaches a detector; SAME-R has such aged samples in still air for each material, which detector designers can draw on via the SAME-R reports.",
-      "caveat": "Aging times are test conditions; how the smoke changed with aging is in the SAME-R reports, not this table. Five materials; few long-aged records per material.",
+      "title": "Long-aged smoke from still-air runs exists for every material",
+      "text": "44 SAME-R records aged smoke for 557 s or more before measurement. 10 of them came from runs made in still air (no inlet flow), covering 5 of 5 materials, and 3 from runs at 1 cm/s.",
+      "so_what": "Smoke that lingers for many minutes in a poorly ventilated module may change before it reaches a detector; SAME-R has long-aged samples from still-air runs for each material, which detector designers can draw on via the SAME-R reports.",
+      "caveat": "Aging times are test conditions; how the smoke changed with aging is in the SAME-R reports, not this table. Airflow is the inlet velocity where the smoke was made, not air movement while it aged. Five materials; few long-aged records per material (Pyrell has a single still-air one), and most long-aged records re-measure smoke from earlier runs.",
       "related": [],
       "values": {
         "n_long": 44,
@@ -3963,16 +3459,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q3",
-      "question_text": "How does smoke change as it ages and travels?"
+      "question_text": "How does smoke change as it ages and travels?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-Q3-2",
       "pillar": "detection",
       "kind": "finding",
-      "title": "Fresh smoke and re-measured aged smoke sampled separately",
-      "text": "Most SAME-R smoke was measured fresh: 58 of 63 normal samples with an aging time had aged 21-62 s, including 8 s of mixing. 42 aged-measurement records, across 5 materials, re-measured smoke at 218-1923 s. Separately, 5 normal samples from 5 materials were held 720 s before mixing, 5 of them at 8.1 cm/s.",
-      "so_what": "A detector at the far end of a still module sees smoke minutes old, not the seconds-old smoke most samples captured; SAME-R's aged re-measurements and long-hold runs are the records to use when tuning for drifted smoke.",
-      "caveat": "Aging times are test conditions; how particles changed is in the SAME-R reports, not this table. Five materials, ISS cabin air; the long primary holds were one run per material at the highest flow only, and one aged record has no aging time.",
+      "title": "Most smoke measured within a minute; some runs re-measured after aging",
+      "text": "Most SAME-R smoke was measured fresh: 58 of 63 normal samples with an aging time had aged 21-62 s, including 8 s of mixing. 42 aged-measurement records, across 5 materials, re-measured smoke from earlier runs at 218-1923 s. Separately, 5 normal samples from 5 materials were held 720 s before mixing, all 5 of them at 8.1 cm/s.",
+      "so_what": "A detector far from the source in a poorly ventilated module may see smoke that is minutes old rather than the seconds-old smoke most samples captured; SAME-R's aged re-measurements and long-hold runs are the records to use when tuning for drifted smoke.",
+      "caveat": "Aging times are test conditions; how particles changed is in the SAME-R reports, not this table. Five materials, ISS cabin air; the long primary holds were one run per material at the highest flow only, one aged record has no aging time, and the top of the aged range is a single silicone record well above the rest.",
       "related": [],
       "values": {
         "n_fresh": 58,
@@ -4288,7 +3789,12 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q3",
-      "question_text": "How does smoke change as it ages and travels?"
+      "question_text": "How does smoke change as it ages and travels?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-A1",
@@ -4492,16 +3998,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "D-Q4-2",
       "pillar": "detection",
       "kind": "gap",
       "title": "No smoke data for oxygen-rich, low-pressure air",
-      "text": "Of 109 SAME-R smoke records, 0 report an oxygen level and 0 report a pressure; 109 are logged as ISS cabin air. So there are 0 smoke records for Moon-base air (30% O2 or more, 10.2 psi or less), and none of the 5 heated materials has a smoke sample outside normal cabin air.",
-      "so_what": "Smoke detectors for a Moon base would be tuned on smoke made only in ISS cabin air; a SAME-R-style run at raised O2 and reduced pressure is the missing test before trusting those thresholds there.",
-      "caveat": "Five heated cabin materials, 109 records, all on ISS; oxygen and pressure are not in the PSI table and are assumed to be normal cabin air. Absence in the table does not rule out unpublished tests.",
+      "text": "Of 109 SAME-R smoke records, 0 report an oxygen level and 0 report a pressure; 109 are logged as ISS cabin air. So there are 0 smoke records for the oxygen-rich, reduced-pressure air proposed for Moon bases (30% O2 or more, 10.2 psi or less), and none of the 5 heated materials has a smoke sample outside normal cabin air.",
+      "so_what": "Smoke detectors for a Moon base tuned on this data would rest on smoke made only in ISS cabin air; a SAME-R-style run at raised O2 and reduced pressure is the missing test before trusting those thresholds there.",
+      "caveat": "Five heated cabin materials, 109 records, all on ISS; oxygen and pressure are not in the PSI table and are assumed to be normal cabin air. Moon-base atmospheres are design proposals, not a fixed standard. Absence in the table does not rule out unpublished tests.",
       "related": [],
       "values": {
         "n_all": 109,
@@ -4612,561 +4123,21 @@
       "verified": true,
       "source": "agent:detection",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
-    },
-    {
-      "id": "S-A1",
-      "pillar": "suppression",
-      "kind": "finding",
-      "title": "Adding CO2 to air: more heptane flames went out",
-      "text": "At 17-21% O2 and about 1 atm, FLEX heptane droplet flames went out before the fuel was used up in 12 of 18 tests with CO2 added, 5 of 11 with helium added, and 7 of 20 with nitrogen only. Methanol flames went out in 17 of 19 CO2 tests and 7 of 7 helium tests.",
-      "so_what": "At the same oxygen level, swapping some nitrogen for CO2 went with more heptane flames going out, which is consistent with CO2 as an extinguishing agent; for methanol nearly every diluted flame went out either way.",
-      "caveat": "Single droplets of heptane and methanol, not cabin solids; small samples (7-20 per group); the added CO2 or helium share (5-20%) was not matched test by test, and no significance test was run.",
-      "related": [],
-      "values": {
-        "o2_lo": 17.0,
-        "o2_hi": 21.0,
-        "co2_n": 18,
-        "co2_e": 12,
-        "he_n": 11,
-        "he_e": 5,
-        "n2_n": 20,
-        "n2_e": 7,
-        "m_co2_n": 19,
-        "m_co2_e": 17,
-        "m_he_n": 7,
-        "m_he_e": 7
-      },
-      "evidence": [
-        {
-          "name": "o2_lo",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "min",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "o2_hi",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "max",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "co2_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "CO2"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "co2_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "CO2"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "he_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "He"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "he_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "He"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "n2_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "N2 only"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "n2_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "eq",
-              "N2 only"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_co2_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "eq",
-              "CO2"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_co2_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "eq",
-              "CO2"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_he_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "eq",
-              "He"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_he_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "eq",
-              "He"
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        }
-      ],
-      "cite": [
-        "PSI-69"
-      ],
-      "tests": null,
-      "verified": true,
-      "source": "agent:suppression",
-      "question": "Q1",
-      "question_text": "What puts the flame out?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-Q1-2",
       "pillar": "suppression",
       "kind": "finding",
-      "title": "More CO2 added, more flames went out",
+      "title": "More CO2 with slightly less O2: more flames went out",
       "text": "In FLEX at 10.3-10.4 psi and 23-25% O2, droplet flames went out before the fuel was used up more often with more CO2 added. At a CO2 fraction of 0.15-0.2: heptane 2 of 7, methanol 3 of 10. At 0.25 (all at 23% O2): heptane 3 of 4, methanol 6 of 8.",
-      "so_what": "At a reduced cabin pressure close to planned exploration habitats, a modest step up in CO2 went with most droplet flames going out in both fuels, which is the kind of dose information a CO2 or inert-gas suppression design needs.",
-      "caveat": "Single heptane and methanol droplets, not cabin solids; small groups (4-10 tests); oxygen was not held exactly fixed (the higher-CO2 tests sat at the low end of the O2 band), droplet size varied, and most low-CO2 flames that did not go out broke apart instead. No significance test.",
+      "so_what": "At reduced cabin pressure, a modest step up in CO2 together with a small drop in oxygen went with most droplet flames going out in both fuels; tests that change CO2 alone are needed before this can serve as dose data for a CO2 or inert-gas suppression design.",
+      "caveat": "Single heptane and methanol droplets in pre-mixed chamber gas, not cabin solids or a discharged agent; small groups (4-10 tests). CO2 and oxygen moved together in these runs (the 0.25 group was all at 23% O2, the low end of the band), so this is a combined CO2-up, O2-down step, not CO2 alone. Droplet size varied, and most low-CO2 flames that did not go out broke apart instead. No significance test.",
       "related": [],
       "values": {
         "p_lo": 10.3,
@@ -5934,7 +4905,12 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q1",
-      "question_text": "What puts the flame out?"
+      "question_text": "What puts the flame out?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-Q1-3",
@@ -6242,515 +5218,12 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q1",
-      "question_text": "What puts the flame out?"
-    },
-    {
-      "id": "S-A2",
-      "pillar": "suppression",
-      "kind": "finding",
-      "title": "Diluted heptane flames went out more at lower pressure",
-      "text": "With CO2 or helium added at 17-21% O2, FLEX heptane droplet flames went out before burnout in 15 of 16 tests at about 10.4 psi, versus 17 of 29 at about 1 atm. Methanol showed no such gap: 24 of 26 versus 24 of 26.",
-      "so_what": "Lower cabin pressure at the same oxygen percentage went with more heptane flames going out, but habitats that lower pressure usually raise the oxygen percentage, which pushes the other way (see S2).",
-      "caveat": "Same O2 mole fraction means less oxygen per volume at the lower pressure, so pressure and oxygen partial pressure are not separated. Single fuel droplets, not cabin solids; 16 vs 29 heptane tests; diluent share (5-20%) not matched.",
-      "related": [],
-      "values": {
-        "o2_lo": 17.0,
-        "o2_hi": 21.0,
-        "lo_psi": 10.4,
-        "lo_n": 16,
-        "lo_e": 15,
-        "hi_n": 29,
-        "hi_e": 17,
-        "m_lo_n": 26,
-        "m_lo_e": 24,
-        "m_hi_n": 26,
-        "m_hi_e": 24
-      },
-      "evidence": [
-        {
-          "name": "o2_lo",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "min",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "o2_hi",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "max",
-          "field": "o2_pct",
-          "round": 0
-        },
-        {
-          "name": "lo_psi",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.6
-            ]
-          ],
-          "agg": "max",
-          "field": "pressure_psi",
-          "round": 1
-        },
-        {
-          "name": "lo_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.6
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "lo_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.6
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "hi_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "hi_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Heptane"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_lo_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.6
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_lo_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "le",
-              10.6
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_hi_n",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "m_hi_e",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "FLEX"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Methanol"
-            ],
-            [
-              "diluent",
-              "in",
-              [
-                "CO2",
-                "He"
-              ]
-            ],
-            [
-              "o2_pct",
-              "ge",
-              17
-            ],
-            [
-              "o2_pct",
-              "le",
-              21
-            ],
-            [
-              "pressure_psi",
-              "ge",
-              14
-            ],
-            [
-              "pressure_psi",
-              "le",
-              15.5
-            ],
-            [
-              "outcome",
-              "eq",
-              "extinction"
-            ]
-          ],
-          "agg": "count"
-        }
-      ],
-      "cite": [
-        "PSI-69"
-      ],
-      "tests": null,
-      "verified": true,
-      "source": "agent:suppression",
-      "question": "Q2",
-      "question_text": "How do oxygen-rich air, fuel and pressure change that?"
+      "question_text": "What puts the flame out?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-A4",
@@ -7028,16 +5501,21 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q2",
-      "question_text": "How do oxygen-rich air, fuel and pressure change that?"
+      "question_text": "How do oxygen-rich air, fuel and pressure change that?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-A3",
       "pillar": "suppression",
       "kind": "finding",
-      "title": "BASS-II: airflow blowoff recorded only in thinned oxygen",
-      "text": "BASS-II recorded 24 acrylic (PMMA) flames that went out in microgravity. 7 were blown off by the airflow, all at 15-17.4% O2. The other 17 went out at 14.8-20.9% O2, including 6 in near-normal air (20% O2 or more).",
-      "so_what": "Acrylic flames sometimes went out on their own even in near-normal air, while blowing a flame off with airflow was only recorded once oxygen was already lowered; the data give no support for relying on airflow alone to put out a cabin fire.",
-      "caveat": "PMMA only; 104 of 129 BASS-II records do not state an outcome, so rates cannot be computed; air-flow settings are raw controller units; high airflow was not tested evenly across O2 levels.",
+      "title": "BASS-II: acrylic flames went out as airflow was cut, even in near-normal air",
+      "text": "BASS-II recorded 24 acrylic (PMMA) flames that went out in microgravity. 7 were blown off when the airflow was raised, all at 15-17.4% O2. The other 17 went out as the airflow was turned down, at 14.8-20.9% O2, including 6 in near-normal air (20% O2 or more).",
+      "so_what": "In microgravity, starving an acrylic flame of airflow put it out even in near-normal air, while blowing a flame off with stronger airflow was only recorded once oxygen was already lowered; this is consistent with shutting off ventilation, not blowing air at a fire, as a first response.",
+      "caveat": "PMMA only; 104 of 129 BASS-II records do not state an outcome, so rates cannot be computed; flow settings are raw controller units, and the low-flow extinctions were reached by stepping the flow down during the test; high airflow was not tested evenly across O2 levels; some near-normal-air tests carry a flag for an implausible final O2 reading (initial O2 is used here).",
       "related": [],
       "values": {
         "n_end": 24,
@@ -7202,16 +5680,21 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q3",
-      "question_text": "Can airflow or venting put a fire out?"
+      "question_text": "Can airflow or venting put a fire out?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-Q3-2",
       "pillar": "suppression",
       "kind": "gap",
-      "title": "No airflow speed measured in any suppression test",
-      "text": "None of these suppression tests gives airflow as a speed. 274 of 274 FLEX droplet tests report no flow (droplets burned in still air). 129 of 129 BASS-II records give airflow only as raw controller settings, and 3 of the 7 BASS-II blowoffs have no air setting recorded at all.",
-      "so_what": "There is no measured airflow speed at which a flame was blown out, so these data cannot tell a habitat engineer how hard ventilation would need to blow, or whether venting would help or feed a fire.",
-      "caveat": "FLEX is liquid droplets (methanol, heptane) in quiescent air; BASS-II is mostly PMMA, with raw air settings that are not convertible to cm/s and several logged as a range (e.g. lowered until extinction); SAFFIRE-II (20 cm/s) is outside this pillar.",
+      "title": "No airflow speed at flame-out in any suppression test",
+      "text": "None of these suppression tests gives the airflow speed at which a flame went out. 274 of 274 FLEX droplet tests report no flow (still air). 129 of 129 BASS-II records log airflow only as raw controller settings, and 3 of the 7 BASS-II blowoffs have their setting only in the fan log, not the air column.",
+      "so_what": "There is no measured airflow speed at which a flame was blown out or starved out, so these data cannot tell a habitat engineer how fast ventilation would need to blow, or how far it must drop, to put a fire out.",
+      "caveat": "FLEX is liquid droplets (methanol, heptane) in quiescent air; BASS-II is mostly PMMA, with raw fan/air settings that are not convertible to cm/s and several logged as a sequence (e.g. lowered until extinction); SAFFIRE-II (20 cm/s) is outside this pillar.",
       "related": [],
       "values": {
         "fx_n": 274,
@@ -7322,7 +5805,12 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q3",
-      "question_text": "Can airflow or venting put a fire out?"
+      "question_text": "Can airflow or venting put a fire out?",
+      "review": {
+        "verdict": "revise",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-Q4-1",
@@ -7505,7 +5993,12 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     },
     {
       "id": "S-Q4-2",
@@ -7625,7 +6118,12 @@
       "verified": true,
       "source": "agent:suppression",
       "question": "Q4",
-      "question_text": "Where are the gaps?"
+      "question_text": "Where are the gaps?",
+      "review": {
+        "verdict": "ok",
+        "resolved": true,
+        "by": "independent reviewer agent"
+      }
     }
   ],
   "agents": {
@@ -7642,7 +6140,7 @@
         "Q4": "Where are the gaps?"
       },
       "detection": {
-        "Q1": "What does smoke from each material look like?",
+        "Q1": "Which materials' smoke was sampled, and how?",
         "Q2": "How do heating level and airflow change the smoke?",
         "Q3": "How does smoke change as it ages and travels?",
         "Q4": "Where are the gaps?"
@@ -7660,60 +6158,61 @@
   "summaries": {
     "prevention": {
       "pillar": "prevention",
-      "headline": "Oxygen-rich air kept test gas flames burning longer; cabin materials there remain untested",
-      "summary": "In NASA microgravity tests, gas flames at Moon-base oxygen levels lit readily and burned far longer than in ISS-like air; lower pressure did not stop gas flames near 21% O2. Earth screening and microgravity results disagreed for some materials. No fabric or plastic has been burned at Moon-base oxygen and pressure, or in partial gravity.",
+      "headline": "Oxygen-rich air kept test gas flames burning longer; datasets lack cabin materials there",
+      "summary": "In microgravity gas-flame tests, flames at 33-40% O2 mostly outlasted every ISS-like-air flame, and most tests in a Moon-base atmosphere lit. In a small SAFFIRE-II set, Earth-gravity tests were harsher than orbit, so the two can disagree. These PSI datasets hold no fabric or plastic burned at Moon-base oxygen and pressure, or at partial gravity.",
       "summary_cards": [
-        "P2",
         "P-A1",
-        "P-Q3-1",
+        "P2",
         "P1",
+        "P-Q1-2",
         "P3",
         "P-Q3-2"
       ],
       "key_points": [
         {
-          "text": "Oxygen-rich air: in ACME gas-flame tests at 33-40% O2, flames lasted far longer before going out than in ISS-like air, so response windows sized from normal-air experience may be too short. Gas fuels only.",
+          "text": "Oxygen-rich air: in ACME gas-flame tests, most flames at 33-40% O2 outlasted every near-21% flame, so response windows sized from normal-air experience may be too short. Gas fuels only; pressures and fuel flows not paired.",
           "cards": [
             "P-A1"
           ]
         },
         {
-          "text": "Will it burn: Earth screening and microgravity disagreed in a small SAFFIRE-II set, in either direction depending on the material, so 1g flammability results need a microgravity check.",
+          "text": "Will it burn: in a small SAFFIRE-II set the normal-gravity test was the harsher one; two silicone sheets burned in 1g but not in orbit. Earth screening needs a microgravity check; 1g airflow went unreported.",
           "cards": [
             "P1",
             "P-Q1-2"
           ]
         },
         {
-          "text": "Lower pressure: near 21% O2, gas flames still lit at 7.35 psi and outlasted higher-pressure flames, so thin air should not be counted on to shorten a fire. Fuel and pressure were confounded.",
+          "text": "Lower oxygen: in BASS-II microgravity tests, some acrylic rod runs below 16% O2 logged no extinction, down to 14.2% O2, so modestly lowering cabin oxygen should not be counted on to stop a solid fire.",
           "cards": [
-            "P-Q3-1"
+            "P-Q1-1"
           ]
         }
       ],
       "top_gap": {
-        "text": "No fabric or plastic in the 7 PSI datasets has been burned at 30% O2 or more and 10.2 psi or less, and nothing was tested at Moon or Mars gravity; low-pressure evidence is gas flames only.",
+        "text": "None of the 7 PSI datasets reports a fabric or plastic burned at 30% O2 or more and 10.2 psi or less; no test ran at Moon or Mars gravity, and low-pressure prevention data are gas flames only.",
         "cards": [
           "P3",
           "P-Q3-2"
         ]
       },
       "next_test": {
-        "text": "Burn common cabin fabrics and plastics in microgravity at Moon-base conditions (30% O2 or more, 10.2 psi or less), recording pressure and using at least two airflow speeds in each direction, because no cabin material has data there.",
+        "text": "Burn common cabin fabrics and plastics in low gravity at 30% O2 or more and 10.2 psi or less, recording pressure and at least two airflow speeds in each direction, because these datasets hold no cabin-material data there.",
         "cards": [
           "P3",
           "P-Q4-2"
         ]
       },
       "equipment": {
-        "text": "Materials screening may need a microgravity check, since Earth flammability tests and orbit results disagreed for some SAFFIRE-II materials; oxygen-rich air kept gas flames burning far longer, so screening at raised O2 could be added.",
+        "text": "Materials screening may need a microgravity check; Earth tests were harsher in a small SAFFIRE-II set. Detectors for oxygen-rich air should allow for dim cool flames, seen in few butane tests, mostly at raised pressure.",
         "cards": [
           "P1",
-          "P-A1"
+          "P-Q1-2",
+          "P-A2"
         ]
       },
       "earth": {
-        "text": "These results may inform fire safety in oxygen-enriched settings on Earth, such as medical oxygen use or hyperbaric rooms: in these microgravity tests, raised oxygen kept gas flames burning far longer than normal air.",
+        "text": "These results may inform fire safety in oxygen-enriched settings on Earth, such as medical oxygen or hyperbaric rooms: in these microgravity gas-flame tests, raised oxygen kept flames burning far longer than normal air.",
         "cards": [
           "P-A1"
         ]
@@ -7723,10 +6222,11 @@
     },
     "detection": {
       "pillar": "detection",
-      "headline": "Habitat smoke detectors would rest on ISS-air smoke, mostly sampled at the fastest airflow",
-      "summary": "SAME-R sampled smoke from 5 heated cabin materials in ISS cabin air, including long-aged smoke in still air for every material. But most records sit at the fastest flow, heater settings differ between materials, particle sizes are in the SAME-R reports, not the table, and no smoke was made in Moon-base air (30% O2 or more, 10.2 psi or less).",
+      "headline": "All SAME-R smoke records come from ISS cabin air, mostly at the fastest airflow",
+      "summary": "SAME-R logged smoke from 5 heated cabin materials, all in ISS cabin air, with heating time nearly fixed and long-aged records from still-air runs for every material. Most records are at the fastest flow, heater settings differ between most materials, particle sizes are not in the table, and none were made in the oxygen-rich, low-pressure air proposed for Moon bases.",
       "summary_cards": [
         "D1",
+        "D-Q1-1",
         "D-A3",
         "D-A1",
         "D-A2",
@@ -7735,21 +6235,21 @@
       ],
       "key_points": [
         {
-          "text": "Aged smoke was sampled in still air for every material, plus re-measurements of minutes-old smoke: the records to use when tuning detectors for drifted smoke. How it changed is in the SAME-R reports.",
+          "text": "Long-aged smoke from still-air runs exists for all 5 materials, though few per material, and most long-aged records re-measure earlier runs; how the smoke changed with aging is in the SAME-R reports, not the table.",
           "cards": [
             "D-A3",
             "D-Q3-2"
           ]
         },
         {
-          "text": "Heating level and airflow can be studied only separately: heater level was varied mainly at the fastest flow, still-air runs used one heater setting per material, and heater settings differ between materials.",
+          "text": "Material and heater setting are tied up in these records: settings differ between most materials, and for Kapton, silicone and Teflon heating was varied mainly at the fastest flow, with one still-air setting.",
           "cards": [
-            "D-Q2-2",
-            "D-A2"
+            "D-A2",
+            "D-Q2-2"
           ]
         },
         {
-          "text": "Smoke-generation time was held fixed across all 5 materials, easing comparison, but per-material detector tuning for Teflon or Pyrell rests on fewer or less varied samples than Kapton.",
+          "text": "Nearly all smoke runs from the 5 materials used the same heating time. Kapton has the most records, Teflon the fewest, including one likely duplicate of a Lampwick test; aged records re-measure earlier runs.",
           "cards": [
             "D-Q1-1",
             "D-Q1-2"
@@ -7757,13 +6257,13 @@
         }
       ],
       "top_gap": {
-        "text": "None of the 109 SAME-R smoke records was made outside ISS cabin air, so there is no smoke data for Moon-base air (30% O2 or more, 10.2 psi or less); detector thresholds there would rest on ISS-air smoke.",
+        "text": "Every SAME-R smoke record is logged as ISS cabin air, with no oxygen or pressure reported, so the PSI table holds no smoke data for the oxygen-rich, low-pressure air proposed for Moon bases.",
         "cards": [
           "D-Q4-2"
         ]
       },
       "next_test": {
-        "text": "Run a SAME-R-style smoke test at raised O2 and reduced pressure, in still air and slow flow with aged-smoke measurements and particle sizes, so Moon-base detector thresholds are tuned on matching smoke, not ISS cabin air.",
+        "text": "Run a SAME-R-style smoke test at raised O2 and reduced pressure, including still-air and slow-flow runs with aged-smoke measurements and particle sizes, so Moon-base detector thresholds do not rest only on ISS-air smoke.",
         "cards": [
           "D-Q4-2",
           "D-A1",
@@ -7771,7 +6271,7 @@
         ]
       },
       "equipment": {
-        "text": "Smoke detector alarm thresholds could be tuned on SAME-R aged smoke sampled in still air for every material, but low-airflow records are thin and no smoke was made in oxygen-rich, low-pressure air.",
+        "text": "Detector alarm thresholds could draw on SAME-R long-aged smoke from still-air runs, via the SAME-R reports, but low-airflow records are thin and no record comes from oxygen-rich, low-pressure air.",
         "cards": [
           "D-A3",
           "D-A1",
@@ -7779,7 +6279,7 @@
         ]
       },
       "earth": {
-        "text": "SAME-R still-air and aged-smoke records are relevant to smoke detection in still-air spaces on Earth, where smoke drifts slowly, and may inform detector tuning there; they were not tested for Earth uses.",
+        "text": "SAME-R smoke from still-air runs and long-aged records is relevant to smoke detection in still-air spaces on Earth and may inform detector tuning there; the PSI data were not tested for Earth uses.",
         "cards": [
           "D-A3",
           "D1"
@@ -7790,37 +6290,35 @@
     },
     "suppression": {
       "pillar": "suppression",
-      "headline": "Droplet fires in Moon-base-like air rarely went out alone; no suppressant tested there",
-      "summary": "In FLEX droplet tests, lower oxygen or added CO2 went with more flames going out, and heptane flames went out less readily than methanol. At 30% O2 or more, few flames went out on their own. No added agent was tested in Moon-base-like air or on burning solids, and no airflow speed was measured.",
+      "headline": "In oxygen-rich air droplet flames rarely went out alone; no suppressant tested there",
+      "summary": "In these tests, droplet flames went out more often in lower oxygen, and with more CO2 plus slightly less O2; BASS-II acrylic flames went out as airflow was turned down, even in near-normal air. In oxygen-rich air few droplet flames went out on their own. No added agent was tested in Moon-base-like air or on burning solids.",
       "summary_cards": [
         "S2",
+        "S-A3",
         "S1",
-        "S-A1",
-        "S-A4",
+        "S-Q1-2",
         "S-Q4-1",
-        "S-Q4-2",
-        "S-Q3-2"
+        "S-Q4-2"
       ],
       "key_points": [
         {
-          "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own, and 0 of 17 near Moon-base pressure: in oxygen-rich habitats, suppression cannot count on fires dying out.",
+          "text": "At 30% O2 or more, only 2 of 24 FLEX droplet flames went out on their own; most ended with the droplet breaking apart. Suppression in oxygen-rich air cannot count on these flames dying out.",
           "cards": [
             "S2"
           ]
         },
         {
-          "text": "Adding CO2 went with more droplet flames going out, at about 1 atm and at reduced pressure. Heptane went out less readily than methanol, so the hardest fuel aboard should set the margin. Small samples.",
+          "text": "BASS-II acrylic flames went out as airflow was turned down, even in near-normal air, while blowoff by raised airflow was recorded only in thinned oxygen. Consistent with shutting off ventilation as a first response.",
           "cards": [
-            "S-A1",
-            "S-Q1-2",
-            "S-A4"
+            "S-A3"
           ]
         },
         {
-          "text": "BASS-II acrylic flames were blown off by airflow only in thinned oxygen (15-17.4% O2); with no airflow speed measured, these data give no support for relying on airflow or venting alone.",
+          "text": "Droplet flames went out more often in lower oxygen, and with more CO2 plus slightly less O2 (small groups). Heptane went out less readily than methanol, so the hardest-to-extinguish fuel aboard should set suppression margins.",
           "cards": [
-            "S-A3",
-            "S-Q3-2"
+            "S1",
+            "S-Q1-2",
+            "S-A4"
           ]
         }
       ],
@@ -7832,25 +6330,27 @@
         ]
       },
       "next_test": {
-        "text": "Add CO2 to flames in Moon-base-like air (30% O2 or more, about 10.2 psi), first on droplets to extend FLEX, then on acrylic and fabric samples, checking for re-ignition; no run has combined an agent with that air.",
+        "text": "Add CO2 alone, with O2 held fixed, to flames in Moon-base-like air (30% O2 or more, about 10.2 psi), first on droplets, then on acrylic and fabric samples, checking re-ignition: no run has combined an agent with that air.",
         "cards": [
           "S-Q4-1",
           "S-Q4-2",
+          "S-Q1-2",
           "S-Q1-3"
         ]
       },
       "equipment": {
-        "text": "CO2 extinguisher doses for oxygen-rich habitats need testing: more CO2 went with more droplet flames going out, yet few flames went out alone at 30% O2 or more. Heptane often left fuel; check re-ignition.",
+        "text": "Shutting off ventilation first is consistent with the BASS-II acrylic results. CO2 extinguisher doses need tests that change CO2 alone, in oxygen-rich air. Heptane flames often went out with fuel left: plan re-ignition checks.",
         "cards": [
+          "S-A3",
           "S-Q1-2",
-          "S2",
+          "S-Q4-1",
           "S-Q1-3"
         ]
       },
       "earth": {
-        "text": "These droplet results may inform gas-flooding suppression on Earth, such as CO2 systems, and checks for re-ignition after a fire is knocked down: heptane flames often went out with fuel left.",
+        "text": "These microgravity droplet results may inform gas-flooding and oxygen-reduction suppression on Earth, and re-ignition checks after knockdown, since heptane flames often went out with fuel left; they were not tested for Earth uses.",
         "cards": [
-          "S-A1",
+          "S1",
           "S-Q1-3"
         ]
       },
@@ -7859,12 +6359,12 @@
     },
     "overall": {
       "pillar": "overall",
-      "headline": "Oxygen-rich air kept test flames burning longer; no suppressant or cabin material tested there",
-      "summary": "In NASA microgravity tests, gas flames in oxygen-rich air lit readily and burned far longer than in ISS-like air, and droplet flames there rarely went out on their own. Yet no fabric or plastic, smoke sample or added suppressant has been tested at Moon-base oxygen and pressure, and nothing at Moon or Mars gravity.",
+      "headline": "Oxygen-rich test air kept flames burning longer; cabin materials, smoke, suppressants untested there",
+      "summary": "In these microgravity tests, gas flames in oxygen-rich air mostly outlasted every ISS-like-air flame, and droplet flames there rarely went out alone. Acrylic flames went out as airflow was turned down, even in near-normal air. These datasets hold no fabric or plastic burned, no smoke sample and no added suppressant at proposed Moon-base oxygen and pressure, nor any partial-gravity test.",
       "summary_cards": [
-        "P2",
         "P-A1",
         "S2",
+        "S-A3",
         "P3",
         "D-Q4-2",
         "S-Q4-1",
@@ -7873,7 +6373,7 @@
       "missions": [
         {
           "mission": "Moon base",
-          "text": "Planned Moon-base air (30% O2 or more, 10.2 psi or less) sits where test gas flames lit readily and droplet flames rarely went out alone, but no cabin material, smoke sample or added suppressant was tested there, and nothing at 1/6 g.",
+          "text": "Proposed Moon-base air (30% O2 or more, 10.2 psi or less) is close to conditions where most test gas flames lit and droplet flames rarely went out alone, but these datasets test no cabin material, smoke or added suppressant there, nor 1/6 g.",
           "cards": [
             "P2",
             "S2",
@@ -7885,17 +6385,18 @@
         },
         {
           "mission": "Mars",
-          "text": "No PSI test ran at Mars gravity (3/8 g), where weak buoyant flow returns that neither microgravity nor Earth tests reproduce. Far from rescue, crews need detection and suppression evidence; here smoke came only from ISS cabin air and suppressants met only liquid droplets.",
+          "text": "No test in these datasets ran at Mars gravity (3/8 g), where weak buoyant flow returns. In a small SAFFIRE-II set the Earth-gravity test was the harsher one, so neither 1g nor microgravity results may transfer directly; smoke came only from ISS cabin air.",
           "cards": [
             "P-Q3-2",
-            "D-Q4-2",
-            "S-Q4-2"
+            "P1",
+            "P-Q1-2",
+            "D-Q4-2"
           ]
         }
       ],
       "key_points": [
         {
-          "text": "In oxygen-rich air, test gas flames burned far longer than in ISS-like air and droplet flames rarely went out on their own, while no added suppressant was tested at Moon-base-like conditions.",
+          "text": "In oxygen-rich air, test gas flames burned far longer than in ISS-like air and few droplet flames went out alone, so normal-air response windows may be too short; no added suppressant was tested there.",
           "cards": [
             "P-A1",
             "S2",
@@ -7903,24 +6404,22 @@
           ]
         },
         {
-          "text": "Cool flames with little visible light appeared only in high-oxygen gas tests, and normal-air response windows may be too short there, yet every smoke sample for detector tuning came from ISS cabin air.",
+          "text": "Some acrylic rod runs below 16% O2 logged no extinction, so modestly lowering oxygen should not be counted on; acrylic flames went out as airflow was turned down, consistent with shutting off ventilation first.",
           "cards": [
-            "P-A2",
-            "P-A1",
-            "D-Q4-2"
+            "P-Q1-1",
+            "S-A3"
           ]
         },
         {
-          "text": "Lowering oxygen put most test droplet flames out, but microgravity fabric and acrylic logged no flame-out in air well below 21% O2, and no suppressant was tested on a burning solid.",
+          "text": "Dim cool flames appeared in a few high-O2 butane tests, mostly at raised pressure, yet every SAME-R smoke record was logged as ISS cabin air, none in oxygen-rich, low-pressure air.",
           "cards": [
-            "S1",
-            "P-Q1-1",
-            "S-Q4-2"
+            "P-A2",
+            "D-Q4-2"
           ]
         }
       ],
       "top_gap": {
-        "text": "In the 7 PSI datasets no fabric or plastic was burned, no smoke made, no added suppressant tested at Moon-base oxygen and pressure (30% O2 or more, 10.2 psi or less); no test ran at Moon or Mars gravity.",
+        "text": "These PSI datasets hold no fabric or plastic burned, no smoke made and no added suppressant tested at proposed Moon-base oxygen and pressure (30% O2 or more, 10.2 psi or less), and no test at Moon or Mars gravity.",
         "cards": [
           "P3",
           "D-Q4-2",
@@ -7929,13 +6428,16 @@
         ]
       },
       "next_test": {
-        "text": "Burn cabin fabrics and plastics in microgravity at Moon-base air (30% O2 or more, 10.2 psi or less) at two or more airflow speeds, then discharge CO2, sampling smoke throughout, to fill each pillar's biggest gap in one series.",
+        "text": "Burn cabin fabrics and plastics in low gravity in proposed Moon-base air at two or more airflow speeds, then add CO2 with O2 held fixed, sampling smoke and particle sizes throughout, checking re-ignition: one series addressing each pillar's main gap.",
         "cards": [
           "P3",
           "P-Q4-2",
           "S-Q4-1",
           "S-Q4-2",
-          "D-Q4-2"
+          "S-Q1-2",
+          "S-Q1-3",
+          "D-Q4-2",
+          "D2"
         ]
       },
       "verified": true,

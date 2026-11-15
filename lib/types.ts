@@ -62,6 +62,7 @@ export interface InsightCard {
   source?: string;
   question?: string;
   question_text?: string;
+  review?: { verdict: "ok" | "revise" | "reject"; resolved: boolean; by: string };
 }
 
 export const HABITATS: { key: HabitatKey; label: string; short: string }[] = [
