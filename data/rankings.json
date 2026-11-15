@@ -237,7 +237,7 @@
       ],
       "overall_evidence": "direct",
       "gaps": [
-        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field, and NASA's FM2 experiment will burn materials at the Moon's 1/6 gravity.",
         "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi."
       ],
       "ranking": [
@@ -437,7 +437,7 @@
       ],
       "overall_evidence": "direct",
       "gaps": [
-        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field, and NASA's FM2 experiment will burn materials at the Moon's 1/6 gravity.",
         "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi."
       ],
       "ranking": [
@@ -637,7 +637,7 @@
       ],
       "overall_evidence": "direct",
       "gaps": [
-        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 0.38 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 0.38 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field, and NASA's FM2 experiment will burn materials at the Moon's 1/6 gravity.",
         "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi.",
         "Mars-base atmosphere is assumed equal to the Moon base; the challenge brief gives no value."
       ],

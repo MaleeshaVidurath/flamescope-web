@@ -23,6 +23,7 @@ function Card({ c }: { c: InsightCard }) {
       <p className="text-[12.5px] text-[color:var(--muted)] mb-3">Limits: {pretty(c.caveat)}</p>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]">
         {c.cite.map((id) => <a key={id} className="link" href={PSI_URL(id)} target="_blank" rel="noreferrer">NASA {id}</a>)}
+        {(c.related ?? []).map((r) => <a key={r.url + r.label} className="link" href={r.url} target="_blank" rel="noreferrer">{r.label}</a>)}
         {c.verified && (
           <span className="ml-auto text-[color:var(--ok)]" title={Object.entries(c.values).map(([k, v]) => `${k} = ${v}`).join("\n")}>
             ✓ Numbers recomputed from the records

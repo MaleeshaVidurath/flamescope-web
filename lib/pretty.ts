@@ -5,5 +5,5 @@ export function pretty(s: string): string {
     .replace(/<=/g, "≤")
     .replace(/\bCO2\b/g, "CO₂")
     .replace(/\bO2\b/g, "O₂")
-    .replace(/(\d)-(\d)/g, "$1–$2");
+    .replace(/(\d)-(\d+(?:\.\d+)?)(?=\s*(?:%|psi))/g, "$1–$2");
 }

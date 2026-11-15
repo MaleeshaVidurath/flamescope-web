@@ -9,8 +9,14 @@
       "kind": "finding",
       "title": "Earth screening tests and microgravity can disagree",
       "text": "In SAFFIRE-II, 4 of 4 silicone sheets showed about 0 cm of burning in microgravity at 20 cm/s airflow, yet 2 of them burned completely in the matching normal-gravity tests. The cotton-fiberglass sheet (2-5) burned its full 29 cm in microgravity.",
-      "so_what": "Material screening done on Earth does not map one-to-one onto flammability in a spacecraft; the direction of the difference depends on the material.",
+      "so_what": "Material screening done on Earth does not map one-to-one onto flammability in a spacecraft; the direction of the difference depends on the material. NASA notes that its materials standard (NASA-STD-6001) relies on a 1-g flame test that some researchers believe is not conservative in low gravity; its SoFIE and FLARE experiments study this question.",
       "caveat": "9 samples; O2 about 21.5-22.1% (derived by NASA from CO2 production).",
+      "related": [
+        {
+          "label": "NASA Glenn: SoFIE, FLARE and NASA-STD-6001",
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+        }
+      ],
       "values": {
         "silicone_samples": 4,
         "silicone_no_ug_burn": 4,
@@ -92,6 +98,7 @@
       "text": "ACME CFI-G ran 20 tests at 7.35 psi and 33-39% O2, inside the Moon-base range given in the challenge brief. 17 of 20 lit a hot flame, which burned for up to 274 s; 13 went out on their own.",
       "so_what": "At these conditions ignition is easy, so controlling ignition sources matters more than in today's cabins.",
       "caveat": "Gaseous fuels on a spherical burner, not cabin materials; fuel flow rates varied.",
+      "related": [],
       "values": {
         "moon_tests": 20,
         "moon_hot": 17,
@@ -334,8 +341,14 @@
       "kind": "gap",
       "title": "No cabin material has been burned at Moon-base conditions",
       "text": "The solid-material tests stop near normal air: BASS-II reaches 22.2% O2 and SAFFIRE-II 22.1% O2. None of the 7 datasets burned a fabric or plastic at 30% O2 or more and 10.2 psi or less.",
-      "so_what": "Flammability limits for cabin materials in a Moon-base atmosphere are still unmeasured; planned lunar experiments (LUCI, FM2) are expected to start filling this gap.",
+      "so_what": "Flammability limits for cabin materials in a Moon-base atmosphere are still unmeasured. NASA's FM2 experiment, the first combustion experiment planned on another planetary body, will burn materials at the Moon's 1/6 gravity; the challenge brief also names LUCI.",
       "caveat": "Covers the 7 PSI datasets used here.",
+      "related": [
+        {
+          "label": "NASA Glenn: Flammability of Materials on the Moon (FM2)",
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+        }
+      ],
       "values": {
         "bass2_o2_max": 22.2,
         "saf_o2_max": 22.1
@@ -383,6 +396,7 @@
       "text": "SAME-R logged 109 smoke records from 5 heated cabin materials (Kapton, Teflon, silicone, lampwick, Pyrell). 22 were made in still air (0 cm/s) and the rest at up to 8.1 cm/s; smoke was aged for up to 1923 s before measurement.",
       "so_what": "Detector design can draw on smoke that drifts slowly and ages in still air, as it would in a poorly ventilated corner of a habitat.",
       "caveat": "Test conditions only; particle-size results are in the SAME-R reports.",
+      "related": [],
       "values": {
         "records": 109,
         "materials": 5,
@@ -476,6 +490,7 @@
       "text": "None of the 109 SAME-R records in the PSI experimental table carry particle-size results.",
       "so_what": "Detector thresholds need the measured sizes; they must be taken from the SAME-R reports.",
       "caveat": "Science lead to add the report values.",
+      "related": [],
       "values": {
         "records": 109
       },
@@ -508,6 +523,7 @@
       "text": "In FLEX, droplet flames in normal air (21% O2, about 1 atm) went out before the fuel was used up in 14 of 29 tests. At 16% O2 or less that rose to 33 of 36.",
       "so_what": "Lowering the oxygen share extinguishes these flames; FLEX tested the same idea with CO2 and helium as suppressants.",
       "caveat": "Methanol and heptane droplets, nitrogen dilution only; not cabin solids.",
+      "related": [],
       "values": {
         "air21": 29,
         "air21_ext": 14,
@@ -642,6 +658,7 @@
       "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own; 18 ended with the droplet breaking apart. In the 17 tests closest to Moon-base pressure (about 10.3-10.4 psi), 0 went out on their own.",
       "so_what": "In a 30%+ O2 habitat, suppression systems cannot count on fires dying out; they must act.",
       "caveat": "Liquid droplets; 'disruption' = the droplet broke up, ending the test.",
+      "related": [],
       "values": {
         "hi": 24,
         "hi_ext": 2,
