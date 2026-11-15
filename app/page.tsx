@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { readHash } from "@/lib/hash";
+import Logo from "./components/Logo";
 import type { HabitatKey, SlimTest } from "@/lib/types";
 import { HABITATS } from "@/lib/types";
 import ScenariosTab from "./components/ScenariosTab";
@@ -54,7 +55,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1240px] px-5 pt-6 pb-0">
           <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
             <div className="max-w-[60ch]">
-              <h1 className="cond text-[40px] leading-none font-semibold tracking-tight">FlameScope</h1>
+              <h1 className="cond text-[40px] leading-none font-semibold tracking-tight flex items-center gap-3">
+                <Logo size={44} />
+                FlameScope
+              </h1>
               <p className="mt-2 text-[15.5px] text-[color:var(--ink-2)]">
                 NASA&apos;s microgravity fire experiments, checked against the air crews will breathe on the ISS, the Moon and Mars.
                 <span className="num"> {(tests.length || 1018).toLocaleString()}</span> test records from 7 NASA studies, every number traceable to its source.
