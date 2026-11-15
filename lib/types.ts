@@ -101,13 +101,18 @@ export interface SummaryPoint {
 
 /** One organizer agent's summary of a pillar, checked against that pillar's verified cards. */
 export interface PillarSummary {
-  pillar: "prevention" | "detection" | "suppression";
+  pillar: "prevention" | "detection" | "suppression" | "overall";
   headline: string;
   summary: string;
   summary_cards: string[];
   key_points: SummaryPoint[];
   top_gap: SummaryPoint;
   next_test: SummaryPoint;
+  /** What the findings mean for fire-safety controls and equipment, and for fire safety on Earth. */
+  equipment?: SummaryPoint;
+  earth?: SummaryPoint;
+  /** Only on the merge agent's cross-pillar brief. */
+  missions?: (SummaryPoint & { mission: string })[];
   verified?: boolean;
   source?: string;
 }

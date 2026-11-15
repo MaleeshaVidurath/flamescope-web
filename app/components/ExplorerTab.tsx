@@ -6,6 +6,33 @@ import AtmosphereMap from "./AtmosphereMap";
 
 const INVS = ["BASS-II", "BASS", "SAFFIRE-II", "ACME BRE", "ACME CFI-G", "SAME-R", "FLEX"];
 const PAGE = 25;
+const COLS: (keyof SlimTest)[] = ["investigation_id", "investigation", "doi", "pillar", "test_id", "date", "fuel", "fuel_phase", "geometry",
+  "o2_pct", "o2_basis", "pressure_psi", "flow_cm_s", "diluent", "diluent_fraction", "outcome", "outcome_detail", "quality_flags", "source_url"];
+const csvCell = (v: unknown) => {
+  const s = v === null || v === undefined ? "" : Array.isArray(v) ? v.join(";") : String(v);
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+};
+function download(name: string, body: string, type: string) {
+  const url = URL.createObjectURL(new Blob([body], { type }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: name });
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+// What each exported column means, for modelers.
+const DICTIONARY: [string, string][] = [
+  ["investigation_id, doi, source_url", "NASA PSI investigation and its DOI; cite these when you reuse the data."],
+  ["pillar", "Fire-safety task the study informs: prevention, detection or suppression."],
+  ["fuel, fuel_phase, geometry", "What burned and its form (solid sheet or rod, gas burner, liquid droplet, heated smoke sample)."],
+  ["o2_pct, o2_basis", "Oxygen percent and how it was obtained. In ACME CFI-G inverse (I-) tests it is the burner oxygen stream, not cabin air."],
+  ["pressure_psi", "Chamber pressure; blank where the table does not report it (e.g. BASS-II, SAFFIRE-II, SAME-R)."],
+  ["flow_cm_s", "Airflow speed where stated in cm/s; BASS-II airflow exists only as raw controller settings (full file)."],
+  ["diluent, diluent_fraction", "FLEX added gas (CO2, helium or nitrogen only) and its share."],
+  ["outcome, outcome_detail", "Normalized result (e.g. extinction, blowoff, self-extinguished, smoke sample) and the original wording."],
+  ["quality_flags", "Notes on missing or derived values; read before modeling."],
+  ["m_* (full file only)", "Study-specific measurements: burn time, droplet and extinction diameters, flame temperature, heater ratio, aging times and more."],
+];
 const nr = (v: unknown, unit = "") => (v === null || v === undefined || v === "" ? <span className="text-[color:var(--muted)]">not reported</span> : <>{String(v)}{unit}</>);
 
 export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; habitat: HabitatKey }) {
@@ -72,7 +99,16 @@ export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; hab
           <h2 id="tbl-h" className="cond text-[20px] font-semibold">
             <span className="num">{filtered.length}</span> of <span className="num">{tests.length}</span> NASA records
           </h2>
-          <div className="flex items-center gap-2 text-[13px]">
+          <div className="flex flex-wrap items-center gap-2 text-[13px]">
+            <button className="btn-ghost" disabled={!filtered.length} onClick={() => download("flamescope_filtered_records.csv",
+              [COLS.join(","), ...filtered.map((t) => COLS.map((c) => csvCell(t[c])).join(","))].join("\n"), "text/csv")}>
+              Download {filtered.length} as CSV
+            </button>
+            <button className="btn-ghost" disabled={!filtered.length} onClick={() => download("flamescope_filtered_records.json",
+              JSON.stringify(filtered, null, 2), "application/json")}>
+              JSON
+            </button>
+            <span className="w-px h-5 bg-[color:var(--rule)]" aria-hidden="true" />
             <button className="btn-ghost" disabled={page === 0} onClick={() => setPage((p) => p - 1)}>Previous</button>
             <span className="num text-[color:var(--ink-2)]">Page {page + 1} of {pages}</span>
             <button className="btn-ghost" disabled={page >= pages - 1} onClick={() => setPage((p) => p + 1)}>Next</button>
@@ -107,6 +143,29 @@ export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; hab
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section className="panel p-5" aria-labelledby="dl-h">
+        <h2 id="dl-h" className="cond text-[20px] font-semibold mb-1">Use this data for modeling</h2>
+        <p className="text-[13.5px] text-[color:var(--ink-2)] mb-3 max-w-[78ch]">
+          The buttons above export the records that match your filters. For flammability and fire-scenario models, the full file adds every
+          study-specific measurement (44 columns starting with m_) for all 1,018 records.{" "}
+          <a className="link" href="/data/flamescope_tests_full.csv" download>Download the full dataset (CSV)</a>
+        </p>
+        <details>
+          <summary className="cursor-pointer text-[13.5px] font-medium">What each column means</summary>
+          <dl className="mt-3 grid gap-x-6 gap-y-2 text-[13px] sm:grid-cols-[minmax(0,15rem)_1fr]">
+            {DICTIONARY.map(([k, v]) => (
+              <div key={k} className="contents">
+                <dt className="font-medium num">{k}</dt>
+                <dd className="text-[color:var(--ink-2)]">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+        <p className="mt-3 text-[12.5px] text-[color:var(--muted)]">
+          Source: NASA PSI, CC0-1.0, normalized by FlameScope. Rocket and propellant fires are outside the PSI combustion data and this dashboard.
+        </p>
       </section>
     </div>
   );

@@ -111,7 +111,7 @@ export default function Home() {
           </p>
           <p>
             Built with SI assistance (Claude, Anthropic): data pipeline, scoring, insight wording and parts of this interface were AI-drafted and checked
-            by team SL-Pyronix against the NASA records. A research prototype, not a safety certification tool.
+            by team SL-Pyronix against the NASA records. A research prototype, not a safety certification tool. Rocket and propellant fires are outside the scope of the PSI data used here.
           </p>
         </div>
       </footer>

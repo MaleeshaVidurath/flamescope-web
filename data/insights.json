@@ -7705,6 +7705,19 @@
           "P-Q4-2"
         ]
       },
+      "equipment": {
+        "text": "Materials screening may need a microgravity check, since Earth flammability tests and orbit results disagreed for some SAFFIRE-II materials; oxygen-rich air kept gas flames burning far longer, so screening at raised O2 could be added.",
+        "cards": [
+          "P1",
+          "P-A1"
+        ]
+      },
+      "earth": {
+        "text": "These results may inform fire safety in oxygen-enriched settings on Earth, such as medical oxygen use or hyperbaric rooms: in these microgravity tests, raised oxygen kept gas flames burning far longer than normal air.",
+        "cards": [
+          "P-A1"
+        ]
+      },
       "verified": true,
       "source": "agent:prevention-organizer"
     },
@@ -7755,6 +7768,21 @@
           "D-Q4-2",
           "D-A1",
           "D2"
+        ]
+      },
+      "equipment": {
+        "text": "Smoke detector alarm thresholds could be tuned on SAME-R aged smoke sampled in still air for every material, but low-airflow records are thin and no smoke was made in oxygen-rich, low-pressure air.",
+        "cards": [
+          "D-A3",
+          "D-A1",
+          "D-Q4-2"
+        ]
+      },
+      "earth": {
+        "text": "SAME-R still-air and aged-smoke records are relevant to smoke detection in still-air spaces on Earth, where smoke drifts slowly, and may inform detector tuning there; they were not tested for Earth uses.",
+        "cards": [
+          "D-A3",
+          "D1"
         ]
       },
       "verified": true,
@@ -7811,8 +7839,107 @@
           "S-Q1-3"
         ]
       },
+      "equipment": {
+        "text": "CO2 extinguisher doses for oxygen-rich habitats need testing: more CO2 went with more droplet flames going out, yet few flames went out alone at 30% O2 or more. Heptane often left fuel; check re-ignition.",
+        "cards": [
+          "S-Q1-2",
+          "S2",
+          "S-Q1-3"
+        ]
+      },
+      "earth": {
+        "text": "These droplet results may inform gas-flooding suppression on Earth, such as CO2 systems, and checks for re-ignition after a fire is knocked down: heptane flames often went out with fuel left.",
+        "cards": [
+          "S-A1",
+          "S-Q1-3"
+        ]
+      },
       "verified": true,
       "source": "agent:suppression-organizer"
+    },
+    "overall": {
+      "pillar": "overall",
+      "headline": "Oxygen-rich air kept test flames burning longer; no suppressant or cabin material tested there",
+      "summary": "In NASA microgravity tests, gas flames in oxygen-rich air lit readily and burned far longer than in ISS-like air, and droplet flames there rarely went out on their own. Yet no fabric or plastic, smoke sample or added suppressant has been tested at Moon-base oxygen and pressure, and nothing at Moon or Mars gravity.",
+      "summary_cards": [
+        "P2",
+        "P-A1",
+        "S2",
+        "P3",
+        "D-Q4-2",
+        "S-Q4-1",
+        "P-Q3-2"
+      ],
+      "missions": [
+        {
+          "mission": "Moon base",
+          "text": "Planned Moon-base air (30% O2 or more, 10.2 psi or less) sits where test gas flames lit readily and droplet flames rarely went out alone, but no cabin material, smoke sample or added suppressant was tested there, and nothing at 1/6 g.",
+          "cards": [
+            "P2",
+            "S2",
+            "P3",
+            "D-Q4-2",
+            "S-Q4-1",
+            "P-Q3-2"
+          ]
+        },
+        {
+          "mission": "Mars",
+          "text": "No PSI test ran at Mars gravity (3/8 g), where weak buoyant flow returns that neither microgravity nor Earth tests reproduce. Far from rescue, crews need detection and suppression evidence; here smoke came only from ISS cabin air and suppressants met only liquid droplets.",
+          "cards": [
+            "P-Q3-2",
+            "D-Q4-2",
+            "S-Q4-2"
+          ]
+        }
+      ],
+      "key_points": [
+        {
+          "text": "In oxygen-rich air, test gas flames burned far longer than in ISS-like air and droplet flames rarely went out on their own, while no added suppressant was tested at Moon-base-like conditions.",
+          "cards": [
+            "P-A1",
+            "S2",
+            "S-Q4-1"
+          ]
+        },
+        {
+          "text": "Cool flames with little visible light appeared only in high-oxygen gas tests, and normal-air response windows may be too short there, yet every smoke sample for detector tuning came from ISS cabin air.",
+          "cards": [
+            "P-A2",
+            "P-A1",
+            "D-Q4-2"
+          ]
+        },
+        {
+          "text": "Lowering oxygen put most test droplet flames out, but microgravity fabric and acrylic logged no flame-out in air well below 21% O2, and no suppressant was tested on a burning solid.",
+          "cards": [
+            "S1",
+            "P-Q1-1",
+            "S-Q4-2"
+          ]
+        }
+      ],
+      "top_gap": {
+        "text": "In the 7 PSI datasets no fabric or plastic was burned, no smoke made, no added suppressant tested at Moon-base oxygen and pressure (30% O2 or more, 10.2 psi or less); no test ran at Moon or Mars gravity.",
+        "cards": [
+          "P3",
+          "D-Q4-2",
+          "S-Q4-1",
+          "P-Q3-2"
+        ]
+      },
+      "next_test": {
+        "text": "Burn cabin fabrics and plastics in microgravity at Moon-base air (30% O2 or more, 10.2 psi or less) at two or more airflow speeds, then discharge CO2, sampling smoke throughout, to fill each pillar's biggest gap in one series.",
+        "cards": [
+          "P3",
+          "P-Q4-2",
+          "S-Q4-1",
+          "S-Q4-2",
+          "D-Q4-2"
+        ]
+      },
+      "verified": true,
+      "source": "agent:merge"
     }
   }
 }

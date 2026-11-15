@@ -92,6 +92,41 @@ function SummaryBlock({ label, point }: { label: string; point: SummaryPoint }) 
   );
 }
 
+function OverallBrief() {
+  const s = SUMMARIES.overall;
+  if (!s) return null;
+  return (
+    <article className="panel p-5 mb-5" aria-labelledby="sum-overall" style={{ borderColor: "var(--flame)" }}>
+      <p className="text-[12.5px] text-[color:var(--ink-2)] mb-1">All three tasks together, for Moon and Mars missions</p>
+      <h2 id="sum-overall" className="cond text-[24px] font-semibold leading-tight mb-2">{pretty(s.headline)}</h2>
+      <p className="text-[14.5px] text-[color:var(--ink-2)] mb-4 max-w-[80ch]">{pretty(s.summary)}</p>
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+        <div>
+          <p className="text-[12.5px] font-semibold text-[color:var(--ink-2)] mb-1">What connects the findings</p>
+          <ul className="space-y-2 text-[14px] list-disc pl-5">
+            {s.key_points.map((k) => (
+              <li key={k.text}>{pretty(k.text)} <CardRefs ids={k.cards} /></li>
+            ))}
+          </ul>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 content-start">
+          {(s.missions ?? []).map((m) => (
+            <div key={m.mission} className="rounded-[var(--radius-sm)] p-3" style={{ background: "var(--flame-soft)" }}>
+              <p className="text-[13px] font-semibold mb-0.5">{m.mission}</p>
+              <p className="text-[14px]">{pretty(m.text)} <CardRefs ids={m.cards} /></p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="grid gap-x-6 sm:grid-cols-2">
+        <SummaryBlock label="Biggest gap across all three tasks" point={s.top_gap} />
+        <SummaryBlock label="First test for NASA" point={s.next_test} />
+      </div>
+      <p className="mt-4 text-[12.5px] text-[color:var(--ok)]">✓ Merged by one agent from the three task summaries; every number checked against verified findings</p>
+    </article>
+  );
+}
+
 function SummaryCard({ p }: { p: (typeof PILLARS)[number] }) {
   const s = SUMMARIES[p.key];
   const n = CARDS.filter((c) => c.pillar === p.key).length;
@@ -109,6 +144,8 @@ function SummaryCard({ p }: { p: (typeof PILLARS)[number] }) {
       </ul>
       <SummaryBlock label="Biggest gap" point={s.top_gap} />
       <SummaryBlock label="Next test for NASA" point={s.next_test} />
+      {s.equipment && <SummaryBlock label="For fire-safety controls and equipment" point={s.equipment} />}
+      {s.earth && <SummaryBlock label="On Earth (context, not tested in these studies)" point={s.earth} />}
       <div className="mt-auto pt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]">
         <a className="link" href={`#col-${p.key}`}>See all {n} verified findings</a>
         <span className="ml-auto text-[color:var(--ok)]">✓ Organized by the {p.key} agent from verified findings</span>
@@ -152,9 +189,10 @@ export default function FindingsTab() {
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">
         NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Question sub-agents search each
-        task&apos;s NASA studies for findings and a script recomputes every number from the records; an organizer agent for each task then
-        sums up its verified findings in the three cards below. Hover a check mark to see the numbers behind a finding.
+        task&apos;s NASA studies for findings and a script recomputes every number from the records; an organizer agent per task sums up
+        its verified findings, and one merge agent joins all three into the mission brief below. Hover a check mark to see the numbers behind a finding.
       </p>
+      <OverallBrief />
       {Object.keys(SUMMARIES).length > 0 && (
         <div className="grid gap-5 lg:grid-cols-3 items-stretch mb-10">
           {PILLARS.map((p) => <SummaryCard key={p.key} p={p} />)}
