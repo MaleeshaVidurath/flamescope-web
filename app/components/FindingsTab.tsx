@@ -1,10 +1,12 @@
 "use client";
 import insights from "@/data/insights.json";
-import type { InsightCard } from "@/lib/types";
+import type { InsightCard, PillarSummary, SummaryPoint } from "@/lib/types";
 import { PSI_URL } from "@/lib/types";
 import { pretty } from "@/lib/pretty";
 
-const CARDS = (insights as unknown as { cards: InsightCard[] }).cards;
+const DATA = insights as unknown as { cards: InsightCard[]; summaries?: Record<string, PillarSummary> };
+const CARDS = DATA.cards;
+const SUMMARIES = DATA.summaries ?? {};
 // NASA's four questions per pillar; each is answered by its own sub-agent.
 const PILLARS = [
   {
@@ -42,7 +44,7 @@ const questionOf = (c: InsightCard) => c.question ?? BASE_Q[c.id] ?? "Q4";
 function Card({ c }: { c: InsightCard }) {
   const gap = c.kind === "gap";
   return (
-    <article className="panel p-4"
+    <article id={`card-${c.id}`} className="panel p-4 scroll-mt-4"
       style={gap ? { borderStyle: "dashed", borderColor: "var(--soot)", background: "var(--soot-soft)" } : undefined}>
       {(gap || c.source) && (
         <div className="flex flex-wrap gap-x-3 text-[12.5px] mb-1">
@@ -66,6 +68,50 @@ function Card({ c }: { c: InsightCard }) {
             ✓ Numbers recomputed from the records
           </span>
         )}
+      </div>
+    </article>
+  );
+}
+
+function CardRefs({ ids }: { ids: string[] }) {
+  return (
+    <span className="whitespace-nowrap text-[12px]">
+      {ids.map((id) => (
+        <a key={id} href={`#card-${id}`} className="link ml-1.5">{id}</a>
+      ))}
+    </span>
+  );
+}
+
+function SummaryBlock({ label, point }: { label: string; point: SummaryPoint }) {
+  return (
+    <div className="mt-3 pt-3 border-t border-[color:var(--rule-soft)]">
+      <p className="text-[12.5px] font-semibold text-[color:var(--ink-2)] mb-0.5">{label}</p>
+      <p className="text-[14px]">{pretty(point.text)} <CardRefs ids={point.cards} /></p>
+    </div>
+  );
+}
+
+function SummaryCard({ p }: { p: (typeof PILLARS)[number] }) {
+  const s = SUMMARIES[p.key];
+  const n = CARDS.filter((c) => c.pillar === p.key).length;
+  if (!s) return null;
+  return (
+    <article className="panel p-5 flex flex-col" aria-labelledby={`sum-${p.key}`}>
+      <p className="cond text-[20px] font-semibold leading-none mb-1">{p.title}</p>
+      <p className="text-[12.5px] text-[color:var(--muted)] mb-3">{p.sub}</p>
+      <h3 id={`sum-${p.key}`} className="text-[17px] font-semibold leading-snug mb-2">{pretty(s.headline)}</h3>
+      <p className="text-[14px] text-[color:var(--ink-2)] mb-3">{pretty(s.summary)}</p>
+      <ul className="space-y-2 text-[14px] list-disc pl-5">
+        {s.key_points.map((k) => (
+          <li key={k.text}>{pretty(k.text)} <CardRefs ids={k.cards} /></li>
+        ))}
+      </ul>
+      <SummaryBlock label="Biggest gap" point={s.top_gap} />
+      <SummaryBlock label="Next test for NASA" point={s.next_test} />
+      <div className="mt-auto pt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]">
+        <a className="link" href={`#col-${p.key}`}>See all {n} verified findings</a>
+        <span className="ml-auto text-[color:var(--ok)]">✓ Organized by the {p.key} agent from verified findings</span>
       </div>
     </article>
   );
@@ -105,10 +151,15 @@ export default function FindingsTab() {
   return (
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">
-        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Specialist agents search each
-        task&apos;s NASA studies for findings; a script then recomputes every number from the records and rejects anything that does not
-        match. Hover the check mark to see the numbers behind a finding.
+        NASA&apos;s fire-safety work has three tasks: prevent fires, detect them early, and put them out. Question sub-agents search each
+        task&apos;s NASA studies for findings and a script recomputes every number from the records; an organizer agent for each task then
+        sums up its verified findings in the three cards below. Hover a check mark to see the numbers behind a finding.
       </p>
+      {Object.keys(SUMMARIES).length > 0 && (
+        <div className="grid gap-5 lg:grid-cols-3 items-stretch mb-10">
+          {PILLARS.map((p) => <SummaryCard key={p.key} p={p} />)}
+        </div>
+      )}
       {PILLARS.map((p) => <QuestionPillar key={p.key} p={p} />)}
     </div>
   );

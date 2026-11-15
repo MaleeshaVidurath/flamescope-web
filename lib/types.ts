@@ -93,3 +93,21 @@ export const OUTCOME_LABEL: Record<string, string> = {
   smoke_sample: "Smoke sample",
   smoke_sample_aged_measurement: "Aged smoke reading",
 };
+
+export interface SummaryPoint {
+  text: string;
+  cards: string[];
+}
+
+/** One organizer agent's summary of a pillar, checked against that pillar's verified cards. */
+export interface PillarSummary {
+  pillar: "prevention" | "detection" | "suppression";
+  headline: string;
+  summary: string;
+  summary_cards: string[];
+  key_points: SummaryPoint[];
+  top_gap: SummaryPoint;
+  next_test: SummaryPoint;
+  verified?: boolean;
+  source?: string;
+}

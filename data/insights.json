@@ -7656,5 +7656,163 @@
     },
     "approved": 26,
     "rule": "every number computed from tests.json filters and re-checked; hand-typed numbers, safety absolutes and duplicates rejected"
+  },
+  "summaries": {
+    "prevention": {
+      "pillar": "prevention",
+      "headline": "Oxygen-rich air kept test gas flames burning longer; cabin materials there remain untested",
+      "summary": "In NASA microgravity tests, gas flames at Moon-base oxygen levels lit readily and burned far longer than in ISS-like air; lower pressure did not stop gas flames near 21% O2. Earth screening and microgravity results disagreed for some materials. No fabric or plastic has been burned at Moon-base oxygen and pressure, or in partial gravity.",
+      "summary_cards": [
+        "P2",
+        "P-A1",
+        "P-Q3-1",
+        "P1",
+        "P3",
+        "P-Q3-2"
+      ],
+      "key_points": [
+        {
+          "text": "Oxygen-rich air: in ACME gas-flame tests at 33-40% O2, flames lasted far longer before going out than in ISS-like air, so response windows sized from normal-air experience may be too short. Gas fuels only.",
+          "cards": [
+            "P-A1"
+          ]
+        },
+        {
+          "text": "Will it burn: Earth screening and microgravity disagreed in a small SAFFIRE-II set, in either direction depending on the material, so 1g flammability results need a microgravity check.",
+          "cards": [
+            "P1",
+            "P-Q1-2"
+          ]
+        },
+        {
+          "text": "Lower pressure: near 21% O2, gas flames still lit at 7.35 psi and outlasted higher-pressure flames, so thin air should not be counted on to shorten a fire. Fuel and pressure were confounded.",
+          "cards": [
+            "P-Q3-1"
+          ]
+        }
+      ],
+      "top_gap": {
+        "text": "No fabric or plastic in the 7 PSI datasets has been burned at 30% O2 or more and 10.2 psi or less, and nothing was tested at Moon or Mars gravity; low-pressure evidence is gas flames only.",
+        "cards": [
+          "P3",
+          "P-Q3-2"
+        ]
+      },
+      "next_test": {
+        "text": "Burn common cabin fabrics and plastics in microgravity at Moon-base conditions (30% O2 or more, 10.2 psi or less), recording pressure and using at least two airflow speeds in each direction, because no cabin material has data there.",
+        "cards": [
+          "P3",
+          "P-Q4-2"
+        ]
+      },
+      "verified": true,
+      "source": "agent:prevention-organizer"
+    },
+    "detection": {
+      "pillar": "detection",
+      "headline": "Habitat smoke detectors would rest on ISS-air smoke, mostly sampled at the fastest airflow",
+      "summary": "SAME-R sampled smoke from 5 heated cabin materials in ISS cabin air, including long-aged smoke in still air for every material. But most records sit at the fastest flow, heater settings differ between materials, particle sizes are in the SAME-R reports, not the table, and no smoke was made in Moon-base air (30% O2 or more, 10.2 psi or less).",
+      "summary_cards": [
+        "D1",
+        "D-A3",
+        "D-A1",
+        "D-A2",
+        "D2",
+        "D-Q4-2"
+      ],
+      "key_points": [
+        {
+          "text": "Aged smoke was sampled in still air for every material, plus re-measurements of minutes-old smoke: the records to use when tuning detectors for drifted smoke. How it changed is in the SAME-R reports.",
+          "cards": [
+            "D-A3",
+            "D-Q3-2"
+          ]
+        },
+        {
+          "text": "Heating level and airflow can be studied only separately: heater level was varied mainly at the fastest flow, still-air runs used one heater setting per material, and heater settings differ between materials.",
+          "cards": [
+            "D-Q2-2",
+            "D-A2"
+          ]
+        },
+        {
+          "text": "Smoke-generation time was held fixed across all 5 materials, easing comparison, but per-material detector tuning for Teflon or Pyrell rests on fewer or less varied samples than Kapton.",
+          "cards": [
+            "D-Q1-1",
+            "D-Q1-2"
+          ]
+        }
+      ],
+      "top_gap": {
+        "text": "None of the 109 SAME-R smoke records was made outside ISS cabin air, so there is no smoke data for Moon-base air (30% O2 or more, 10.2 psi or less); detector thresholds there would rest on ISS-air smoke.",
+        "cards": [
+          "D-Q4-2"
+        ]
+      },
+      "next_test": {
+        "text": "Run a SAME-R-style smoke test at raised O2 and reduced pressure, in still air and slow flow with aged-smoke measurements and particle sizes, so Moon-base detector thresholds are tuned on matching smoke, not ISS cabin air.",
+        "cards": [
+          "D-Q4-2",
+          "D-A1",
+          "D2"
+        ]
+      },
+      "verified": true,
+      "source": "agent:detection-organizer"
+    },
+    "suppression": {
+      "pillar": "suppression",
+      "headline": "Droplet fires in Moon-base-like air rarely went out alone; no suppressant tested there",
+      "summary": "In FLEX droplet tests, lower oxygen or added CO2 went with more flames going out, and heptane flames went out less readily than methanol. At 30% O2 or more, few flames went out on their own. No added agent was tested in Moon-base-like air or on burning solids, and no airflow speed was measured.",
+      "summary_cards": [
+        "S2",
+        "S1",
+        "S-A1",
+        "S-A4",
+        "S-Q4-1",
+        "S-Q4-2",
+        "S-Q3-2"
+      ],
+      "key_points": [
+        {
+          "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own, and 0 of 17 near Moon-base pressure: in oxygen-rich habitats, suppression cannot count on fires dying out.",
+          "cards": [
+            "S2"
+          ]
+        },
+        {
+          "text": "Adding CO2 went with more droplet flames going out, at about 1 atm and at reduced pressure. Heptane went out less readily than methanol, so the hardest fuel aboard should set the margin. Small samples.",
+          "cards": [
+            "S-A1",
+            "S-Q1-2",
+            "S-A4"
+          ]
+        },
+        {
+          "text": "BASS-II acrylic flames were blown off by airflow only in thinned oxygen (15-17.4% O2); with no airflow speed measured, these data give no support for relying on airflow or venting alone.",
+          "cards": [
+            "S-A3",
+            "S-Q3-2"
+          ]
+        }
+      ],
+      "top_gap": {
+        "text": "No added suppressant was tested in Moon-base-like air: all 17 FLEX runs at 30% O2 or more and low pressure used nitrogen only, and no BASS-II solid sample had CO2 or another agent added.",
+        "cards": [
+          "S-Q4-1",
+          "S-Q4-2"
+        ]
+      },
+      "next_test": {
+        "text": "Add CO2 to flames in Moon-base-like air (30% O2 or more, about 10.2 psi), first on droplets to extend FLEX, then on acrylic and fabric samples, checking for re-ignition; no run has combined an agent with that air.",
+        "cards": [
+          "S-Q4-1",
+          "S-Q4-2",
+          "S-Q1-3"
+        ]
+      },
+      "verified": true,
+      "source": "agent:suppression-organizer"
+    }
   }
 }
