@@ -25,9 +25,18 @@ const PILLARS = [
       "Where are the gaps?",
     ],
   },
+  {
+    key: "suppression", title: "Suppression", sub: "What puts it out?",
+    questions: [
+      "What puts the flame out?",
+      "How do oxygen-rich air, fuel and pressure change that?",
+      "Can airflow or venting put a fire out?",
+      "Where are the gaps?",
+    ],
+  },
 ] as const;
 // The original cards, placed under the question they answer.
-const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4", D1: "Q1", D2: "Q4" };
+const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4", D1: "Q1", D2: "Q4", S1: "Q1", S2: "Q2" };
 const questionOf = (c: InsightCard) => c.question ?? BASE_Q[c.id] ?? "Q4";
 
 function Card({ c }: { c: InsightCard }) {
@@ -101,13 +110,6 @@ export default function FindingsTab() {
         match. Hover the check mark to see the numbers behind a finding.
       </p>
       {PILLARS.map((p) => <QuestionPillar key={p.key} p={p} />)}
-      <section aria-labelledby="col-suppression">
-        <h2 id="col-suppression" className="cond text-[22px] font-semibold leading-tight">Suppression</h2>
-        <p className="text-[13.5px] text-[color:var(--ink-2)] mb-3">What puts it out?</p>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
-          {CARDS.filter((c) => c.pillar === "suppression").map((c) => <Card key={c.id} c={c} />)}
-        </div>
-      </section>
     </div>
   );
 }
