@@ -5,20 +5,29 @@ import { PSI_URL } from "@/lib/types";
 import { pretty } from "@/lib/pretty";
 
 const CARDS = (insights as unknown as { cards: InsightCard[] }).cards;
-const COLS = [
-  { key: "detection", title: "Detection", sub: "What will the smoke look like?" },
-  { key: "suppression", title: "Suppression", sub: "What puts it out?" },
+// NASA's four questions per pillar; each is answered by its own sub-agent.
+const PILLARS = [
+  {
+    key: "prevention", title: "Prevention", sub: "Will it ignite and keep burning?",
+    questions: [
+      "Will the material burn, and how far will the flame spread?",
+      "How does oxygen-rich air change the risk?",
+      "What happens at lower pressure and partial gravity?",
+      "Where are the gaps?",
+    ],
+  },
+  {
+    key: "detection", title: "Detection", sub: "What will the smoke look like?",
+    questions: [
+      "What does smoke from each material look like?",
+      "How do heating level and airflow change the smoke?",
+      "How does smoke change as it ages and travels?",
+      "Where are the gaps?",
+    ],
+  },
 ] as const;
-
-// NASA's four prevention questions; each is answered by its own prevention sub-agent.
-const QUESTIONS = [
-  { key: "Q1", title: "Will the material burn, and how far will the flame spread?" },
-  { key: "Q2", title: "How does oxygen-rich air change the risk?" },
-  { key: "Q3", title: "What happens at lower pressure and partial gravity?" },
-  { key: "Q4", title: "Where are the gaps?" },
-] as const;
-// The three original prevention cards, placed under the question they answer.
-const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4" };
+// The original cards, placed under the question they answer.
+const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4", D1: "Q1", D2: "Q4" };
 const questionOf = (c: InsightCard) => c.question ?? BASE_Q[c.id] ?? "Q4";
 
 function Card({ c }: { c: InsightCard }) {
@@ -53,8 +62,37 @@ function Card({ c }: { c: InsightCard }) {
   );
 }
 
+function QuestionPillar({ p }: { p: (typeof PILLARS)[number] }) {
+  const cards = CARDS.filter((c) => c.pillar === p.key);
+  return (
+    <section aria-labelledby={`col-${p.key}`} className="mb-10">
+      <h2 id={`col-${p.key}`} className="cond text-[22px] font-semibold leading-tight">{p.title}</h2>
+      <p className="text-[13.5px] text-[color:var(--ink-2)] mb-4 max-w-[72ch]">
+        {p.sub} The {p.key} agent splits this into NASA&apos;s four questions, with one sub-agent for each.
+      </p>
+      <div className="space-y-6">
+        {p.questions.map((title, i) => {
+          const qc = cards.filter((c) => questionOf(c) === `Q${i + 1}`);
+          return (
+            <div key={title} className="grid gap-3 lg:grid-cols-[220px_1fr] lg:gap-6">
+              <h3 className="text-[15px] font-semibold leading-snug">
+                <span className="block text-[12.5px] font-normal text-[color:var(--muted)]">Question {i + 1}</span>
+                {title}
+              </h3>
+              {qc.length ? (
+                <div className="grid gap-4 md:grid-cols-2 items-start">{qc.map((c) => <Card key={c.id} c={c} />)}</div>
+              ) : (
+                <p className="text-[13.5px] text-[color:var(--muted)]">No verified finding yet for this question.</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export default function FindingsTab() {
-  const prevention = CARDS.filter((c) => c.pillar === "prevention");
   return (
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">
@@ -62,41 +100,14 @@ export default function FindingsTab() {
         task&apos;s NASA studies for findings; a script then recomputes every number from the records and rejects anything that does not
         match. Hover the check mark to see the numbers behind a finding.
       </p>
-
-      <section aria-labelledby="col-prevention" className="mb-8">
-        <h2 id="col-prevention" className="cond text-[22px] font-semibold leading-tight">Prevention</h2>
-        <p className="text-[13.5px] text-[color:var(--ink-2)] mb-4 max-w-[72ch]">
-          Will it ignite and keep burning? The prevention agent splits this into NASA&apos;s four questions, with one sub-agent for each.
-        </p>
-        <div className="space-y-6">
-          {QUESTIONS.map((q, i) => {
-            const cards = prevention.filter((c) => questionOf(c) === q.key);
-            return (
-              <div key={q.key} className="grid gap-3 lg:grid-cols-[220px_1fr] lg:gap-6">
-                <h3 className="text-[15px] font-semibold leading-snug">
-                  <span className="block text-[12.5px] font-normal text-[color:var(--muted)]">Question {i + 1}</span>
-                  {q.title}
-                </h3>
-                {cards.length ? (
-                  <div className="grid gap-4 md:grid-cols-2 items-start">{cards.map((c) => <Card key={c.id} c={c} />)}</div>
-                ) : (
-                  <p className="text-[13.5px] text-[color:var(--muted)]">No verified finding yet for this question.</p>
-                )}
-              </div>
-            );
-          })}
+      {PILLARS.map((p) => <QuestionPillar key={p.key} p={p} />)}
+      <section aria-labelledby="col-suppression">
+        <h2 id="col-suppression" className="cond text-[22px] font-semibold leading-tight">Suppression</h2>
+        <p className="text-[13.5px] text-[color:var(--ink-2)] mb-3">What puts it out?</p>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
+          {CARDS.filter((c) => c.pillar === "suppression").map((c) => <Card key={c.id} c={c} />)}
         </div>
       </section>
-
-      <div className="grid gap-5 lg:grid-cols-2">
-        {COLS.map((col) => (
-          <section key={col.key} aria-labelledby={`col-${col.key}`}>
-            <h2 id={`col-${col.key}`} className="cond text-[22px] font-semibold leading-tight">{col.title}</h2>
-            <p className="text-[13.5px] text-[color:var(--ink-2)] mb-3">{col.sub}</p>
-            <div className="space-y-4">{CARDS.filter((c) => c.pillar === col.key).map((c) => <Card key={c.id} c={c} />)}</div>
-          </section>
-        ))}
-      </div>
     </div>
   );
 }

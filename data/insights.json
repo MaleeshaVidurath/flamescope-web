@@ -3117,6 +3117,1180 @@
       "question_text": "Where are the gaps?"
     },
     {
+      "id": "D-Q1-1",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Every material got the same smoke-generation time",
+      "text": "In SAME-R, 67 of 68 records with a reported smoke-generation time heated the sample for 60 s, across 5 of 5 materials. The exception is 1 Kapton still-air run at 120 s. Another 41 records, 41 of them aged-smoke measurements, leave duration blank.",
+      "so_what": "Because heating time was held fixed, a detector designer can compare smoke samples across the five materials without a duration difference getting in the way; heater setting and airflow are the variables left to watch.",
+      "caveat": "SAME-R (PSI-101) only, 109 records from 5 heated cabin materials in ISS cabin air; this table lists sampling conditions, not particle sizes, so it shows how smoke was produced, not what it looked like. Heater settings were not matched across materials (see D-A2).",
+      "related": [],
+      "values": {
+        "n_dur": 68,
+        "n_dur60": 67,
+        "dur_min": 60.0,
+        "dur_max": 120.0,
+        "n_mat60": 5,
+        "n_mat": 5,
+        "n_dur120": 1,
+        "n_nodur": 41,
+        "n_nodur_aged": 41
+      },
+      "evidence": [
+        {
+          "name": "n_dur",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.duration_s",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_dur60",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.duration_s",
+              "eq",
+              60.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "dur_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.duration_s",
+          "round": 0
+        },
+        {
+          "name": "dur_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.duration_s",
+          "round": 0
+        },
+        {
+          "name": "n_mat60",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.duration_s",
+              "eq",
+              60.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "n_mat",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "n_dur120",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ],
+            [
+              "measures.duration_s",
+              "gt",
+              60.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_nodur",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.duration_s",
+              "isnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_nodur_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.duration_s",
+              "isnull",
+              null
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "count"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q1",
+      "question_text": "What does smoke from each material look like?"
+    },
+    {
+      "id": "D-Q1-2",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Kapton has the most smoke samples, Teflon the fewest",
+      "text": "Per material, SAME-R sampled Kapton most: 29 records, 13 of them aged-smoke measurements. Teflon has the fewest: 18 records, 6 aged, at 3 airflow levels (still air, low flow and 8.1 cm/s). Heater settings also vary unevenly: Silicone, Lampwick and Teflon used 5, 5 and 5 settings, Pyrell only 3.",
+      "so_what": "A smoke-detector designer has the most samples for Kapton wiring insulation and the fewest for Teflon, so per-material detector tuning for Teflon or Pyrell smoke rests on fewer or less varied samples.",
+      "caveat": "SAME-R (PSI-101) only, 18-29 records per material in ISS cabin air; one Teflon record (test 57) shares its test number and values with a Lampwick record. Particle-size results are not in the table, so this describes what was sampled, not the smoke itself.",
+      "related": [],
+      "values": {
+        "k_n": 29,
+        "k_aged": 13,
+        "t_n": 18,
+        "t_aged": 6,
+        "t_flow": 3,
+        "p_heat": 3,
+        "t_fmax": 8.1,
+        "s_heat": 5,
+        "l_heat": 5,
+        "te_heat": 5
+      },
+      "evidence": [
+        {
+          "name": "k_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "k_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "t_n",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "t_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "t_flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "flow_cm_s"
+        },
+        {
+          "name": "p_heat",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Pyrell"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "t_fmax",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s"
+        },
+        {
+          "name": "s_heat",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "l_heat",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Lampwick"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "te_heat",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q1",
+      "question_text": "What does smoke from each material look like?"
+    },
+    {
+      "id": "D-A2",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Heater settings differ from material to material",
+      "text": "SAME-R did not use one shared heater setting (resistance ratio) across materials. Pyrell ran at 1.22-1.23, silicone at 1.304-1.36 and Kapton at 1.38-1.48, so these three ranges do not overlap.",
+      "so_what": "Differences in smoke between these materials are tied up with differences in heater setting, so the matrix alone cannot separate the effect of material from the effect of heating level.",
+      "caveat": "Heater setting is the ratio Rt/R0 as tabulated; its link to sample temperature is not given in the table. Lampwick and Teflon not shown; Teflon includes one low-setting outlier.",
+      "related": [],
+      "values": {
+        "py_min": 1.22,
+        "py_max": 1.23,
+        "si_min": 1.304,
+        "si_max": 1.36,
+        "ka_min": 1.38,
+        "ka_max": 1.48
+      },
+      "evidence": [
+        {
+          "name": "py_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Pyrell"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "py_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Pyrell"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "ka_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "ka_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.heater_ratio_Rt_R0"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q2",
+      "question_text": "How do heating level and airflow change the smoke?"
+    },
+    {
+      "id": "D-Q2-2",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Heater level was varied mainly in the fastest airflow",
+      "text": "Within a material, SAME-R changed the heater setting mostly at 8.1 cm/s. Kapton ran at 4 heater settings there but 1 in still air; silicone 4 versus 1; Teflon 5 versus 1. So heating level can be compared within these materials only in the fastest flow, and airflow mainly at one fixed heater setting.",
+      "so_what": "A detector designer can study heating level and airflow separately for these materials, but not together: in still air each was run at a single heater setting, so how heating changes still-air smoke cannot be seen.",
+      "caveat": "SAME-R only (PSI-101), ISS cabin air; Kapton, silicone and Teflon shown (Pyrell and Lampwick ran two settings in still air). Heater setting is the tabulated ratio Rt/R0; record counts per cell are small and smoke particle sizes are not in the table.",
+      "related": [],
+      "values": {
+        "fast": 8.1,
+        "ka_f": 4,
+        "ka_0": 1,
+        "si_f": 4,
+        "si_0": 1,
+        "te_f": 5,
+        "te_0": 1
+      },
+      "evidence": [
+        {
+          "name": "fast",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s"
+        },
+        {
+          "name": "ka_f",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              8.1
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "ka_0",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Kapton"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_f",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              8.1
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "si_0",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "te_f",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              8.1
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        },
+        {
+          "name": "te_0",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Teflon"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "measures.heater_ratio_Rt_R0"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q2",
+      "question_text": "How do heating level and airflow change the smoke?"
+    },
+    {
+      "id": "D-A3",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Long-aged smoke sampled in still air for every material",
+      "text": "44 SAME-R records aged smoke for 557 s or more before measurement. 10 of them were in still air, covering 5 of 5 materials, and 3 were at 1 cm/s.",
+      "so_what": "Smoke that lingers for many minutes in a poorly ventilated module can change before it reaches a detector; SAME-R has such aged samples in still air for each material, which detector designers can draw on via the SAME-R reports.",
+      "caveat": "Aging times are test conditions; how the smoke changed with aging is in the SAME-R reports, not this table. Five materials; few long-aged records per material.",
+      "related": [],
+      "values": {
+        "n_long": 44,
+        "long_min": 557.0,
+        "n_long_still": 10,
+        "m_long_still": 5,
+        "m_all": 5,
+        "n_long_one": 3,
+        "one": 1.0
+      },
+      "evidence": [
+        {
+          "name": "n_long",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "long_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "n_long_still",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_long_still",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "m_all",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "n_long_one",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "measures.net_aging_s",
+              "ge",
+              500
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              1.0
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "one",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "gt",
+              0
+            ]
+          ],
+          "agg": "min",
+          "field": "flow_cm_s",
+          "round": 0
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q3",
+      "question_text": "How does smoke change as it ages and travels?"
+    },
+    {
+      "id": "D-Q3-2",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Fresh smoke and re-measured aged smoke sampled separately",
+      "text": "Most SAME-R smoke was measured fresh: 58 of 63 normal samples with an aging time had aged 21-62 s, including 8 s of mixing. 42 aged-measurement records, across 5 materials, re-measured smoke at 218-1923 s. Separately, 5 normal samples from 5 materials were held 720 s before mixing, 5 of them at 8.1 cm/s.",
+      "so_what": "A detector at the far end of a still module sees smoke minutes old, not the seconds-old smoke most samples captured; SAME-R's aged re-measurements and long-hold runs are the records to use when tuning for drifted smoke.",
+      "caveat": "Aging times are test conditions; how particles changed is in the SAME-R reports, not this table. Five materials, ISS cabin air; the long primary holds were one run per material at the highest flow only, and one aged record has no aging time.",
+      "related": [],
+      "values": {
+        "n_fresh": 58,
+        "n_samp": 63,
+        "fresh_min": 21.0,
+        "fresh_max": 62.0,
+        "mix": 8.0,
+        "n_aged": 42,
+        "m_aged": 5,
+        "aged_min": 218.0,
+        "aged_max": 1923.0,
+        "n_hold": 5,
+        "m_hold": 5,
+        "hold_s": 720.0,
+        "n_hold_flow": 5,
+        "hold_flow": 8.1
+      },
+      "evidence": [
+        {
+          "name": "n_fresh",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.net_aging_s",
+              "lt",
+              100
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_samp",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.net_aging_s",
+              "notnull",
+              null
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "fresh_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.net_aging_s",
+              "lt",
+              100
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "fresh_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.net_aging_s",
+              "lt",
+              100
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "mix",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.mixing_s",
+          "round": 0
+        },
+        {
+          "name": "n_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_aged",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "aged_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "aged_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample_aged_measurement"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.net_aging_s",
+          "round": 0
+        },
+        {
+          "name": "n_hold",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.primary_aging_s",
+              "ge",
+              600
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "m_hold",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.primary_aging_s",
+              "ge",
+              600
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel"
+        },
+        {
+          "name": "hold_s",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.primary_aging_s",
+              "ge",
+              600
+            ]
+          ],
+          "agg": "min",
+          "field": "measures.primary_aging_s",
+          "round": 0
+        },
+        {
+          "name": "n_hold_flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.primary_aging_s",
+              "ge",
+              600
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              8.1
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "hold_flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "outcome",
+              "eq",
+              "smoke_sample"
+            ],
+            [
+              "measures.primary_aging_s",
+              "ge",
+              600
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s"
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true,
+      "source": "agent:detection",
+      "question": "Q3",
+      "question_text": "How does smoke change as it ages and travels?"
+    },
+    {
       "id": "D-A1",
       "pillar": "detection",
       "kind": "gap",
@@ -3316,173 +4490,41 @@
       ],
       "tests": null,
       "verified": true,
-      "source": "agent:detection"
+      "source": "agent:detection",
+      "question": "Q4",
+      "question_text": "Where are the gaps?"
     },
     {
-      "id": "D-A2",
+      "id": "D-Q4-2",
       "pillar": "detection",
-      "kind": "finding",
-      "title": "Heater settings differ from material to material",
-      "text": "SAME-R did not use one shared heater setting (resistance ratio) across materials. Pyrell ran at 1.22-1.23, silicone at 1.304-1.36 and Kapton at 1.38-1.48, so these three ranges do not overlap.",
-      "so_what": "Differences in smoke between these materials are tied up with differences in heater setting, so the matrix alone cannot separate the effect of material from the effect of heating level.",
-      "caveat": "Heater setting is the ratio Rt/R0 as tabulated; its link to sample temperature is not given in the table. Lampwick and Teflon not shown; Teflon includes one low-setting outlier.",
+      "kind": "gap",
+      "title": "No smoke data for oxygen-rich, low-pressure air",
+      "text": "Of 109 SAME-R smoke records, 0 report an oxygen level and 0 report a pressure; 109 are logged as ISS cabin air. So there are 0 smoke records for Moon-base air (30% O2 or more, 10.2 psi or less), and none of the 5 heated materials has a smoke sample outside normal cabin air.",
+      "so_what": "Smoke detectors for a Moon base would be tuned on smoke made only in ISS cabin air; a SAME-R-style run at raised O2 and reduced pressure is the missing test before trusting those thresholds there.",
+      "caveat": "Five heated cabin materials, 109 records, all on ISS; oxygen and pressure are not in the PSI table and are assumed to be normal cabin air. Absence in the table does not rule out unpublished tests.",
       "related": [],
       "values": {
-        "py_min": 1.22,
-        "py_max": 1.23,
-        "si_min": 1.304,
-        "si_max": 1.36,
-        "ka_min": 1.38,
-        "ka_max": 1.48
+        "n_all": 109,
+        "n_o2": 0,
+        "n_p": 0,
+        "n_cabin": 109,
+        "n_moon": 0,
+        "n_mat": 5
       },
       "evidence": [
         {
-          "name": "py_min",
+          "name": "n_all",
           "filter": [
             [
               "investigation",
               "eq",
               "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Pyrell"
-            ]
-          ],
-          "agg": "min",
-          "field": "measures.heater_ratio_Rt_R0"
-        },
-        {
-          "name": "py_max",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Pyrell"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.heater_ratio_Rt_R0"
-        },
-        {
-          "name": "si_min",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Silicone"
-            ]
-          ],
-          "agg": "min",
-          "field": "measures.heater_ratio_Rt_R0"
-        },
-        {
-          "name": "si_max",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Silicone"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.heater_ratio_Rt_R0"
-        },
-        {
-          "name": "ka_min",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Kapton"
-            ]
-          ],
-          "agg": "min",
-          "field": "measures.heater_ratio_Rt_R0"
-        },
-        {
-          "name": "ka_max",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "fuel",
-              "eq",
-              "Kapton"
-            ]
-          ],
-          "agg": "max",
-          "field": "measures.heater_ratio_Rt_R0"
-        }
-      ],
-      "cite": [
-        "PSI-101"
-      ],
-      "tests": null,
-      "verified": true,
-      "source": "agent:detection"
-    },
-    {
-      "id": "D-A3",
-      "pillar": "detection",
-      "kind": "finding",
-      "title": "Long-aged smoke sampled in still air for every material",
-      "text": "44 SAME-R records aged smoke for 557 s or more before measurement. 10 of them were in still air, covering 5 of 5 materials, and 3 were at 1 cm/s.",
-      "so_what": "Smoke that lingers for many minutes in a poorly ventilated module can change before it reaches a detector; SAME-R has such aged samples in still air for each material, which detector designers can draw on via the SAME-R reports.",
-      "caveat": "Aging times are test conditions; how the smoke changed with aging is in the SAME-R reports, not this table. Five materials; few long-aged records per material.",
-      "related": [],
-      "values": {
-        "n_long": 44,
-        "long_min": 557.0,
-        "n_long_still": 10,
-        "m_long_still": 5,
-        "m_all": 5,
-        "n_long_one": 3,
-        "one": 1.0
-      },
-      "evidence": [
-        {
-          "name": "n_long",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "measures.net_aging_s",
-              "ge",
-              500
             ]
           ],
           "agg": "count"
         },
         {
-          "name": "long_min",
+          "name": "n_o2",
           "filter": [
             [
               "investigation",
@@ -3490,38 +4532,15 @@
               "SAME-R"
             ],
             [
-              "measures.net_aging_s",
-              "ge",
-              500
-            ]
-          ],
-          "agg": "min",
-          "field": "measures.net_aging_s",
-          "round": 0
-        },
-        {
-          "name": "n_long_still",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "measures.net_aging_s",
-              "ge",
-              500
-            ],
-            [
-              "flow_cm_s",
-              "eq",
-              0.0
+              "o2_pct",
+              "notnull",
+              null
             ]
           ],
           "agg": "count"
         },
         {
-          "name": "m_long_still",
+          "name": "n_p",
           "filter": [
             [
               "investigation",
@@ -3529,21 +4548,52 @@
               "SAME-R"
             ],
             [
-              "measures.net_aging_s",
-              "ge",
-              500
-            ],
-            [
-              "flow_cm_s",
-              "eq",
-              0.0
+              "pressure_psi",
+              "notnull",
+              null
             ]
           ],
-          "agg": "distinct",
-          "field": "fuel"
+          "agg": "count"
         },
         {
-          "name": "m_all",
+          "name": "n_cabin",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "o2_basis",
+              "contains",
+              "ISS cabin air"
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_moon",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "count"
+        },
+        {
+          "name": "n_mat",
           "filter": [
             [
               "investigation",
@@ -3553,45 +4603,6 @@
           ],
           "agg": "distinct",
           "field": "fuel"
-        },
-        {
-          "name": "n_long_one",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "measures.net_aging_s",
-              "ge",
-              500
-            ],
-            [
-              "flow_cm_s",
-              "eq",
-              1.0
-            ]
-          ],
-          "agg": "count"
-        },
-        {
-          "name": "one",
-          "filter": [
-            [
-              "investigation",
-              "eq",
-              "SAME-R"
-            ],
-            [
-              "flow_cm_s",
-              "gt",
-              0
-            ]
-          ],
-          "agg": "min",
-          "field": "flow_cm_s",
-          "round": 0
         }
       ],
       "cite": [
@@ -3599,7 +4610,9 @@
       ],
       "tests": null,
       "verified": true,
-      "source": "agent:detection"
+      "source": "agent:detection",
+      "question": "Q4",
+      "question_text": "Where are the gaps?"
     },
     {
       "id": "S-A1",
@@ -5105,13 +6118,21 @@
       "detection",
       "suppression"
     ],
-    "prevention_questions": {
-      "Q1": "Will the material burn, and how far will the flame spread?",
-      "Q2": "How does oxygen-rich air change the risk?",
-      "Q3": "What happens at lower pressure and partial gravity?",
-      "Q4": "Where are the gaps?"
+    "questions": {
+      "prevention": {
+        "Q1": "Will the material burn, and how far will the flame spread?",
+        "Q2": "How does oxygen-rich air change the risk?",
+        "Q3": "What happens at lower pressure and partial gravity?",
+        "Q4": "Where are the gaps?"
+      },
+      "detection": {
+        "Q1": "What does smoke from each material look like?",
+        "Q2": "How do heating level and airflow change the smoke?",
+        "Q3": "How does smoke change as it ages and travels?",
+        "Q4": "Where are the gaps?"
+      }
     },
-    "approved": 16,
+    "approved": 21,
     "rule": "every number computed from tests.json filters and re-checked; hand-typed numbers, safety absolutes and duplicates rejected"
   }
 }
