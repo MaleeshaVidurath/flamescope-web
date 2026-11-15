@@ -1,0 +1,776 @@
+{
+  "generated_from": "data/processed/tests.json",
+  "verifier": "all numbers recomputed and matched",
+  "si_note": "Wording drafted with SI assistance (Claude); numbers computed from NASA PSI records; reviewed by team.",
+  "cards": [
+    {
+      "id": "P1",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Earth screening tests and microgravity can disagree",
+      "text": "In SAFFIRE-II, 4 of 4 silicone sheets showed about 0 cm of burning in microgravity at 20 cm/s airflow, yet 2 of them burned completely in the matching normal-gravity tests. The cotton-fiberglass sheet (2-5) burned its full 29 cm in microgravity.",
+      "so_what": "Material screening done on Earth does not map one-to-one onto flammability in a spacecraft; the direction of the difference depends on the material.",
+      "caveat": "9 samples; O2 about 21.5-22.1% (derived by NASA from CO2 production).",
+      "values": {
+        "silicone_samples": 4,
+        "silicone_no_ug_burn": 4,
+        "flow": 20.0
+      },
+      "evidence": [
+        {
+          "name": "silicone_samples",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "silicone_no_ug_burn",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ],
+            [
+              "fuel",
+              "eq",
+              "Silicone"
+            ],
+            [
+              "measures.ug_burn_length",
+              "eq",
+              "~ 0"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s",
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-99"
+      ],
+      "tests": [
+        "2-1",
+        "2-2",
+        "2-3",
+        "2-4",
+        "2-5"
+      ],
+      "verified": true
+    },
+    {
+      "id": "P2",
+      "pillar": "prevention",
+      "kind": "finding",
+      "title": "Gas flames light readily in a Moon-base atmosphere",
+      "text": "ACME CFI-G ran 20 tests at 7.35 psi and 33-39% O2, inside the Moon-base range given in the challenge brief. 17 of 20 lit a hot flame, which burned for up to 274 s; 13 went out on their own.",
+      "so_what": "At these conditions ignition is easy, so controlling ignition sources matters more than in today's cabins.",
+      "caveat": "Gaseous fuels on a spherical burner, not cabin materials; fuel flow rates varied.",
+      "values": {
+        "moon_tests": 20,
+        "moon_hot": 17,
+        "o2_min": 33.0,
+        "o2_max": 39.0,
+        "psi": 7.35,
+        "burn_max": 274.0,
+        "self_ext": 13
+      },
+      "evidence": [
+        {
+          "name": "moon_tests",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "moon_hot",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated",
+                "ignited"
+              ]
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "o2_min",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "min",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "o2_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": 0
+        },
+        {
+          "name": "psi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ]
+          ],
+          "agg": "max",
+          "field": "pressure_psi",
+          "round": null
+        },
+        {
+          "name": "burn_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "in",
+              [
+                "self_extinguished",
+                "flow_terminated",
+                "ignited"
+              ]
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.burn_time_s",
+          "round": null
+        },
+        {
+          "name": "self_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "ACME CFI-G"
+            ],
+            [
+              "test_id",
+              "startswith",
+              "N-"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.2
+            ],
+            [
+              "outcome",
+              "eq",
+              "self_extinguished"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-159"
+      ],
+      "tests": null,
+      "verified": true
+    },
+    {
+      "id": "P3",
+      "pillar": "prevention",
+      "kind": "gap",
+      "title": "No cabin material has been burned at Moon-base conditions",
+      "text": "The solid-material tests stop near normal air: BASS-II reaches 22.2% O2 and SAFFIRE-II 22.1% O2. None of the 7 datasets burned a fabric or plastic at 30% O2 or more and 10.2 psi or less.",
+      "so_what": "Flammability limits for cabin materials in a Moon-base atmosphere are still unmeasured; planned lunar experiments (LUCI, FM2) are expected to start filling this gap.",
+      "caveat": "Covers the 7 PSI datasets used here.",
+      "values": {
+        "bass2_o2_max": 22.2,
+        "saf_o2_max": 22.1
+      },
+      "evidence": [
+        {
+          "name": "bass2_o2_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "BASS-II"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": null
+        },
+        {
+          "name": "saf_o2_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAFFIRE-II"
+            ]
+          ],
+          "agg": "max",
+          "field": "o2_pct",
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-25",
+        "PSI-99"
+      ],
+      "tests": null,
+      "verified": true
+    },
+    {
+      "id": "D1",
+      "pillar": "detection",
+      "kind": "finding",
+      "title": "Smoke tests cover still air and long aging",
+      "text": "SAME-R logged 109 smoke records from 5 heated cabin materials (Kapton, Teflon, silicone, lampwick, Pyrell). 22 were made in still air (0 cm/s) and the rest at up to 8.1 cm/s; smoke was aged for up to 1923 s before measurement.",
+      "so_what": "Detector design can draw on smoke that drifts slowly and ages in still air, as it would in a poorly ventilated corner of a habitat.",
+      "caveat": "Test conditions only; particle-size results are in the SAME-R reports.",
+      "values": {
+        "records": 109,
+        "materials": 5,
+        "no_flow": 22,
+        "flow_max": 8.1,
+        "aging_max": 1923.0
+      },
+      "evidence": [
+        {
+          "name": "records",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "materials",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "distinct",
+          "field": "fuel",
+          "round": null
+        },
+        {
+          "name": "no_flow",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ],
+            [
+              "flow_cm_s",
+              "eq",
+              0.0
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "flow_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "max",
+          "field": "flow_cm_s",
+          "round": null
+        },
+        {
+          "name": "aging_max",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "max",
+          "field": "measures.net_aging_s",
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true
+    },
+    {
+      "id": "D2",
+      "pillar": "detection",
+      "kind": "gap",
+      "title": "Smoke particle sizes are not in the data table",
+      "text": "None of the 109 SAME-R records in the PSI experimental table carry particle-size results.",
+      "so_what": "Detector thresholds need the measured sizes; they must be taken from the SAME-R reports.",
+      "caveat": "Science lead to add the report values.",
+      "values": {
+        "records": 109
+      },
+      "evidence": [
+        {
+          "name": "records",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "SAME-R"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-101"
+      ],
+      "tests": null,
+      "verified": true
+    },
+    {
+      "id": "S1",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "Lowering oxygen puts droplet fires out",
+      "text": "In FLEX, droplet flames in normal air (21% O2, about 1 atm) went out before the fuel was used up in 14 of 29 tests. At 16% O2 or less that rose to 33 of 36.",
+      "so_what": "Lowering the oxygen share extinguishes these flames; FLEX tested the same idea with CO2 and helium as suppressants.",
+      "caveat": "Methanol and heptane droplets, nitrogen dilution only; not cabin solids.",
+      "values": {
+        "air21": 29,
+        "air21_ext": 14,
+        "low": 36,
+        "low_ext": 33
+      },
+      "evidence": [
+        {
+          "name": "air21",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "eq",
+              21
+            ],
+            [
+              "pressure_psi",
+              "gt",
+              14
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "air21_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "eq",
+              21
+            ],
+            [
+              "pressure_psi",
+              "gt",
+              14
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "low",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "le",
+              16
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "low_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "diluent",
+              "eq",
+              "N2 only"
+            ],
+            [
+              "o2_pct",
+              "le",
+              16
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-69"
+      ],
+      "tests": null,
+      "verified": true
+    },
+    {
+      "id": "S2",
+      "pillar": "suppression",
+      "kind": "finding",
+      "title": "High-oxygen fires rarely go out on their own",
+      "text": "At 30-34% O2, only 2 of 24 FLEX droplet flames went out on their own; 18 ended with the droplet breaking apart. In the 17 tests closest to Moon-base pressure (about 10.3-10.4 psi), 0 went out on their own.",
+      "so_what": "In a 30%+ O2 habitat, suppression systems cannot count on fires dying out; they must act.",
+      "caveat": "Liquid droplets; 'disruption' = the droplet broke up, ending the test.",
+      "values": {
+        "hi": 24,
+        "hi_ext": 2,
+        "hi_dis": 18,
+        "near": 17,
+        "near_ext": 0
+      },
+      "evidence": [
+        {
+          "name": "hi",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "hi_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "hi_dis",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "outcome",
+              "eq",
+              "disruption"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "near",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        },
+        {
+          "name": "near_ext",
+          "filter": [
+            [
+              "investigation",
+              "eq",
+              "FLEX"
+            ],
+            [
+              "o2_pct",
+              "ge",
+              30
+            ],
+            [
+              "pressure_psi",
+              "le",
+              10.6
+            ],
+            [
+              "outcome",
+              "eq",
+              "extinction"
+            ]
+          ],
+          "agg": "count",
+          "field": null,
+          "round": null
+        }
+      ],
+      "cite": [
+        "PSI-69"
+      ],
+      "tests": null,
+      "verified": true
+    }
+  ]
+}

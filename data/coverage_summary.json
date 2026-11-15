@@ -1,0 +1,196 @@
+{
+  "PSI-25": {
+    "investigation": "BASS-II",
+    "pillar": "prevention",
+    "records": 129,
+    "o2_pct": [
+      13.6,
+      22.2
+    ],
+    "pressure_psi": null,
+    "flow_cm_s": null,
+    "fuels": [
+      "Japan wax",
+      "Nomex III",
+      "PMMA",
+      "SIBAL (cotton/fiberglass fabric)",
+      "unspecified in table"
+    ],
+    "outcomes": {
+      "burned_or_not_stated": 104,
+      "extinction": 17,
+      "blowoff": 7,
+      "no_ignition": 1
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "ambient (calibrated initial chamber O2)"
+    ]
+  },
+  "PSI-26": {
+    "investigation": "BASS",
+    "pillar": "prevention",
+    "records": 121,
+    "o2_pct": null,
+    "pressure_psi": null,
+    "flow_cm_s": null,
+    "fuels": [
+      "Japan wax",
+      "Nomex",
+      "PMMA",
+      "SIBAL (cotton/fiberglass)",
+      "Ultem",
+      "candle wax (type not stated)",
+      "paraffin wax",
+      "wax (type not stated)"
+    ],
+    "outcomes": {
+      "not_in_table": 121
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "not in table"
+    ]
+  },
+  "PSI-99": {
+    "investigation": "SAFFIRE-II",
+    "pillar": "prevention",
+    "records": 9,
+    "o2_pct": [
+      21.5,
+      22.1
+    ],
+    "pressure_psi": null,
+    "flow_cm_s": [
+      20.0,
+      20.0
+    ],
+    "fuels": [
+      "Cotton-Fiberglass (SIBAL)",
+      "PMMA",
+      "PMMA & Nomex",
+      "Silicone",
+      "not stated"
+    ],
+    "outcomes": {
+      "no_sustained_burning": 4,
+      "burned": 5
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "ambient, derived by NASA from CO2 production (table note 1)"
+    ]
+  },
+  "PSI-20": {
+    "investigation": "ACME BRE",
+    "pillar": "prevention",
+    "records": 43,
+    "o2_pct": [
+      21.0,
+      40.0
+    ],
+    "pressure_psi": null,
+    "flow_cm_s": null,
+    "fuels": [
+      "ethylene",
+      "ethylene (50% in N2)",
+      "methane"
+    ],
+    "outcomes": {
+      "ignited (day total)": 42,
+      "no_ignition (day total)": 1
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "ambient (approx. level for tests that ignited that day)"
+    ]
+  },
+  "PSI-159": {
+    "investigation": "ACME CFI-G",
+    "pillar": "prevention",
+    "records": 333,
+    "o2_pct": [
+      12.0,
+      85.0
+    ],
+    "pressure_psi": [
+      7.18,
+      48.01
+    ],
+    "flow_cm_s": null,
+    "fuels": [
+      "30% butane",
+      "30% ethane",
+      "30% propane",
+      "50% butane",
+      "butane",
+      "ethane",
+      "propane"
+    ],
+    "outcomes": {
+      "self_extinguished": 175,
+      "flow_terminated": 88,
+      "no_hot_ignition": 60,
+      "cool_flame_only": 2,
+      "flash_then_out": 8
+    },
+    "moon_like_ambient": 20,
+    "o2_basis": [
+      "ambient chamber O2 before test",
+      "oxidizer stream from burner (NOT ambient)"
+    ]
+  },
+  "PSI-101": {
+    "investigation": "SAME-R",
+    "pillar": "detection",
+    "records": 109,
+    "o2_pct": null,
+    "pressure_psi": null,
+    "flow_cm_s": [
+      0.0,
+      8.1
+    ],
+    "fuels": [
+      "Kapton",
+      "Lampwick",
+      "Pyrell",
+      "Silicone",
+      "Teflon"
+    ],
+    "outcomes": {
+      "smoke_sample": 67,
+      "smoke_sample_aged_measurement": 42
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "not in table (ISS cabin air)"
+    ]
+  },
+  "PSI-69": {
+    "investigation": "FLEX",
+    "pillar": "suppression",
+    "records": 274,
+    "o2_pct": [
+      12.0,
+      34.0
+    ],
+    "pressure_psi": [
+      10.18,
+      44.86
+    ],
+    "flow_cm_s": null,
+    "fuels": [
+      "Heptane",
+      "Methanol"
+    ],
+    "outcomes": {
+      "disruption": 61,
+      "extinction": 186,
+      "completion": 27
+    },
+    "moon_like_ambient": 0,
+    "o2_basis": [
+      "ambient mole fraction"
+    ]
+  }
+}

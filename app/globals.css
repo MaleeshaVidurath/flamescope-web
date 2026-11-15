@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
+/* FlameScope tokens: instrument-panel grey, navy ink, microgravity-flame blue, soot amber for caution. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --paper: #eef1f4;
+  --panel: #ffffff;
+  --ink: #15233b;
+  --ink-2: #44506a;
+  --muted: #6e7889;
+  --rule: #d5dae1;
+  --rule-soft: #e6e9ee;
+  --flame: #2a6fdb;
+  --flame-soft: #dbe7fb;
+  --soot: #a85f0c;
+  --soot-soft: #fbefdc;
+  --ok: #1d7448;
+  --ok-soft: #dff2e7;
+  --none: #5b6474;
+  --none-soft: #eceef2;
+  /* chart series (validated: lightness band, CVD separation, normal-vision floor) */
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
+  --s4: #eda100;
+  --radius-lg: 10px;
+  --radius-sm: 6px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-cond: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { background: var(--paper); }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cond { font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif; }
+.num { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--flame); outline-offset: 2px; border-radius: 4px; }
+
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-lg); }
+.panel-quiet { background: var(--panel); border: 1px solid var(--rule-soft); border-radius: var(--radius-sm); }
+
+.tab { padding: 10px 2px; margin-right: 26px; color: var(--ink-2); border-bottom: 2px solid transparent; font-weight: 500; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--flame); }
+.tab:hover { color: var(--ink); }
+
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg button { padding: 6px 14px; border-radius: 999px; color: var(--ink-2); font-size: 14px; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; font-size: 13px; color: var(--ink-2); background: var(--panel); }
+.chip[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: var(--rule-soft); }
+
+.field { border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 6px 10px; background: var(--panel); font-size: 14px; color: var(--ink); }
+
+.btn { background: var(--ink); color: #fff; border-radius: var(--radius-sm); padding: 9px 16px; font-weight: 500; }
+.btn:disabled { opacity: .5; }
+.btn-ghost { border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 7px 12px; color: var(--ink-2); background: var(--panel); font-size: 14px; text-align: left; }
+.btn-ghost:hover { border-color: var(--ink-2); color: var(--ink); }
+
+.link { color: var(--flame); text-decoration: underline; text-underline-offset: 2px; }
+
+table.data { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+table.data th { text-align: left; font-weight: 600; color: var(--ink-2); padding: 8px 10px; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--panel); }
+table.data td { padding: 7px 10px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+table.data td.r, table.data th.r { text-align: right; }
+
+.prose-answer p { margin: 0 0 8px; }
+.prose-answer ul { margin: 0 0 10px 18px; list-style: disc; }
+.prose-answer li { margin-bottom: 4px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .zone-glow { transition: fill-opacity .35s ease, stroke-opacity .35s ease; }
 }

@@ -1,0 +1,811 @@
+{
+  "method": {
+    "formula": "score = 100 x (0.45 x condition_match + 0.30 x fuel_relevance + 0.25 x data_richness)",
+    "condition_match": "min(1, (direct + 0.5 x near + 0.4 x O2-only matches) / 20); ambient O2 only; O2-only = pressure not reported",
+    "fuel_relevance": "editorial weight: solids 1.0 > emulated solids 0.8 > smoke sources 0.7 > gas 0.5 > liquid 0.4",
+    "data_richness": "share of records with both an O2 value and an outcome",
+    "is_not": "a fire-risk or safety score; it ranks how useful each study's evidence is for the scenario",
+    "si_note": "Scoring drafted with SI assistance (Claude) and reviewed by the team."
+  },
+  "habitats": {
+    "iss": {
+      "best_per_pillar": {
+        "prevention": {
+          "investigation": "BASS-II",
+          "score": 95.5,
+          "rank": 1
+        },
+        "suppression": {
+          "investigation": "FLEX",
+          "score": 82.0,
+          "rank": 3
+        },
+        "detection": {
+          "investigation": "SAME-R",
+          "score": 21.0,
+          "rank": 7
+        }
+      },
+      "name": "ISS / spacecraft cabin",
+      "atmosphere": "Earth-normal cabin: 21% O2 at 14.7 psi",
+      "gravity": "microgravity",
+      "o2_window_pct": [
+        19.5,
+        23.5
+      ],
+      "pressure_window_psi": [
+        13.5,
+        15.5
+      ],
+      "overall_evidence": "direct",
+      "gaps": [],
+      "ranking": [
+        {
+          "investigation_id": "PSI-25",
+          "investigation": "BASS-II",
+          "pillar": "prevention",
+          "doi": "10.60555/4qc4-de67",
+          "score": 95.5,
+          "components": {
+            "condition_match": 0.9,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 45
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "45 records match on O2, but pressure was not reported",
+            "burns real cabin-type solids (PMMA, cotton-fiberglass fabric, Nomex)"
+          ],
+          "rank": 1
+        },
+        {
+          "investigation_id": "PSI-159",
+          "investigation": "ACME CFI-G",
+          "pillar": "prevention",
+          "doi": "10.60555/cyt1-kh64",
+          "score": 85.0,
+          "components": {
+            "condition_match": 1.0,
+            "fuel_relevance": 0.5,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 33,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "direct",
+          "reasons": [
+            "33 tests inside this atmosphere (cabin O2 and pressure both match)",
+            "gaseous fuels, not cabin materials"
+          ],
+          "rank": 2
+        },
+        {
+          "investigation_id": "PSI-69",
+          "investigation": "FLEX",
+          "pillar": "suppression",
+          "doi": "10.60555/mbq8-0451",
+          "score": 82.0,
+          "components": {
+            "condition_match": 1.0,
+            "fuel_relevance": 0.4,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 49,
+            "near": 0,
+            "o2_only": 1
+          },
+          "evidence_status": "direct",
+          "reasons": [
+            "49 tests inside this atmosphere (cabin O2 and pressure both match)",
+            "1 records match on O2, but pressure was not reported",
+            "liquid fuel droplets, not cabin materials"
+          ],
+          "rank": 3
+        },
+        {
+          "investigation_id": "PSI-99",
+          "investigation": "SAFFIRE-II",
+          "pillar": "prevention",
+          "doi": "10.60555/2chp-m469",
+          "score": 63.1,
+          "components": {
+            "condition_match": 0.18,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 9
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "9 records match on O2, but pressure was not reported",
+            "burns large sheets of real materials (silicone, fabric, PMMA)"
+          ],
+          "rank": 4
+        },
+        {
+          "investigation_id": "PSI-20",
+          "investigation": "ACME BRE",
+          "pillar": "prevention",
+          "doi": "10.60555/vb93-3y72",
+          "score": 53.5,
+          "components": {
+            "condition_match": 0.1,
+            "fuel_relevance": 0.8,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 5
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "5 records match on O2, but pressure was not reported",
+            "gas burner built to emulate burning solids"
+          ],
+          "rank": 5
+        },
+        {
+          "investigation_id": "PSI-26",
+          "investigation": "BASS",
+          "pillar": "prevention",
+          "doi": "10.60555/58h4-dy80",
+          "score": 30.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "burns real cabin-type solids",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 6
+        },
+        {
+          "investigation_id": "PSI-101",
+          "investigation": "SAME-R",
+          "pillar": "detection",
+          "doi": "10.60555/2np7-jv14",
+          "score": 21.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 0.7,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "heats real cabin materials (Kapton, Teflon, silicone) to make smoke",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 7
+        }
+      ]
+    },
+    "moon_base": {
+      "best_per_pillar": {
+        "prevention": {
+          "investigation": "ACME CFI-G",
+          "score": 85.0,
+          "rank": 1
+        },
+        "suppression": {
+          "investigation": "FLEX",
+          "score": 56.1,
+          "rank": 3
+        },
+        "detection": {
+          "investigation": "SAME-R",
+          "score": 21.0,
+          "rank": 7
+        }
+      },
+      "name": "Moon base",
+      "atmosphere": "Challenge brief: O2 likely >=30% at <=10.2 psi",
+      "gravity": "1/6 g (partial)",
+      "o2_window_pct": [
+        30.0,
+        100.0
+      ],
+      "pressure_window_psi": [
+        0.0,
+        10.2
+      ],
+      "overall_evidence": "direct",
+      "gaps": [
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi."
+      ],
+      "ranking": [
+        {
+          "investigation_id": "PSI-159",
+          "investigation": "ACME CFI-G",
+          "pillar": "prevention",
+          "doi": "10.60555/cyt1-kh64",
+          "score": 85.0,
+          "components": {
+            "condition_match": 1.0,
+            "fuel_relevance": 0.5,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 20,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "direct",
+          "reasons": [
+            "20 tests inside this atmosphere (cabin O2 and pressure both match)",
+            "gaseous fuels, not cabin materials"
+          ],
+          "rank": 1
+        },
+        {
+          "investigation_id": "PSI-20",
+          "investigation": "ACME BRE",
+          "pillar": "prevention",
+          "doi": "10.60555/vb93-3y72",
+          "score": 69.7,
+          "components": {
+            "condition_match": 0.46,
+            "fuel_relevance": 0.8,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 23
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "23 records match on O2, but pressure was not reported",
+            "gas burner built to emulate burning solids"
+          ],
+          "rank": 2
+        },
+        {
+          "investigation_id": "PSI-69",
+          "investigation": "FLEX",
+          "pillar": "suppression",
+          "doi": "10.60555/mbq8-0451",
+          "score": 56.1,
+          "components": {
+            "condition_match": 0.425,
+            "fuel_relevance": 0.4,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 17,
+            "o2_only": 0
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "17 tests just outside it (pressure within 0.6 psi of the limit)",
+            "liquid fuel droplets, not cabin materials"
+          ],
+          "rank": 3
+        },
+        {
+          "investigation_id": "PSI-25",
+          "investigation": "BASS-II",
+          "pillar": "prevention",
+          "doi": "10.60555/4qc4-de67",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns real cabin-type solids (PMMA, cotton-fiberglass fabric, Nomex)"
+          ],
+          "rank": 4
+        },
+        {
+          "investigation_id": "PSI-99",
+          "investigation": "SAFFIRE-II",
+          "pillar": "prevention",
+          "doi": "10.60555/2chp-m469",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns large sheets of real materials (silicone, fabric, PMMA)"
+          ],
+          "rank": 5
+        },
+        {
+          "investigation_id": "PSI-26",
+          "investigation": "BASS",
+          "pillar": "prevention",
+          "doi": "10.60555/58h4-dy80",
+          "score": 30.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "burns real cabin-type solids",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 6
+        },
+        {
+          "investigation_id": "PSI-101",
+          "investigation": "SAME-R",
+          "pillar": "detection",
+          "doi": "10.60555/2np7-jv14",
+          "score": 21.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 0.7,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "heats real cabin materials (Kapton, Teflon, silicone) to make smoke",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 7
+        }
+      ]
+    },
+    "rover": {
+      "best_per_pillar": {
+        "prevention": {
+          "investigation": "ACME CFI-G",
+          "score": 85.0,
+          "rank": 1
+        },
+        "suppression": {
+          "investigation": "FLEX",
+          "score": 56.1,
+          "rank": 3
+        },
+        "detection": {
+          "investigation": "SAME-R",
+          "score": 21.0,
+          "rank": 7
+        }
+      },
+      "name": "Pressurized rover",
+      "atmosphere": "Challenge brief: same atmosphere as the Moon base",
+      "gravity": "1/6 g (partial)",
+      "o2_window_pct": [
+        30.0,
+        100.0
+      ],
+      "pressure_window_psi": [
+        0.0,
+        10.2
+      ],
+      "overall_evidence": "direct",
+      "gaps": [
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 1/6 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi."
+      ],
+      "ranking": [
+        {
+          "investigation_id": "PSI-159",
+          "investigation": "ACME CFI-G",
+          "pillar": "prevention",
+          "doi": "10.60555/cyt1-kh64",
+          "score": 85.0,
+          "components": {
+            "condition_match": 1.0,
+            "fuel_relevance": 0.5,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 20,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "direct",
+          "reasons": [
+            "20 tests inside this atmosphere (cabin O2 and pressure both match)",
+            "gaseous fuels, not cabin materials"
+          ],
+          "rank": 1
+        },
+        {
+          "investigation_id": "PSI-20",
+          "investigation": "ACME BRE",
+          "pillar": "prevention",
+          "doi": "10.60555/vb93-3y72",
+          "score": 69.7,
+          "components": {
+            "condition_match": 0.46,
+            "fuel_relevance": 0.8,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 23
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "23 records match on O2, but pressure was not reported",
+            "gas burner built to emulate burning solids"
+          ],
+          "rank": 2
+        },
+        {
+          "investigation_id": "PSI-69",
+          "investigation": "FLEX",
+          "pillar": "suppression",
+          "doi": "10.60555/mbq8-0451",
+          "score": 56.1,
+          "components": {
+            "condition_match": 0.425,
+            "fuel_relevance": 0.4,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 17,
+            "o2_only": 0
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "17 tests just outside it (pressure within 0.6 psi of the limit)",
+            "liquid fuel droplets, not cabin materials"
+          ],
+          "rank": 3
+        },
+        {
+          "investigation_id": "PSI-25",
+          "investigation": "BASS-II",
+          "pillar": "prevention",
+          "doi": "10.60555/4qc4-de67",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns real cabin-type solids (PMMA, cotton-fiberglass fabric, Nomex)"
+          ],
+          "rank": 4
+        },
+        {
+          "investigation_id": "PSI-99",
+          "investigation": "SAFFIRE-II",
+          "pillar": "prevention",
+          "doi": "10.60555/2chp-m469",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns large sheets of real materials (silicone, fabric, PMMA)"
+          ],
+          "rank": 5
+        },
+        {
+          "investigation_id": "PSI-26",
+          "investigation": "BASS",
+          "pillar": "prevention",
+          "doi": "10.60555/58h4-dy80",
+          "score": 30.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "burns real cabin-type solids",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 6
+        },
+        {
+          "investigation_id": "PSI-101",
+          "investigation": "SAME-R",
+          "pillar": "detection",
+          "doi": "10.60555/2np7-jv14",
+          "score": 21.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 0.7,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "heats real cabin materials (Kapton, Teflon, silicone) to make smoke",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 7
+        }
+      ]
+    },
+    "mars_base": {
+      "best_per_pillar": {
+        "prevention": {
+          "investigation": "ACME CFI-G",
+          "score": 85.0,
+          "rank": 1
+        },
+        "suppression": {
+          "investigation": "FLEX",
+          "score": 56.1,
+          "rank": 3
+        },
+        "detection": {
+          "investigation": "SAME-R",
+          "score": 21.0,
+          "rank": 7
+        }
+      },
+      "name": "Mars base",
+      "atmosphere": "ASSUMPTION: Moon-base atmosphere (brief gives no Mars value)",
+      "gravity": "0.38 g (partial)",
+      "o2_window_pct": [
+        30.0,
+        100.0
+      ],
+      "pressure_window_psi": [
+        0.0,
+        10.2
+      ],
+      "overall_evidence": "direct",
+      "gaps": [
+        "No partial-gravity combustion data exists in PSI yet (challenge brief). These flight tests are microgravity; SAFFIRE-II adds normal-gravity comparisons. Microgravity and Earth-gravity results can only bound what happens at 0.38 g. ACME E-FIELD (PSI-22) mimicked partial gravity with an electric field.",
+        "Only 20 tests sit inside this atmosphere, all gas flames (ACME CFI-G). None of the 7 datasets burned a cabin solid (fabric, plastic) at >=30% O2 and <=10.2 psi.",
+        "Mars-base atmosphere is assumed equal to the Moon base; the challenge brief gives no value."
+      ],
+      "ranking": [
+        {
+          "investigation_id": "PSI-159",
+          "investigation": "ACME CFI-G",
+          "pillar": "prevention",
+          "doi": "10.60555/cyt1-kh64",
+          "score": 85.0,
+          "components": {
+            "condition_match": 1.0,
+            "fuel_relevance": 0.5,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 20,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "direct",
+          "reasons": [
+            "20 tests inside this atmosphere (cabin O2 and pressure both match)",
+            "gaseous fuels, not cabin materials"
+          ],
+          "rank": 1
+        },
+        {
+          "investigation_id": "PSI-20",
+          "investigation": "ACME BRE",
+          "pillar": "prevention",
+          "doi": "10.60555/vb93-3y72",
+          "score": 69.7,
+          "components": {
+            "condition_match": 0.46,
+            "fuel_relevance": 0.8,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 23
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "23 records match on O2, but pressure was not reported",
+            "gas burner built to emulate burning solids"
+          ],
+          "rank": 2
+        },
+        {
+          "investigation_id": "PSI-69",
+          "investigation": "FLEX",
+          "pillar": "suppression",
+          "doi": "10.60555/mbq8-0451",
+          "score": 56.1,
+          "components": {
+            "condition_match": 0.425,
+            "fuel_relevance": 0.4,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 17,
+            "o2_only": 0
+          },
+          "evidence_status": "related",
+          "reasons": [
+            "17 tests just outside it (pressure within 0.6 psi of the limit)",
+            "liquid fuel droplets, not cabin materials"
+          ],
+          "rank": 3
+        },
+        {
+          "investigation_id": "PSI-25",
+          "investigation": "BASS-II",
+          "pillar": "prevention",
+          "doi": "10.60555/4qc4-de67",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns real cabin-type solids (PMMA, cotton-fiberglass fabric, Nomex)"
+          ],
+          "rank": 4
+        },
+        {
+          "investigation_id": "PSI-99",
+          "investigation": "SAFFIRE-II",
+          "pillar": "prevention",
+          "doi": "10.60555/2chp-m469",
+          "score": 55.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 1.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "no tests at this atmosphere",
+            "burns large sheets of real materials (silicone, fabric, PMMA)"
+          ],
+          "rank": 5
+        },
+        {
+          "investigation_id": "PSI-26",
+          "investigation": "BASS",
+          "pillar": "prevention",
+          "doi": "10.60555/58h4-dy80",
+          "score": 30.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 1.0,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "burns real cabin-type solids",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 6
+        },
+        {
+          "investigation_id": "PSI-101",
+          "investigation": "SAME-R",
+          "pillar": "detection",
+          "doi": "10.60555/2np7-jv14",
+          "score": 21.0,
+          "components": {
+            "condition_match": 0.0,
+            "fuel_relevance": 0.7,
+            "data_richness": 0.0
+          },
+          "evidence_counts": {
+            "direct": 0,
+            "near": 0,
+            "o2_only": 0
+          },
+          "evidence_status": "none",
+          "reasons": [
+            "table records no O2 values",
+            "heats real cabin materials (Kapton, Teflon, silicone) to make smoke",
+            "only 0% of records carry both O2 and an outcome"
+          ],
+          "rank": 7
+        }
+      ]
+    }
+  }
+}

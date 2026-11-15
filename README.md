@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlameScope
 
-## Getting Started
+NASA's microgravity fire experiments, checked against the air crews will breathe on the ISS, the Moon and Mars.
+Built by team **SL-Pyronix** (Colombo) for the NASA Space Apps Challenge 2026: *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data*.
 
-First, run the development server:
+## What it does
+
+| Tab | What you get |
+|---|---|
+| **Mission scenarios** | Pick a habitat (ISS, Moon base, pressurized rover, Mars base). The 7 NASA studies are ranked by how useful their evidence is there, with the score broken into parts, plain reasons, and an evidence-gap banner. |
+| **Evidence explorer** | Filter 1,018 NASA test records by study, oxygen, result and fuel. The atmosphere map places every test by oxygen and pressure against the habitat zones. Every row links to its NASA source. |
+| **Prevention · Detection · Suppression** | 7 findings computed from the records and re-checked automatically, including 2 evidence gaps. |
+| **Ask FlameScope** | Every question gets an evidence status (Direct / Related / No direct evidence) and source links. On the public site, answers are **prepared** from the verified findings (no AI call, no cost). With an `ANTHROPIC_API_KEY` set, Claude writes the answer **only** from the retrieved NASA records, citing test IDs. |
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local      # add your ANTHROPIC_API_KEY (optional; without it, Ask uses prepared answers)
+npm run dev                     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy (Vercel)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Push this folder to a **public** GitHub repo.
+2. Import it at vercel.com → New Project (framework: Next.js, no settings to change).
+3. Add the environment variable `ANTHROPIC_API_KEY` (and optionally `FLAMESCOPE_MODEL`, default `claude-sonnet-5-5`).
+4. Deploy, then open the URL in a private window to confirm it works without a login.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data
 
-## Learn More
+All data comes from NASA Physical Sciences Informatics (PSI), licence CC0-1.0:
 
-To learn more about Next.js, take a look at the following resources:
+| ID | Investigation | DOI |
+|---|---|---|
+| PSI-25 | Burning and Suppression of Solids II (BASS-II) | [10.60555/4qc4-de67](https://doi.org/10.60555/4qc4-de67) |
+| PSI-26 | Burning and Suppression of Solids (BASS) | [10.60555/58h4-dy80](https://doi.org/10.60555/58h4-dy80) |
+| PSI-99 | Spacecraft Fire Experiment II (SAFFIRE-II) | [10.60555/2chp-m469](https://doi.org/10.60555/2chp-m469) |
+| PSI-20 | ACME Burning Rate Emulator (BRE) | [10.60555/vb93-3y72](https://doi.org/10.60555/vb93-3y72) |
+| PSI-159 | ACME Cool Flames Investigation with Gases (CFI-G) | [10.60555/cyt1-kh64](https://doi.org/10.60555/cyt1-kh64) |
+| PSI-101 | Smoke Aerosol Measurement Experiment Reflight (SAME-R) | [10.60555/2np7-jv14](https://doi.org/10.60555/2np7-jv14) |
+| PSI-69 | Flame Extinguishment Experiment (FLEX) | [10.60555/mbq8-0451](https://doi.org/10.60555/mbq8-0451) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `data/tests.json`: all records in one format, with the raw source row kept. `public/data/tests_slim.json` is the same data without the raw rows, for the browser.
+- `data/rankings.json`, `data/insights.json`, `data/investigations.json`: habitat rankings, verified findings, investigation cards.
+- The Python scripts that build these from the official PSI downloads are in the separate data package (`flamescope_data.zip`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Known source issues (spreadsheet errors, missing pressure, unlabeled units) are flagged on each record in `quality_flags`, not silently fixed.
 
-## Deploy on Vercel
+## Use of Super Intelligence (SI)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+SI tools were used, and every SI-assisted part is marked:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Claude (Anthropic)** helped write the data-normalization scripts, the ranking method, the wording of the findings, the Q&A prompt and parts of this interface. Each source file carries an `SI note` comment.
+- **Ask FlameScope** can call Claude to write answers from retrieved NASA records when an API key is configured; such answers are labelled as AI-written. The public deployment runs without a key and shows prepared answers, labelled as such.
+- Every number shown in the findings is computed from the NASA records and re-checked by a script. The team checked samples against the PSI pages.
+- No SI-generated images are used. No NASA logos or insignia are used.
+
+## Limits
+
+A research prototype, not a safety certification tool. All PSI flight tests are microgravity; there is no partial-gravity data yet. Findings from gas flames and fuel droplets do not transfer directly to cabin materials. Missing data is never treated as evidence of safety or danger.
