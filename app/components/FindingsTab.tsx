@@ -3,6 +3,8 @@ import insights from "@/data/insights.json";
 import type { InsightCard, PillarSummary, SummaryPoint } from "@/lib/types";
 import { PSI_URL } from "@/lib/types";
 import { pretty } from "@/lib/pretty";
+import { useEffect, useState } from "react";
+import { readHash, recordsHref } from "@/lib/hash";
 
 const DATA = insights as unknown as { cards: InsightCard[]; summaries?: Record<string, PillarSummary> };
 const CARDS = DATA.cards;
@@ -41,10 +43,39 @@ const PILLARS = [
 const BASE_Q: Record<string, string> = { P1: "Q1", P2: "Q2", P3: "Q4", D1: "Q1", D2: "Q4", S1: "Q1", S2: "Q2" };
 const questionOf = (c: InsightCard) => c.question ?? BASE_Q[c.id] ?? "Q4";
 
+function Evidence({ c }: { c: InsightCard }) {
+  const ev = c.evidence_records ?? [];
+  if (!ev.length) return null;
+  return (
+    <div className="mt-2 mb-3 rounded-[var(--radius-sm)] border border-[color:var(--rule)] bg-[color:var(--panel)] p-3">
+      <p className="text-[12.5px] text-[color:var(--ink-2)] mb-2">
+        Every number above was counted by code from the NASA records. Click a count to see exactly which records.
+      </p>
+      <ul className="space-y-1.5 text-[13px]">
+        {ev.map((e) => (
+          <li key={e.name} className="flex flex-wrap items-baseline gap-x-2">
+            <span className="num font-semibold min-w-[3.5ch] text-right">{e.value}</span>
+            <span className="text-[color:var(--ink-2)] flex-1 min-w-[12rem]">{pretty(e.how)}</span>
+            {e.rows.length > 0 ? (
+              <a className="link whitespace-nowrap" href={recordsHref(c.id, e.name)}>
+                {e.rows.length} record{e.rows.length > 1 ? "s" : ""}
+              </a>
+            ) : (
+              <span className="text-[color:var(--muted)] whitespace-nowrap">no records match</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Card({ c }: { c: InsightCard }) {
   const gap = c.kind === "gap";
+  const [open, setOpen] = useState(false);
+  const first = (c.evidence_records ?? []).find((e) => e.rows.length > 0);
   return (
-    <article id={`card-${c.id}`} className="panel p-4 scroll-mt-4"
+    <article id={`card-${c.id}`} className="panel p-4 scroll-mt-4 transition-shadow"
       style={gap ? { borderStyle: "dashed", borderColor: "var(--soot)", background: "var(--soot-soft)" } : undefined}>
       {(gap || c.source) && (
         <div className="flex flex-wrap gap-x-3 text-[12.5px] mb-1">
@@ -60,6 +91,19 @@ function Card({ c }: { c: InsightCard }) {
       <p className="text-[14px] mb-2">{pretty(c.text)}</p>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-2"><span className="font-medium text-[color:var(--ink)]">Why it matters: </span>{pretty(c.so_what)}</p>
       <p className="text-[12.5px] text-[color:var(--muted)] mb-3">Limits: {pretty(c.caveat)}</p>
+      {(c.evidence_records ?? []).length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <button type="button" className="btn-ghost text-[13px]" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+            {open ? "Hide how we got these numbers" : "How we got these numbers"}
+          </button>
+          {first && (
+            <a className="btn-ghost text-[13px]" href={recordsHref(c.id, first.name)}>
+              See the {first.rows.length} NASA records
+            </a>
+          )}
+        </div>
+      )}
+      {open && <Evidence c={c} />}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]">
         {c.cite.map((id) => <a key={id} className="link" href={PSI_URL(id)} target="_blank" rel="noreferrer">NASA {id}</a>)}
         {(c.related ?? []).map((r) => <a key={r.url + r.label} className="link" href={r.url} target="_blank" rel="noreferrer">{r.label}</a>)}
@@ -191,6 +235,16 @@ function QuestionPillar({ p }: { p: (typeof PILLARS)[number] }) {
 }
 
 export default function FindingsTab() {
+  // Arriving from the Explorer ("Back to the finding"): scroll to that card and outline it briefly.
+  useEffect(() => {
+    const id = readHash().params.get("card");
+    const el = id ? document.getElementById(`card-${id}`) : null;
+    if (!el) return;
+    el.scrollIntoView({ block: "start" });
+    el.style.boxShadow = "0 0 0 3px var(--flame)";
+    const t = setTimeout(() => { el.style.boxShadow = ""; }, 2500);
+    return () => clearTimeout(t);
+  }, []);
   return (
     <div>
       <p className="text-[14px] text-[color:var(--ink-2)] mb-5 max-w-[72ch]">

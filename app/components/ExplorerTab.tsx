@@ -1,11 +1,15 @@
 "use client";
-import { useMemo, useState } from "react";
-import type { HabitatKey, SlimTest } from "@/lib/types";
+import { useEffect, useMemo, useState } from "react";
+import insights from "@/data/insights.json";
+import type { HabitatKey, InsightCard, SlimTest } from "@/lib/types";
+import { readHash, recordsHref } from "@/lib/hash";
+import { pretty } from "@/lib/pretty";
 import { OUTCOME_LABEL } from "@/lib/types";
 import AtmosphereMap from "./AtmosphereMap";
 
 const INVS = ["BASS-II", "BASS", "SAFFIRE-II", "ACME BRE", "ACME CFI-G", "SAME-R", "FLEX"];
 const PAGE = 25;
+const CARDS = (insights as unknown as { cards: InsightCard[] }).cards;
 const COLS: (keyof SlimTest)[] = ["investigation_id", "investigation", "doi", "pillar", "test_id", "date", "fuel", "fuel_phase", "geometry",
   "o2_pct", "o2_basis", "pressure_psi", "flow_cm_s", "diluent", "diluent_fraction", "outcome", "outcome_detail", "quality_flags", "source_url"];
 const csvCell = (v: unknown) => {
@@ -43,16 +47,36 @@ export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; hab
   const [q, setQ] = useState("");
   const [page, setPage] = useState(0);
 
+  // Evidence mode: "#explorer?card=S2&m=hi" shows only the records behind one number of one finding.
+  const [ev, setEv] = useState<{ card: string; m: string } | null>(null);
+  useEffect(() => {
+    const read = () => {
+      const { tab, params } = readHash();
+      const card = params.get("card"), m = params.get("m");
+      setEv(tab === "explorer" && card && m ? { card, m } : null);
+      setPage(0);
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => window.removeEventListener("hashchange", read);
+  }, []);
+  const evCard = ev ? CARDS.find((c) => c.id === ev.card) : undefined;
+  const evMetric = evCard?.evidence_records?.find((e) => e.name === ev?.m);
+  const base = useMemo(
+    () => (evMetric ? evMetric.rows.map((i) => tests[i]).filter(Boolean) : tests),
+    [evMetric, tests]
+  );
+
   const outcomes = useMemo(() => Array.from(new Set(tests.map((t) => t.outcome).filter(Boolean))) as string[], [tests]);
   const filtered = useMemo(() => {
     const lo = o2Min === "" ? -Infinity : Number(o2Min), hi = o2Max === "" ? Infinity : Number(o2Max);
     const s = q.trim().toLowerCase();
-    return tests.filter((t) =>
+    return base.filter((t) =>
       inv.includes(t.investigation) &&
       (o2Min === "" && o2Max === "" ? true : t.o2_pct !== null && t.o2_pct >= lo && t.o2_pct <= hi) &&
       (!outcome || t.outcome === outcome) &&
       (!s || `${t.fuel} ${t.test_id} ${t.geometry}`.toLowerCase().includes(s)));
-  }, [tests, inv, o2Min, o2Max, outcome, q]);
+  }, [base, inv, o2Min, o2Max, outcome, q]);
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE));
   const rows = filtered.slice(page * PAGE, page * PAGE + PAGE);
   const toggle = (n: string) => { setPage(0); setInv((cur) => (cur.includes(n) ? cur.filter((x) => x !== n) : [...cur, n])); };
@@ -60,6 +84,35 @@ export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; hab
 
   return (
     <div className="space-y-5">
+      {evCard && evMetric && (
+        <section className="panel p-5" aria-labelledby="ev-h" style={{ borderColor: "var(--flame)", background: "var(--flame-soft)" }}>
+          <p className="text-[12.5px] text-[color:var(--ink-2)] mb-1">The NASA records behind finding {evCard.id}</p>
+          <h2 id="ev-h" className="cond text-[21px] font-semibold leading-snug mb-1">{pretty(evCard.title)}</h2>
+          <p className="text-[14px] mb-3 max-w-[85ch]">{pretty(evCard.text)}</p>
+          <p className="text-[12.5px] text-[color:var(--ink-2)] mb-1.5">Each number in the finding, with its records. Pick one:</p>
+          <div className="flex flex-wrap gap-1.5 mb-3" role="group" aria-label="Numbers in this finding">
+            {(evCard.evidence_records ?? []).map((e) => (
+              e.rows.length ? (
+                <a key={e.name} className="chip" aria-current={e.name === evMetric.name ? "true" : undefined}
+                  href={recordsHref(evCard.id, e.name)} title={pretty(e.how)}>
+                  <span className="num font-semibold">{e.value}</span>
+                  {String(e.rows.length) !== e.value && <span className="text-[12px]">from {e.rows.length} records</span>}
+                </a>
+              ) : (
+                <span key={e.name} className="chip opacity-60" title={`${pretty(e.how)}: no records match`}>
+                  <span className="num font-semibold">{e.value}</span>
+                  <span className="text-[12px]">none</span>
+                </span>
+              )
+            ))}
+          </div>
+          <p className="text-[13.5px]"><span className="font-medium">Showing: </span>{pretty(evMetric.how)} = <span className="num font-semibold">{evMetric.value}</span></p>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[13.5px]">
+            <a className="link" href={`#findings?card=${evCard.id}`}>Back to the finding</a>
+            <a className="link" href="#explorer">Show all {tests.length.toLocaleString()} records</a>
+          </div>
+        </section>
+      )}
       <div className="panel p-4 flex flex-wrap items-end gap-x-5 gap-y-3" role="group" aria-label="Filters">
         <div>
           <div className="text-[12.5px] text-[color:var(--ink-2)] mb-1.5">Study</div>
@@ -97,7 +150,7 @@ export default function ExplorerTab({ tests, habitat }: { tests: SlimTest[]; hab
       <section className="panel" aria-labelledby="tbl-h">
         <div className="flex flex-wrap items-center justify-between gap-2 px-5 pt-4 pb-3">
           <h2 id="tbl-h" className="cond text-[20px] font-semibold">
-            <span className="num">{filtered.length}</span> of <span className="num">{tests.length}</span> NASA records
+            <span className="num">{filtered.length}</span> of <span className="num">{base.length}</span> {evMetric ? `records behind finding ${evCard?.id}` : "NASA records"}
           </h2>
           <div className="flex flex-wrap items-center gap-2 text-[13px]">
             <button className="btn-ghost" disabled={!filtered.length} onClick={() => download("flamescope_filtered_records.csv",

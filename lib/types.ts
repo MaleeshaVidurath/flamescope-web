@@ -63,6 +63,8 @@ export interface InsightCard {
   question?: string;
   question_text?: string;
   review?: { verdict: "ok" | "revise" | "reject"; resolved: boolean; by: string };
+  /** Each number on the card, how it was computed, and the row indices (into tests_slim.json) of its records. */
+  evidence_records?: EvidenceMetric[];
 }
 
 export const HABITATS: { key: HabitatKey; label: string; short: string }[] = [
@@ -94,6 +96,13 @@ export const OUTCOME_LABEL: Record<string, string> = {
   smoke_sample: "Smoke sample",
   smoke_sample_aged_measurement: "Aged smoke reading",
 };
+
+export interface EvidenceMetric {
+  name: string;
+  value: string;
+  how: string;
+  rows: number[];
+}
 
 export interface SummaryPoint {
   text: string;

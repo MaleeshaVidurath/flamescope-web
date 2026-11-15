@@ -63,6 +63,7 @@ Scripts live in the data package (`flamescope_data.zip`); run them from its root
 | 7. Apply review | Checker script | fix revised candidates, then rerun step 5 (rejected cards are dropped) |
 | 8. Summarize | 3 pillar organizers + 1 merge agent | write `agents/summaries/<pillar>.json` and `overall.json` |
 | 9. Check summaries | Summary checker | `python3 -I agents/organize_check.py --merge` (numbers must come from cited verified cards) |
+| 9b. Link claims to records | Python | `python3 -I agents/attach_evidence.py` (stores, for every number, the exact records it was counted from; powers "How we got these numbers") |
 | 10. Publish | Copy | copy `data/processed/insights.json` and `rankings.json` into this repo's `data/`, then build |
 
 Agents never write to the website directly: they write candidate files, and only what passes steps 5, 6 and 9 is published.

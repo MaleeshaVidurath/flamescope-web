@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import { readHash } from "@/lib/hash";
 import type { HabitatKey, SlimTest } from "@/lib/types";
 import { HABITATS } from "@/lib/types";
 import ScenariosTab from "./components/ScenariosTab";
@@ -24,8 +25,11 @@ export default function Home() {
   useEffect(() => {
     fetch("/data/tests_slim.json").then((r) => r.json()).then(setTests).catch(() => setLoadError(true));
     const fromHash = () => {
-      const h = window.location.hash.replace("#", "") as TabKey;
-      if (TABS.some((t) => t.key === h)) setTab(h);
+      const h = readHash().tab as TabKey;
+      if (TABS.some((t) => t.key === h)) {
+        setTab(h);
+        if (readHash().params.has("card")) window.scrollTo({ top: 0 });
+      }
     };
     fromHash();
     window.addEventListener("hashchange", fromHash);
